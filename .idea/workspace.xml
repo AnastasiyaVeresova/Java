@@ -5,32 +5,7 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="6b40389c-a3d8-4e3c-ad30-b7918722b4b1" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/.gitignore" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/modules.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/uiDesigner.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/vcs.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Java.iml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Main.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/Addition/test.txt" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/Main.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/Sem_1/Main.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/Sem_1/Main_2.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/Sem_1/Program.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/Sem_1/St.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/Sem_1/WordChange.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/Sem_1/hw_1/Answer.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/Sem_1/hw_2/Answer.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/Sem_1/hw_3/Calculator.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/Sem_1/hw_4/TrueAnswerForExpression.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/Sem_2/Main4.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/Sem_2/Palindrome.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/Sem_2/hw/Answer.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/Sem_2/hw_2/BubbleSort.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/Sem_2/hw_3_4/obj.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/Sem_2/program.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/Sem_2/task_1.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
