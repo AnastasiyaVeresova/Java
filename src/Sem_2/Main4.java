@@ -1,8 +1,5 @@
 package Sem_2;
-/*
-Напишите метод, который составит строку, состоящую из 100 повторений слова TEST и метод,
-который запишет эту строку в простой текстовый файл, обработайте исключения.
- */
+
 import java.io.File;
 import java.io.FileWriter;
 import java.io.IOException;
@@ -21,8 +18,8 @@ public class Main4 {
     static Logger logger = Logger.getAnonymousLogger();
 
     public static void main(String[] args) {
-        String filePath = "src/sem_2/test.txt";
-        String logPath = "src/sem_2/log.txt";
+        String filePath = "src/lesson2/seminar/test.txt";
+        String logPath = "src/lesson2/seminar/log.txt";
         String s = "test";
         int n = 10;
 

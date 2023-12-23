@@ -14,14 +14,17 @@ select * from students where "
 
 String QUERY - начало SQL-запроса
 String PARAMS - JSON с параметрами
- */
+        */
 class Answer {
     public static StringBuilder answer(String QUERY, String PARAMS) {
         String paramsNew = PARAMS.replace('{', ' ').replace('}', ' ');
         String[] params = paramsNew.split(",");
+
         StringBuilder stringBuilder = new StringBuilder(QUERY);
 
         for (int i = 0; i < params.length; i++) {
+            System.out.println(params[i]);
+
             String[] elements = params[i].replace('"', ' ').split(":");
             if (!"null".equals(elements[1].trim())) {
                 stringBuilder.append(elements[0].trim()).append("=").append("'").append(elements[1].trim()).append("'");
@@ -33,7 +36,6 @@ class Answer {
 }
 
 
-// Не удаляйте этот класс - он нужен для вывода результатов на экран и проверки
 class Printer{
     public static void main(String[] args) {
         String QUERY = "";
