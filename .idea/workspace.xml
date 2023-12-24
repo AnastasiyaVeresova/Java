@@ -5,113 +5,8 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="6b40389c-a3d8-4e3c-ad30-b7918722b4b1" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/.idea/compiler.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/pom.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/profiles.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Lections/Java. Урок 2. Дополнительные материалы/Lesson_02/Ex001_stringsDemo.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Lections/Java. Урок 2. Дополнительные материалы/Lesson_02/Main.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Lections/Java. Урок 4. Дополнительные материалы.zip" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Lections/Java. Урок 5. Дополнительные материалы/Lesson_05/Ex001_HashMap.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Lections/Java. Урок 5. Дополнительные материалы/Lesson_05/Ex002_HashMapEntry.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Lections/Java. Урок 5. Дополнительные материалы/Lesson_05/Ex003_HashMapBoost.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Lections/Java. Урок 5. Дополнительные материалы/Lesson_05/Ex004_TreeMap.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Lections/Java. Урок 5. Дополнительные материалы/Lesson_05/Ex005_LinkedHashMap.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Lections/Java. Урок 5. Дополнительные материалы/Lesson_05/Ex006_HashTable.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Lections/Java. Урок 5. Дополнительные материалы/__MACOSX/._Lesson_05" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Lections/Java. Урок 5. Дополнительные материалы/__MACOSX/Lesson_05/._Ex001_HashMap.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Lections/Java. Урок 5. Дополнительные материалы/__MACOSX/Lesson_05/._Ex002_HashMapEntry.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Lections/Java. Урок 5. Дополнительные материалы/__MACOSX/Lesson_05/._Ex003_HashMapBoost.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Lections/Java. Урок 5. Дополнительные материалы/__MACOSX/Lesson_05/._Ex004_TreeMap.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Lections/Java. Урок 5. Дополнительные материалы/__MACOSX/Lesson_05/._Ex005_LinkedHashMap.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Lections/Java. Урок 5. Дополнительные материалы/__MACOSX/Lesson_05/._Ex006_HashTable.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Lections/Java. Урок 6. Дополнительные материалы.zip" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Lections/Map.pdf" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Lections/Set.pdf" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Lections/Презентация. Знакомство с языком программирования Java.pdf" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Lections/Приоритетные коллекции.pdf" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Seminars/1/Main3 (1).java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Seminars/1/Main4.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Seminars/1/Main5.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Seminars/1/NameHi.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Seminars/2/Main2.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Seminars/2/Main3.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Seminars/2/Main4.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Seminars/2/Symbols.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Seminars/2/Test.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Seminars/2/Презентация. Почему вы не можете не использовать API.pdf" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Seminars/3/CompareLine.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Seminars/3/Main1.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Seminars/3/Main2.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Seminars/3/Main3.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Seminars/3/Planets.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Seminars/3/Test.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Seminars/3/Презентация. Коллекции JAVA Введение.pdf" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Seminars/4/Main1.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Seminars/4/Main2.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Seminars/4/Main3.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Seminars/4/Main4.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Seminars/4/MyStack.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Seminars/4/Презентация. Хранение и обработка данных ч1 приоритетные коллекции.pdf" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Seminars/5/semMap.pdf" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Seminars/6/Cat.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Seminars/6/Main (1).java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Seminars/6/Main (2).java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Seminars/6/Main.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Seminars/6/Презентация. Хранение и обработка данных ч3 множество коллекций Set.pdf" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/Sem_1/Main2.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/Sem_1/Main3 (1).java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/Sem_1/Main4.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/Sem_1/Main5.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/Sem_2/Main (1).java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/Sem_2/Main2.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/Sem_2/Main3.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/Sem_2/Test.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/Sem_2/hw_4/Calculator.class" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/Sem_2/hw_4/Calculator.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/Sem_2/hw_4/Printer.class" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/Sem_3/ArrayList.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/Sem_3/CompareLine.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/Sem_3/Ex_1.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/Sem_3/Main1.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/Sem_3/Main3.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/Sem_3/Program.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/Sem_3/Test.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/Sem_3/hw_1/MergeSort.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/Sem_3/hw_2/Answer.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/Sem_3/hw_3/Answer.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/Sem_4/Main1.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/Sem_4/Main2.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/Sem_4/Main3.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/Sem_4/Main4.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/Sem_4/MyStack.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/Sem_4/hw_1/LLTasks.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/Sem_4/hw_2/MyQueue.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/Sem_4/hw_3/Calculator.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/Sem_5/GroupName.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/Sem_5/Main.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/Sem_5/Passports.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/Sem_5/TrueOrFalseBrackets.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/Sem_5/hw_1/NamesCounter.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/Sem_5/hw_2/HeapSort.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/Sem_5/hw_3/PhoneBook.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/Sem_5/treeMap.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/Sem_6/Cat.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/Sem_6/OtherSet.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/Sem_6/SetCat.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/Sem_6/SetUniqRandomArray.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/Sem_6/hw_6/Notebook.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/Sem_6/hw_6/arr.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Java.iml" beforeDir="false" afterPath="$PROJECT_DIR$/Java.iml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/log.txt" beforeDir="false" afterPath="$PROJECT_DIR$/log.txt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Addition/Java.txt" beforeDir="false" afterPath="$PROJECT_DIR$/src/Addition/Java.txt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Sem_2/Main4.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Sem_2/Main4.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Sem_2/hw/Answer.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Sem_2/hw/Answer.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Sem_2/hw_2/BubbleSort.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Sem_2/hw_2/BubbleSort.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Sem_2/hw_3_4/obj.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Sem_2/hw_3_4/obj.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Sem_2/log.txt" beforeDir="false" afterPath="$PROJECT_DIR$/src/Sem_2/log.txt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Sem_2/test.txt" beforeDir="false" afterPath="$PROJECT_DIR$/src/Sem_2/test.txt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Sem_6/hw_6/Notebook.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Sem_6/hw_6/Notebook.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -136,6 +31,7 @@
   </component>
   <component name="HighlightingSettingsPerFile">
     <setting file="file://$PROJECT_DIR$/src/Sem_4/hw_3/Calculator.java" root0="SKIP_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/src/Sem_6/hw_6/Notebook.java" root0="SKIP_HIGHLIGHTING" />
   </component>
   <component name="JavaAutoRunManager">
     <enabled-run-configurations>

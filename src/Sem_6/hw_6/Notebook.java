@@ -18,60 +18,44 @@ public class Notebook {
         this.opsystem = opsystem;
         this.colour = colour;
     }
-
     public String getModel() {
         return model;
     }
-
     public void setModel(String model) {
         this.model = model;
     }
-
     public int getRam() {
         return ram;
     }
-
     public void setRam(int ram) {
         this.ram = ram;
     }
-
     public int getDiagonal() {
         return diagonal;
     }
-
     public void setSsd(int diagonal) {
         this.diagonal = diagonal;
     }
-
     public int getHarddisc() {
         return hardDisk;
     }
-
     public void setHarddisc(int harddisc) {
         this.hardDisk = harddisc;
     }
-
     public String getOpsystem() {
         return opsystem;
     }
     public void setOpsystem(String opsystem) {
         this.opsystem = opsystem;
     }
-
     public  String getColour() {
-
         return  colour;
-
     }
     public void setColour(String colour) {
-
         this.colour = colour;
-
     }
     @Override
-
     public String toString() {
-
         return "Ноутбук {" +
                 "Модель = '" + model + '\'' +
                 ", Оперативная память = " + ram + "Гб" +
@@ -80,191 +64,177 @@ public class Notebook {
                 ", Операционная система = " + opsystem +
                 ", Цвет = " + colour + '\'' +
                 '}';
-
     }
-    public static void filterNotebooks(Map<String, String> filters, Map<String, Integer> values, Notebook[] Notebook_ones) {
+
+    public static void filterNotebooks(Map<String, String> filters, List<Notebook> Notebook_ones) {
         for (Notebook notebook : Notebook_ones) {
             boolean passfilter = true;
             for (Map.Entry<String, String> entry : filters.entrySet()) {
                 String filterKey = entry.getKey();
                 String filterValue = entry.getValue();
                 switch (filterKey) {
-
                     case "1":
                         if (!notebook.getModel().equals(filterValue)) {
                             passfilter = false;
                         }
                         break;
-
                     case "2":
                         if (notebook.getRam() < Integer.parseInt(filterValue)) {
                             passfilter = false;
                         }
                         break;
-
                     case "3":
                         if (notebook.getDiagonal() < Integer.parseInt(filterValue)) {
                             passfilter = false;
                         }
                         break;
-
                     case "4":
-                        if (notebook.getHarddisc() < Integer.parseInt(filterValue)) {
+                        if (notebook.getHarddisc() < Integer.parseInt(filterValue)){
                             passfilter = false;
                         }
                         break;
-
                     case "5":
                         if (!notebook.getOpsystem().equals(filterValue)) {
                             passfilter = false;
                         }
                         break;
-
                     case "6":
                         if (!notebook.getColour().equals(filterValue)) {
                             passfilter = false;
                         }
                         break;
-
                     default:
                         System.out.println("Введен некорректный критерий фильтрации");
-                        break;
+                        return;
+
+
+                }
+                if (!passfilter) {
+                    break;
                 }
             }
-
             if (passfilter) {
                 System.out.println(notebook);
-                    // System.out.println("Модель: " + notebook.getModel());
-                    // System.out.println("Оперативная память: " + notebook.getRam());
-                    // System.out.println("Диагональ: " + notebook.getDiagonal());
-                    // System.out.println("Жесткий диск: " + notebook.getHarddisc());
-                    // System.out.println("Операционная система: " + notebook.getOpsystem());
-                    // System.out.println("Цвет: " + notebook.getColour());
-
             }
         }
-
     }
 
-
     public static void main(String[] args) {
-        Notebook[] Notebook_ones = {
-                new Notebook("Lenovo", 8, 18, 4, "Windows", "Металлик"),
-                new Notebook("Asus", 16, 21, 18, "Windows", "Черный"),
-                new Notebook("Acer", 8, 28, 32, "Linux", "Синий"),
-                new Notebook("Acer", 8, 18, 4, "Windows", "Металлик"),
-                new Notebook("Hp", 8, 18, 4, "Windows", "Белый"),
-                new Notebook("Hp", 16, 21, 18, "Windows", "Черный"),
-                new Notebook("Mac", 32, 21, 24, "Mac", "Синий"),
-                new Notebook("Mac", 32, 21, 24, "Mac", "Черный"),
-        };
+        Scanner scanner = new Scanner(System.in);
+
+        List<Notebook> Notebook_ones = new ArrayList<>();
+        Notebook_ones.add(new Notebook("Lenovo", 8, 18, 4, "Windows", "Металлик"));
+        Notebook_ones.add(new Notebook("Lenovo", 8, 18, 4, "Windows", "Белый"));
+        Notebook_ones.add(new Notebook("Lenovo", 12, 21, 12, "Windows", "Белый"));
+        Notebook_ones.add(new Notebook("Asus", 16, 21, 18, "Windows", "Черный"));
+        Notebook_ones.add(new Notebook("Acer", 12, 23, 18, "Windows", "Зеленый"));
+        Notebook_ones.add(new Notebook("Acer", 8, 28, 32, "Linux", "Синий"));
+        Notebook_ones.add(new Notebook("Hp", 8, 18, 4, "Windows", "Белый"));
+        Notebook_ones.add(new Notebook("Hp", 12, 18, 32, "Windows", "Синий"));
+        Notebook_ones.add(new Notebook("Mac", 32, 21, 24, "Mac", "Черный"));
+        Notebook_ones.add(new Notebook("Mac", 8, 22, 28, "Mac", "Металлик"));
+
 
         System.out.println("Модель - 1,\nОперативная память, Гб - 2,\nДиагональ, дюймов - 3,\nЖесткий диск - 4,\nОперационная система - 5,\nЦвет - 6");
         System.out.println("Введите номер критерия фильтрации (1-6): ");
+        String filterKey = String.valueOf(scanner.nextInt());
+        switch (filterKey) {
+            case "1":
+                System.out.println("Выбор моделей:");
+                Set<String> uniqueValuesModel = new HashSet<>();
+                for (Notebook Notebook : Notebook_ones) {
+                    uniqueValuesModel.add(Notebook.getModel());
+                }
+                for (String valueModel : uniqueValuesModel) {
+                    System.out.printf(valueModel + " ");
+                }
+                System.out.println();
+                System.out.println("Введите значение для фильтрации по модели: ");
+                break;
 
-        Scanner scanner = new Scanner(System.in);
+            case "2":
+                System.out.println("Диапазон ram:");
+                Set<Integer> uniqueValuesRam = new TreeSet<>();
+                for (Notebook Notebook : Notebook_ones) {
+                    uniqueValuesRam.add(Notebook.getRam());
+                }
+                for (Integer valueRam : uniqueValuesRam) {
+                    System.out.printf(valueRam + " ");
+                }
+                System.out.println();
+                System.out.println("Введите минимальное значение для фильтрации по оперативной памяти: ");
+                break;
 
-        String [] filters = scanner.nextLine().split(",");
-        Map<String, String> filtersKeys = new HashMap<>();
-        Map<String, Integer> valuesKeys = new HashMap<>();
+            case "3":
+                System.out.println("Доступные диагонали:");
+                Set<Integer> uniqueValuesDiagonal = new TreeSet<>();
+                for (Notebook Notebook : Notebook_ones) {
+                    uniqueValuesDiagonal.add(Notebook.getDiagonal());
+                }
+                for (Integer valueDiagonal : uniqueValuesDiagonal) {
+                    System.out.printf(valueDiagonal + " ");
+                }
+                System.out.println();
+                System.out.println("Введите минимальное значение для фильтрации по длине диагонали: ");
+                break;
 
-        for (String filterKey : filters) {
-            System.out.println("Введите значение: ");
-            for (String filter : filters) {
-                switch (filter) {
-                    case "1":
-                        System.out.println("Выбор моделей:");
-                        Set<String> uniqueValuesModel = new HashSet<>();
-                        for (Notebook Notebook : Notebook_ones) {
-                            uniqueValuesModel.add(Notebook.getModel());
-                        }
-                        for (String valueModel : uniqueValuesModel) {
-                            System.out.printf(valueModel + " ");
-                        }
-                        System.out.println();
-                        System.out.println("Введите значение для фильтрации по модели: ");
-                        break;
-
-                    case "2":
-                        System.out.println("Диапазон ram:");
-                        Set<Integer> uniqueValuesRam = new TreeSet<>();
-                        for (Notebook Notebook : Notebook_ones) {
-                            uniqueValuesRam.add(Notebook.getRam());
-                        }
-                        for (Integer valueRam : uniqueValuesRam) {
-                            System.out.printf(valueRam + " ");
-                        }
-                        System.out.println();
-                        System.out.println("Введите минимальное значение для фильтрации по оперативной памяти: ");
-                        break;
-
-                    case "3":
-                        System.out.println("Доступные диагонали:");
-                        Set<Integer> uniqueValuesDiagonal = new TreeSet<>();
-                        for (Notebook Notebook : Notebook_ones) {
-                            uniqueValuesDiagonal.add(Notebook.getDiagonal());
-                        }
-                        for (Integer valueDiagonal : uniqueValuesDiagonal) {
-                            System.out.printf(valueDiagonal + " ");
-                        }
-                        System.out.println();
-                        System.out.println("Введите минимальное значение для фильтрации по длине диагонали: ");
-                        break;
-
-                    case "4":
-                        System.out.println("Возможные объемы жестких дисков:");
-                        Set<Integer> uniqueValuesHdd = new TreeSet<>();
-                        for (Notebook Notebook : Notebook_ones) {
-                            uniqueValuesHdd.add(Notebook.getDiagonal());
-                        }
-
-                        for (Integer valueHdd : uniqueValuesHdd) {
-                            System.out.printf(valueHdd + " ");
-                        }
-                        System.out.println();
-                        System.out.println("Введите минимальное значение из доступных объемов жестких дисков: ");
-                        break;
-
-                    case "5":
-                        System.out.println("Доступные операционные системы:");
-                        Set<String> uniqueValuesOpp = new TreeSet<>();
-                        for (Notebook Notebook : Notebook_ones) {
-                            uniqueValuesOpp.add(Notebook.getOpsystem());
-                        }
-                        for (String valueOpp : uniqueValuesOpp) {
-                            System.out.printf(valueOpp + " ");
-                        }
-                        System.out.println();
-                        System.out.println("Введите значение для фильтрации по оперативной системе: ");
-                        break;
-
-                    case "6":
-
-                        System.out.println("Доступные цвета:");
-                        Set<String> uniqueValuesColours = new TreeSet<>();
-                        for (Notebook Notebook : Notebook_ones) {
-                            uniqueValuesColours.add(Notebook.getColour());
-                        }
-
-                        for (String valueColour : uniqueValuesColours) {
-                            System.out.printf(valueColour + " ");
-                        }
-                        System.out.println();
-                        System.out.println("Введите значение для фильтрации по цвету: ");
-                        break;
-
-                    default:
-                        System.out.println("Введён неверный параметр");
-                        break;
+            case "4":
+                System.out.println("Возможные объемы жестких дисков:");
+                Set<Integer> uniqueValuesHdd = new TreeSet<>();
+                for (Notebook Notebook : Notebook_ones) {
+                    uniqueValuesHdd.add(Notebook.getDiagonal());
                 }
 
-            }
-            String filterValue = scanner.nextLine();
-            filtersKeys.put(filterKey, filterValue);
+                for (Integer valueHdd : uniqueValuesHdd) {
+                    System.out.printf(valueHdd + " ");
+                }
+                System.out.println();
+                System.out.println("Введите минимальное значение из доступных объемов жестких дисков: ");
+                break;
 
+            case "5":
+                System.out.println("Доступные операционные системы:");
+                Set<String> uniqueValuesOpp = new TreeSet<>();
+                for (Notebook Notebook : Notebook_ones) {
+                    uniqueValuesOpp.add(Notebook.getOpsystem());
+                }
+                for (String valueOpp : uniqueValuesOpp) {
+                    System.out.printf(valueOpp + " ");
+                }
+                System.out.println();
+                System.out.println("Введите значение для фильтрации по оперативной системе: ");
+                break;
 
+            case "6":
+
+                System.out.println("Доступные цвета:");
+                Set<String> uniqueValuesColours = new TreeSet<>();
+                for (Notebook Notebook : Notebook_ones) {
+                    uniqueValuesColours.add(Notebook.getColour());
+                }
+
+                for (String valueColour : uniqueValuesColours) {
+                    System.out.printf(valueColour + " ");
+                }
+                System.out.println();
+                System.out.println("Введите значение для фильтрации по цвету: ");
+                break;
+
+            default:
+                System.out.println("Введён неверный параметр");
+                return;
         }
-        filterNotebooks(filtersKeys, valuesKeys, Notebook_ones);
-        scanner.close();
+
+//        scanner.nextLine();
+
+        scanner.nextLine();
+
+        String filterValue = scanner.nextLine();
+
+        Map<String, String> filters = new HashMap<>();
+
+        filters.put(filterKey, filterValue);
+
+        filterNotebooks(filters, Notebook_ones);
     }
 }
