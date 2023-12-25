@@ -12,8 +12,11 @@
       <sourceFolder url="file://$MODULE_DIR$/Seminars/3" isTestSource="false" />
       <sourceFolder url="file://$MODULE_DIR$/Seminars/4" isTestSource="false" />
       <sourceFolder url="file://$MODULE_DIR$/Lections/Java. Урок 5. Дополнительные материалы/Lesson_05" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/oop/lessonOne/Lesson_07" isTestSource="true" />
+      <sourceFolder url="file://$MODULE_DIR$/ООП" isTestSource="false" />
     </content>
     <orderEntry type="inheritedJdk" />
     <orderEntry type="sourceFolder" forTests="false" />
+    <orderEntry type="library" name="KotlinJavaRuntime" level="project" />
   </component>
 </module>
