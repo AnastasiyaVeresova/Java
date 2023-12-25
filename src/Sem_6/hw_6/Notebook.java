@@ -135,8 +135,8 @@ public class Notebook {
         Notebook_ones.add(new Notebook("Mac", 8, 22, 28, "Mac", "Металлик"));
 
         while (true) {
-            System.out.println("Модель - 1,\nОперативная память, Гб - 2,\nДиагональ, дюймов - 3,\nЖесткий диск, Гб - 4,\nОперационная система - 5,\nЦвет - 6\n-----------\nВыход - x");
-            System.out.println("Введите номер критерия фильтрации (1-6) или x для выхода: ");
+            System.out.println("Модель - 1,\nОперативная память, Гб - 2,\nДиагональ, дюймов - 3,\nЖесткий диск, Гб - 4,\nОперационная система - 5,\nЦвет - 6\n-----------\nВыход - 7");
+            System.out.println("Введите номер критерия фильтрации (1-6) или 7 для выхода: ");
             String filterKey = String.valueOf(scanner.nextInt());
             switch (filterKey) {
                 case "1":
@@ -219,29 +219,26 @@ public class Notebook {
                     System.out.println();
                     System.out.println("Введите значение для фильтрации по цвету: ");
                     break;
-                case "x":
-                    break;
-
+                case "7":
+                    System.out.println("Всего доброго, ждем вас снова!");
+                    return;
                 default:
-                    System.out.println("Введён неверный параметр");
+                    System.out.println("Пожалуйста, повторите поиск с верными параметрами");
                     return;
             }
-
-//        scanner.nextLine();
-
             scanner.nextLine();
-
             String filterValue = scanner.nextLine();
-
             Map<String, String> filters = new HashMap<>();
-
             filters.put(filterKey, filterValue);
-            System.out.println("Отфильтрованы по параметру: " + filterValue);
+            if (filters.isEmpty()) {
+                System.out.println("Не найдено по параметру: " + filterValue);
+            }
+            else {
+                System.out.println("Отфильтрованы по параметру: " + filterValue);
+            }
 
             filterNotebooks(filters, Notebook_ones);
             System.out.println("----------");
-
         }
     }
-
 }
