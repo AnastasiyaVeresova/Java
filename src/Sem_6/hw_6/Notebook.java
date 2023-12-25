@@ -74,7 +74,7 @@ public class Notebook {
                 String filterValue = entry.getValue();
                 switch (filterKey) {
                     case "1":
-                        if (!notebook.getModel().equals(filterValue)) {
+                        if (!notebook.getModel().equalsIgnoreCase(filterValue)) {
                             passfilter = false;
                         }
                         break;
@@ -94,12 +94,12 @@ public class Notebook {
                         }
                         break;
                     case "5":
-                        if (!notebook.getOpsystem().equals(filterValue)) {
+                        if (!notebook.getOpsystem().equalsIgnoreCase(filterValue)) {
                             passfilter = false;
                         }
                         break;
                     case "6":
-                        if (!notebook.getColour().equals(filterValue)) {
+                        if (!notebook.getColour().equalsIgnoreCase(filterValue)) {
                             passfilter = false;
                         }
                         break;
