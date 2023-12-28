@@ -5,17 +5,29 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="6b40389c-a3d8-4e3c-ad30-b7918722b4b1" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/src/oop/hw_1/Crossbower.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/oop/hw_1/Hero.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/oop/hw_1/Main.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/oop/hw_1/Monk.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/oop/hw_1/NameOfHeroes.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/oop/hw_1/Peasant.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/oop/hw_1/Pikeman.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/oop/hw_1/Rogue.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/oop/hw_1/Sniper.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/oop/hw_1/Wizard.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/oop/hw_1/Vector2.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/oop/hw_1_2/Main.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/oop/hw_1_2/units/Archer.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/oop/hw_1_2/units/Coordinates.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/oop/hw_1_2/units/Monk.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/oop/hw_1_2/units/Names.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/oop/hw_1_2/units/Person.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/oop/hw_1_2/units/Robber.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/oop/hw_1_2/units/Sniper.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/oop/hw_1_2/units/Sorcerer.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/oop/hw_1_2/units/Spearman.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/oop/hw_1_2/units/Villager.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/oop/hw_1/Crossbower.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/oop/hw_1/Crossbower.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/oop/hw_1/Hero.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/oop/hw_1/Hero.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/oop/hw_1/Main.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/oop/hw_1/Main.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/oop/hw_1/Monk.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/oop/hw_1/Monk.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/oop/hw_1/NameOfHeroes.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/oop/hw_1/NameOfHeroes.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/oop/hw_1/Peasant.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/oop/hw_1/Peasant.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/oop/hw_1/Pikeman.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/oop/hw_1/Pikeman.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/oop/hw_1/Rogue.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/oop/hw_1/Rogue.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/oop/hw_1/Sniper.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/oop/hw_1/Sniper.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/oop/hw_1/Wizard.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/oop/hw_1/Wizard.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -29,8 +41,8 @@
     <option name="RECENT_TEMPLATES">
       <list>
         <option value="Kotlin Class" />
-        <option value="Class" />
         <option value="Enum" />
+        <option value="Class" />
       </list>
     </option>
   </component>
@@ -104,11 +116,11 @@
   </component>
   <component name="RunManager">
     <configuration name="Main" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
-      <option name="MAIN_CLASS_NAME" value="oop.hw_1.Main" />
+      <option name="MAIN_CLASS_NAME" value="oop.hw_1_2.Main" />
       <module name="Java" />
       <extension name="coverage">
         <pattern>
-          <option name="PATTERN" value="oop.hw_1.*" />
+          <option name="PATTERN" value="oop.hw_1_2.units.*" />
           <option name="ENABLED" value="true" />
         </pattern>
       </extension>
