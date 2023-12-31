@@ -15,6 +15,7 @@ public class Villager extends Person{
                 new int[] {0},
                 x, y);
     }
+
     @Override
     public String toString() {
         return "Villager: " + name + " " + position;

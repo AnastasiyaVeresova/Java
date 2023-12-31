@@ -1,13 +1,12 @@
-package oop.hw_1;
+package oop.hw_1.pers;
 
 public class Monk extends Hero {
     public Monk(String nameHero, int posX, int posY) {
         super(50, 50, 1, new int[]{-35, -30}, nameHero, posX, posY);
-        rangeMaxDamage = 4;
+//        rangeMaxDamage = 4;
     }
 
-    protected Vector2 position;
-    protected  int rangeMaxDamage;
+//    protected  int rangeMaxDamage;
     @Override
     public String toString() {
         return ("Монах: " + nameHero + ", здоровье: " + health + "/" + healthMax + ", броня: " + armor);

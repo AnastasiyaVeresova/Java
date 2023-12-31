@@ -14,6 +14,12 @@ package oop.hw_1;
 наследников. Расположить классы в пакет так, чтобы в основной программе небыло видно их полей. В не абстрактных классах
 переопределить метод toString() так чтобы он возвращал название класса или имя. Создать в основной программе по одному
 обьекту каждого не абстрактного класса и вывести в консоль его имя.
+======================================================================
+Добавить в проект класс, предназначенный для хранения координат. Добавить в абстрактный класс поле, экземпляр класс координат.
+Пробросить координаты через конструкторы наследников так, чтобы создавая объекты вы передавали в параметры имя и координаты.
+Скорректировать алгоритм заполнения команд. Кроме имен каждый персонаж должен иметь координаты. Одна команда находится с левой стороны,
+другая с правой (y = 0, y = 9).
+В класс лучников добавить метод поиск ближайшего противника. Алгоритм рассчета расстояний реализовать в классе координат.
 ======================================================================================
 abstract class Person {
     private String name;
@@ -66,18 +72,29 @@ public class Main {
 }
 */
 
-import java.util.ArrayList;
-import java.util.Random;
+import oop.hw_1.pers.*;
+
+import java.util.*;
+
 public class Main {
     public static void main(String[] args) {
         heroesWhite = generateCommand(0, 0);
         heroesBlack = generateCommand(3, 9);
         heroesWhite.forEach(n -> System.out.println(n.toString()));
         System.out.println("******************************");
+        heroesWhite.forEach(n -> n.printEnemyDistance(heroesBlack));
+        System.out.println("******************************");
+        heroesBlack.forEach(n -> System.out.println(n.toString()));
+        System.out.println("******************************");
         heroesBlack.forEach(n -> n.printEnemyDistance(heroesWhite));
+
+
+
     }
+
     static ArrayList<Hero> heroesWhite = new ArrayList<>();
     static ArrayList<Hero> heroesBlack = new ArrayList<>();
+
     static ArrayList<Hero> generateCommand(int n, int y) {
         ArrayList<Hero> commandHeroes = new ArrayList<>();
         Random random = new Random();
@@ -113,10 +130,10 @@ public class Main {
         }
         return commandHeroes;
     }
+
     static String getName() {
         return NameOfHeroes.values()[new Random().nextInt(NameOfHeroes.values().length - 1)].name();
     }
-
 }
 
 

@@ -16,6 +16,7 @@ public class Robber extends Person {
                 x, y);
     }
 
+
     @Override
     public String toString() {
         return "Robber: " + name + " " + position;

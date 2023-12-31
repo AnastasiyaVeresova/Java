@@ -15,11 +15,10 @@ public class Main {
 //
 //        darkSide.forEach(n-> System.out.println(n.toString()));
 //        System.out.println("Lightside team:");
-//        lightSide.forEach(n-> System.out.println(n.toString()));
+        lightSide.forEach(n-> System.out.println(n.toString()));
 //        darkSide.get(1).getDistance(lightSide);
-        darkSide.forEach(n-> n.getDistance(lightSide));
         System.out.println("***************************************");
-        darkSide.forEach(m-> m.getDistance(darkSide));
+        darkSide.forEach(n-> n.getDistance(lightSide));
 
 
     }

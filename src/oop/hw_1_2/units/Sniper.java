@@ -15,6 +15,7 @@ public class Sniper extends Person{
                 new int[] {10, 13},
                 x, y);
     }
+
     public String toString() {
         return "Sniper: " + name + " " + position;
     }

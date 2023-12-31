@@ -35,7 +35,7 @@ public abstract class Person {
     }
     public void getDistance(ArrayList<Person> enemy) {
         for (Person person : enemy) {
-            System.out.printf(person.name + " %.2f; ", position.distance(person.position));
+            System.out.printf(name + " %.2f; ", position.distance(person.position));
 
         }
         System.out.println();

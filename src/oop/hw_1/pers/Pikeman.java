@@ -1,4 +1,4 @@
-package oop.hw_1;
+package oop.hw_1.pers;
 
 public class Pikeman extends Hero {
 
@@ -7,8 +7,7 @@ public class Pikeman extends Hero {
 //        rangeMaxDamage = 4;
     }
 
-    protected Vector2 position;
-    protected  int rangeMaxDamage;
+//    protected  int rangeMaxDamage;
 
     @Override
     public String toString() {

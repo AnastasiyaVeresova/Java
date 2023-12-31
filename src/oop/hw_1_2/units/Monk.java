@@ -15,6 +15,7 @@ public class Monk extends Person{
                 new int[] {-10, -8},
                 x, y);
     }
+
     @Override
     public String toString() {
         return "Monk: " + name + " " + position;

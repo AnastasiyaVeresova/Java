@@ -15,6 +15,7 @@ public class Sorcerer extends Person{
                 new int[] {-10, -8},
                 x, y);
     }
+
     @Override
     public String toString() {
         return "Sorcerer: " + name + " " + position;

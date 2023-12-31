@@ -15,6 +15,7 @@ public class Spearman extends Person{
                 new int[] {12, 15},
                 x, y);
     }
+
     @Override
     public String toString() {
         return "Spearman: " + name + " " + position;

@@ -1,4 +1,4 @@
-package oop.hw_1;
+package oop.hw_1.pers;
 
 public class Peasant extends Hero {
     public Peasant(String nameHero, int posX, int posY) {
@@ -6,8 +6,7 @@ public class Peasant extends Hero {
 //        rangeMaxDamage = 4;
     }
 
-    protected Vector2 position;
-    protected  int rangeMaxDamage;
+//    protected  int rangeMaxDamage;
 
     @Override
     public String toString() {
