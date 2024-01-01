@@ -82,12 +82,11 @@ public class Main {
         heroesBlack = generateCommand(3, 9);
         heroesWhite.forEach(n -> System.out.println(n.toString()));
         System.out.println("******************************");
-        heroesWhite.forEach(n -> n.printEnemyDistance(heroesBlack));
-        System.out.println("******************************");
-        heroesBlack.forEach(n -> System.out.println(n.toString()));
-        System.out.println("******************************");
         heroesBlack.forEach(n -> n.printEnemyDistance(heroesWhite));
-
+//        System.out.println("******************************");
+//        heroesBlack.forEach(n -> System.out.println(n.toString()));
+//        System.out.println("******************************");
+//        heroesBlack.forEach(n -> n.printEnemyDistance(heroesWhite));
 
 
     }

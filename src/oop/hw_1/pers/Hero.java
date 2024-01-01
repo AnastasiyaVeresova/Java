@@ -10,6 +10,7 @@ public abstract class Hero {
     protected int[] damage;
     protected String nameHero;
 
+
     public Hero(int health, int healthMax, int armor, int[] damage, String nameHero, int posX, int posY) {
         this.health = health;
         this.healthMax = healthMax;
@@ -24,6 +25,8 @@ public abstract class Hero {
         enemys.forEach(n -> System.out.print(position.rangeEnemy(n.position) + ", "));
 
         System.out.println();
+        System.out.println("Ближайший противник: " + nearestEnemy(enemys) + ", на расстоянии: " + minDistance(enemys));
+
     }
 
     public float minDistance(ArrayList<Hero> enemys) {
@@ -32,7 +35,6 @@ public abstract class Hero {
         for (Hero hero : enemys) {
             enemys.forEach(n -> dist.add(position.rangeEnemy(n.position)));
             minDist = Collections.min(dist);
-
         }
         return minDist;
     }
@@ -46,7 +48,4 @@ public abstract class Hero {
         }
         return hero;
     }
-
 }
-
-

@@ -5,35 +5,10 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="6b40389c-a3d8-4e3c-ad30-b7918722b4b1" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/src/oop.zip" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/oop/hw_1/pers/Monk.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/oop/hw_1/pers/NameOfHeroes.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/oop/hw_1/pers/Peasant.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/oop/hw_1/pers/Pikeman.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/oop/hw_1/pers/Rogue.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/oop/hw_1/pers/Sniper.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/oop/hw_1/pers/Vector2.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/oop/hw_1/Crossbower.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/oop/hw_1/pers/Crossbower.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/oop/hw_1/Hero.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/oop/hw_1/pers/Hero.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/oop/hw_1/Main.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/oop/hw_1/Main.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/oop/hw_1/Monk.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/oop/hw_1/NameOfHeroes.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/oop/hw_1/Peasant.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/oop/hw_1/Pikeman.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/oop/hw_1/Rogue.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/oop/hw_1/Sniper.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/oop/hw_1/Vector2.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/oop/hw_1/Wizard.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/oop/hw_1/pers/Wizard.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/oop/hw_1_2/Main.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/oop/hw_1_2/Main.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/oop/hw_1_2/units/Archer.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/oop/hw_1_2/units/Archer.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/oop/hw_1_2/units/Monk.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/oop/hw_1_2/units/Monk.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/oop/hw_1_2/units/Person.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/oop/hw_1_2/units/Person.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/oop/hw_1_2/units/Robber.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/oop/hw_1_2/units/Robber.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/oop/hw_1_2/units/Sniper.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/oop/hw_1_2/units/Sniper.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/oop/hw_1_2/units/Sorcerer.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/oop/hw_1_2/units/Sorcerer.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/oop/hw_1_2/units/Spearman.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/oop/hw_1_2/units/Spearman.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/oop/hw_1_2/units/Villager.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/oop/hw_1_2/units/Villager.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/oop/hw_1/pers/Crossbower.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/oop/hw_1/pers/Crossbower.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/oop/hw_1/pers/Hero.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/oop/hw_1/pers/Hero.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
