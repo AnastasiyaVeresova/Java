@@ -1,0 +1,10 @@
+Map<String, String> map = new HashMap<>();
+        Map<String, String> map2 = new HashMap<>();
+        map.put("1", "2");
+        map.put("3", "4");
+        for (String key: map.keySet()){
+            String val = map.get(key);
+            map2.put(val, key);
+        }
+
+        System.out.println(map2);*/
