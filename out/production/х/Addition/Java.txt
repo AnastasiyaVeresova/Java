@@ -1,0 +1,4547 @@
+/**
+ * program
+ */
+public class program {
+    public static void main(String[] args) {
+        System.out.println("Hi, darling");
+    }
+}
+//======================================================================
+package Sem_1;
+/*
+В консоли запросить имя пользователя. В зависимости от текущего времени, вывести приветствие вида
+"Доброе утро, <Имя>!", если время от 05:00 до 11:59
+"Добрый день, <Имя>!", если время от 12:00 до 17:59;
+"Добрый вечер, <Имя>!", если время от 18:00 до 22:59;
+"Доброй ночи, <Имя>!", если время от 23:00 до 4:59
+ */
+import java.time.LocalTime;
+import java.util.Scanner;
+public class Main {
+    public static void main(String[] args) {
+        System.out.println("Укажите ваше имя");
+        Scanner scanner = new Scanner(System.in);
+        String name = scanner.nextLine();
+        LocalTime time = LocalTime.now();
+        int hour = time.getHour();
+        if (hour >= 5 && hour < 12){
+            System.out.println("Доброе утро, " + name + "!");
+//            System.out.printf("Доброе утро, %s!\n", name);
+        } else if (hour >= 12 && hour < 18){
+            System.out.println("Добрый день, " + name + "!");
+        } else if (hour >= 18 && hour < 23){
+            System.out.println("Добрый вечер, " + name + "!");
+        } else {
+            System.out.println("Доброй ночи, " + name + "!");
+        }
+    }
+}
+//======================================================================[2, 5, 3, 3]
+package Sem_1;
+import java.util.Arrays;
+/*
+Дан массив nums = [3,2,5,3] и число val = 3.
+Если в массиве есть числа, равные заданному, нужно перенести эти элементы в конец массива.
+Таким образом, первые несколько (или все) элементов массива должны быть отличны от заданного, а остальные - равны ему.
+ */
+public class Main_2 {
+    public static void main(String[] args) {
+        int[] nums = {3, 2, 5, 3};
+        int val = 3;
+        int[] res = sort_array(nums, val);
+        System.out.println(Arrays.toString(res));
+    }
+    static int[] sort_array(int[] arr, int num){
+        int tmp = 0;
+        int [] res_arr = new int[arr.length];
+        for (int i = 0; i < arr.length; i++) {
+            if (arr[i] == num) {
+                res_arr[arr.length-tmp-1] = num;
+                tmp++;
+            } else {
+                res_arr[i-tmp] = arr[i];
+            }
+        }
+        return res_arr;
+    }
+}
+//====================================================================== -> 3
+package Sem_1;
+//Дан массив двоичных чисел, например [1,1,0,1,1,1], вывести максимальное количество подряд идущих 1.
+public class Program {
+    public static void main(String[] args) {
+        int[] arr = {1,1,0,1,1,1};
+        int max = 0;
+        int tempMax = 0;
+        for (int i = 0; i < arr.length; i++) {
+            if (arr[i] == 1) {
+                tempMax++;
+            } else {
+                if (max < tempMax) {
+                    max = tempMax;
+                }
+                tempMax = 0;
+            }
+        }
+        if (max < tempMax) {
+            max = tempMax;
+        }
+        System.out.println(max);
+    }
+}
+//======================================================================9.0
+                                                                        0.25
+                                                                        1.0
+                                                                        0.0
+                                                                        1.0
+package Sem_1;
+/*
+Реализовать функцию возведения числа а в степень b. a, b из Z. Сводя количество выполняемых действий к минимуму.
+Пример 1: а = 3, b = 2, ответ: 9
+Пример 2: а = 2, b = -2, ответ: 0.25
+Пример 3: а = 3, b = 0, ответ: 1
+*/
+public class St {
+    public static void main(String[] args) {
+        System.out.println(power(3,2));
+        System.out.println(power(2,-2));
+        System.out.println(power(3,0));
+        System.out.println(power(0,2));
+        System.out.println(power(1,2));
+    }
+    private static double power(int a, int b) {
+        if (b == 0 || a == 1) {
+            return 1.0;
+        }
+        if (a == 0) {
+            return 0;
+        }
+        double res = 1;
+        if (b > 0) {
+            for (int i = 0; i < b; i++) {
+                res *= a;
+            }
+        } else {
+            for (int i = 0; i < -b; i++) {
+                res *= 1.0 / a;
+            }
+        }
+        return  res;
+    }
+}
+//======================================================================
+package Sem_1.hw_1;
+//Вычислить n-ое треугольного число(сумма чисел от 1 до n), n! (произведение чисел от 1 до n)
+import java.util.Scanner;
+//
+////проверка - является ли число треугольным
+//public class Answer {
+//    public static boolean isTriangular(int num) {
+//        if (num < 0)
+//            return false;
+//        int sum = 0;
+//        for (int n = 1; sum <= num; n++) {
+//            sum = sum + n;
+//            if (sum == num)
+//                return true;
+//        }
+//        return false;
+//    }
+//    public static void main (String[] args) {
+//        Scanner in = new Scanner(System.in);
+//        System.out.println("Введите число: ");
+//        int n = in.nextInt();
+////        int n = 55;
+//        if (isTriangular(n))
+//            System.out.print((n * (n + 1)) / 2);
+////            return (n * (n + 1)) / 2;
+//
+//        else
+//            System.out.print("Число" + " Не треугольное");
+//    }
+//}
+//public class Answer {
+//    public static void main (String[] args) {
+//        Scanner iScanner = new Scanner(System.in);
+//        System.out.println("Введите число: ");
+//        int i = iScanner.nextInt();
+//        System.out.printf("Треугольное число: %d\n", giveMeNumber(i));
+//        iScanner.close();
+//    }
+//    public static  int giveMeNumber(int n) {
+//        return (n * (n + 1)) / 2;
+//    }
+//}
+//--------------------------------------------------------------------------для автотеста
+class Answer {
+    public int countNTriangle(int n){
+        return (n * (n + 1)) / 2;
+    }
+}
+// Не удаляйте этот класс - он нужен для вывода результатов на экран и проверки
+class Printer{
+    public static void main(String[] args) {
+        int n = 0;
+        if (args.length == 0) {
+            // При отправке кода на Выполнение, вы можете варьировать эти параметры
+            n = 4;
+        }
+        else{
+            n = Integer.parseInt(args[0]);
+        }
+        // Вывод результата на экран
+        Answer ans = new Answer();
+        int itresume_res = ans.countNTriangle(n);
+        System.out.println(itresume_res);
+    }
+}
+//======================================================================
+package Sem_1.hw_2;
+//Вывести все простые числа от 1 до 1000
+//
+//public class Answer {
+//    public static void main(String[] args) {
+//        printPrimeNum();
+//    }
+//        public static void printPrimeNum() {
+//            for (int i = 2; i <= 1000; i++) {
+//                if (isPrime(i)) {
+//                    System.out.println(i);
+//                }
+//            }
+//        }
+//        public static boolean isPrime(int num) {
+//            if (num <= 1) {
+//                return false;
+//            }
+//            for (int i = 2; i <= Math.sqrt(num); i++) {
+//                if (num % i == 0) {
+//                return false;
+//            }
+//        }
+//        return true;
+//    }
+//}
+//---------------------------------------------------------------------------для автотеста
+class Answer {
+    public void printPrimeNums(){
+        for (int i = 2; i <= 1000; i++) {
+            if (isPrime(i)) {
+                System.out.println(i);
+            }
+        }
+    }
+    public static boolean isPrime(int num) {
+        if (num <= 1) {
+            return false;
+        }
+        for (int i = 2; i <= Math.sqrt(num); i++) {
+            if (num % i == 0) {
+                return false;
+            }
+        }
+        return true;
+    }
+}
+// Не удаляйте этот класс - он нужен для вывода результатов на экран и проверки
+class Printer{
+    public static void main(String[] args) {
+        Answer ans = new Answer();
+        ans.printPrimeNums();
+    }
+}
+//======================================================================
+package Sem_1.hw_3;
+//Реализовать простой калькулятор
+import java.util.Scanner;
+//public class Calculator {
+//    public static void main (String[] args) {
+//        double operand1;
+//        double operand2;
+//        double result;
+//        char operator;
+//        Scanner reader = new Scanner (System.in);
+//        System.out.print("Введите два числа: ");
+//        operand1 = reader.nextDouble();
+//        operand2 = reader.nextDouble();
+//        System.out.print("Введите оператор (+, -, *, /): ");
+//        operator = reader.next().charAt(0);
+//        switch (operator) {
+//            case '+':
+//                result = operand1 + operand2;
+//                break;
+//            case '-':
+//                result = operand1 - operand2;
+//                break;
+//            case '*':
+//                result = operand1 * operand2;
+//                break;
+//            case '/':
+//                result = operand1 / operand2;
+//                break;
+//            default:
+//                System.out.println("Некорректный оператор: '" + operator + "'");
+//                return;
+//        }
+////        return result;
+//        System.out.print("Результат: ");
+//        System.out.printf(operand1 + " " + operator + " " + operand2 + " = " + result);
+//    }
+//}
+//---------------------------------------------------------------------------для автотеста
+class Calculator {
+    int result;
+    public int calculate(char op, int a, int b) {
+        switch (op) {
+            case '+':
+                result = a + b;
+                break;
+            case '-':
+                result = a - b;
+                break;
+            case '*':
+                result = a * b;
+                break;
+            case '/':
+                if (b != 0) {
+                    result = a / b;
+                }
+                else {
+                        System.out.println("На 0 делить нельзя!");
+                    }
+                break;
+        }
+        return result;
+    }
+}
+// Не удаляйте этот класс - он нужен для вывода результатов на экран и проверки
+class Printer{
+    public static void main(String[] args) {
+        int a = 0;
+        char op = ' ';
+        int b = 0;
+        if (args.length == 0) {
+            // При отправке кода на Выполнение, вы можете варьировать эти параметры
+            a = 5;
+            op = '/';
+            b = 5;
+        } else {
+            a = Integer.parseInt(args[0]);
+            op = args[1].charAt(0);
+            b = Integer.parseInt(args[2]);
+        }
+        Calculator calculator = new Calculator();
+        int result = calculator.calculate(op, a, b);
+        System.out.println(result);
+    }
+}
+//======================================================================
+package Sem_1.hw_1;
+//Вычислить n-ое треугольного число(сумма чисел от 1 до n), n! (произведение чисел от 1 до n)
+import java.util.Scanner;
+//
+////проверка - является ли число треугольным
+//public class Answer {
+//    public static boolean isTriangular(int num) {
+//        if (num < 0)
+//            return false;
+//        int sum = 0;
+//        for (int n = 1; sum <= num; n++) {
+//            sum = sum + n;
+//            if (sum == num)
+//                return true;
+//        }
+//        return false;
+//    }
+//    public static void main (String[] args) {
+//        Scanner in = new Scanner(System.in);
+//        System.out.println("Введите число: ");
+//        int n = in.nextInt();
+////        int n = 55;
+//        if (isTriangular(n))
+//            System.out.print((n * (n + 1)) / 2);
+////            return (n * (n + 1)) / 2;
+//
+//        else
+//            System.out.print("Число" + " Не треугольное");
+//    }
+//}
+//public class Answer {
+//    public static void main (String[] args) {
+//        Scanner iScanner = new Scanner(System.in);
+//        System.out.println("Введите число: ");
+//        int i = iScanner.nextInt();
+//        System.out.printf("Треугольное число: %d\n", giveMeNumber(i));
+//        iScanner.close();
+//    }
+//    public static  int giveMeNumber(int n) {
+//        return (n * (n + 1)) / 2;
+//    }
+//}
+class Answer {
+    public int countNTriangle(int n){
+        return (n * (n + 1)) / 2;
+    }
+}
+// Не удаляйте этот класс - он нужен для вывода результатов на экран и проверки
+class Printer{
+    public static void main(String[] args) {
+        int n = 0;
+        if (args.length == 0) {
+            // При отправке кода на Выполнение, вы можете варьировать эти параметры
+            n = 4;
+        }
+        else{
+            n = Integer.parseInt(args[0]);
+        }
+        // Вывод результата на экран
+        Answer ans = new Answer();
+        int itresume_res = ans.countNTriangle(n);
+        System.out.println(itresume_res);
+    }
+}
+//======================================================================
+package Sem_1.hw_2;
+//Вывести все простые числа от 1 до 1000
+//
+//public class Answer {
+//    public static void main(String[] args) {
+//        printPrimeNum();
+//    }
+//        public static void printPrimeNum() {
+//            for (int i = 2; i <= 1000; i++) {
+//                if (isPrime(i)) {
+//                    System.out.println(i);
+//                }
+//            }
+//        }
+//        public static boolean isPrime(int num) {
+//            if (num <= 1) {
+//                return false;
+//            }
+//            for (int i = 2; i <= Math.sqrt(num); i++) {
+//                if (num % i == 0) {
+//                return false;
+//            }
+//        }
+//        return true;
+//    }
+//}
+class Answer {
+    public void printPrimeNums(){
+        for (int i = 2; i <= 1000; i++) {
+            if (isPrime(i)) {
+                System.out.println(i);
+            }
+        }
+    }
+    public static boolean isPrime(int num) {
+        if (num <= 1) {
+            return false;
+        }
+        for (int i = 2; i <= Math.sqrt(num); i++) {
+            if (num % i == 0) {
+                return false;
+            }
+        }
+        return true;
+    }
+}
+// Не удаляйте этот класс - он нужен для вывода результатов на экран и проверки
+class Printer{
+    public static void main(String[] args) {
+        Answer ans = new Answer();
+        ans.printPrimeNums();
+    }
+}
+//======================================================================
+package Sem_1.hw_3;
+//Реализовать простой калькулятор
+import java.util.Scanner;
+//public class Calculator {
+//    public static void main (String[] args) {
+//        double operand1;
+//        double operand2;
+//        double result;
+//        char operator;
+//        Scanner reader = new Scanner (System.in);
+//        System.out.print("Введите два числа: ");
+//        operand1 = reader.nextDouble();
+//        operand2 = reader.nextDouble();
+//        System.out.print("Введите оператор (+, -, *, /): ");
+//        operator = reader.next().charAt(0);
+//        switch (operator) {
+//            case '+':
+//                result = operand1 + operand2;
+//                break;
+//            case '-':
+//                result = operand1 - operand2;
+//                break;
+//            case '*':
+//                result = operand1 * operand2;
+//                break;
+//            case '/':
+//                result = operand1 / operand2;
+//                break;
+//            default:
+//                System.out.println("Некорректный оператор: '" + operator + "'");
+//                return;
+//        }
+////        return result;
+//        System.out.print("Результат: ");
+//        System.out.printf(operand1 + " " + operator + " " + operand2 + " = " + result);
+//    }
+//}
+class Calculator {
+    int result;
+    public int calculate(char op, int a, int b) {
+        switch (op) {
+            case '+':
+                result = a + b;
+                break;
+            case '-':
+                result = a - b;
+                break;
+            case '*':
+                result = a * b;
+                break;
+            case '/':
+                if (b != 0) {
+                    result = a / b;
+                }
+                else {
+                        System.out.println("На 0 делить нельзя!");
+                    }
+                break;
+        }
+        return result;
+    }
+}
+// Не удаляйте этот класс - он нужен для вывода результатов на экран и проверки
+class Printer{
+    public static void main(String[] args) {
+        int a = 0;
+        char op = ' ';
+        int b = 0;
+        if (args.length == 0) {
+            // При отправке кода на Выполнение, вы можете варьировать эти параметры
+            a = 5;
+            op = '/';
+            b = 5;
+        } else {
+            a = Integer.parseInt(args[0]);
+            op = args[1].charAt(0);
+            b = Integer.parseInt(args[2]);
+        }
+        Calculator calculator = new Calculator();
+        int result = calculator.calculate(op, a, b);
+        System.out.println(result);
+    }
+}
+//======================================================================
+package Sem_1;
+/*
+В консоли запросить имя пользователя. В зависимости от текущего времени, вывести приветствие вида
+"Доброе утро, <Имя>!", если время от 05:00 до 11:59
+"Добрый день, <Имя>!", если время от 12:00 до 17:59;
+"Добрый вечер, <Имя>!", если время от 18:00 до 22:59;
+"Доброй ночи, <Имя>!", если время от 23:00 до 4:59
+ */
+import java.time.LocalTime;
+import java.util.Scanner;
+public class Main {
+    public static void main(String[] args) {
+        System.out.println("Укажите ваше имя");
+        Scanner scanner = new Scanner(System.in);
+        String name = scanner.nextLine();
+        LocalTime time = LocalTime.now();
+        int hour = time.getHour();
+        if (hour >= 5 && hour < 12){
+            System.out.println("Доброе утро, " + name + "!");
+//            System.out.printf("Доброе утро, %s!\n", name);
+        } else if (hour >= 12 && hour < 18){
+            System.out.println("Добрый день, " + name + "!");
+        } else if (hour >= 18 && hour < 23){
+            System.out.println("Добрый вечер, " + name + "!");
+        } else {
+            System.out.println("Доброй ночи, " + name + "!");
+        }
+    }
+}
+//======================================================================[2, 5, 3, 3]
+package Sem_1;
+import java.util.Arrays;
+/*
+Дан массив nums = [3,2,5,3] и число val = 3.
+Если в массиве есть числа, равные заданному, нужно перенести эти элементы в конец массива.
+Таким образом, первые несколько (или все) элементов массива должны быть отличны от заданного, а остальные - равны ему.
+ */
+public class Main_2 {
+    public static void main(String[] args) {
+        int[] nums = {3, 2, 5, 3};
+        int val = 3;
+        int[] res = sort_array(nums, val);
+        System.out.println(Arrays.toString(res));
+    }
+    static int[] sort_array(int[] arr, int num){
+        int tmp = 0;
+        int [] res_arr = new int[arr.length];
+        for (int i = 0; i < arr.length; i++) {
+            if (arr[i] == num) {
+                res_arr[arr.length-tmp-1] = num;
+                tmp++;
+            } else {
+                res_arr[i-tmp] = arr[i];
+            }
+        }
+        return res_arr;
+    }
+}
+//======================================================================3
+package Sem_1;
+//Дан массив двоичных чисел, например [1,1,0,1,1,1], вывести максимальное количество подряд идущих 1.
+public class Program {
+    public static void main(String[] args) {
+        int[] arr = {1,1,0,1,1,1};
+        int max = 0;
+        int tempMax = 0;
+        for (int i = 0; i < arr.length; i++) {
+            if (arr[i] == 1) {
+                tempMax++;
+            } else {
+                if (max < tempMax) {
+                    max = tempMax;
+                }
+                tempMax = 0;
+            }
+        }
+        if (max < tempMax) {
+            max = tempMax;
+        }
+        System.out.println(max);
+    }
+}
+//======================================================================9.0
+                                                                        1.0
+                                                                        1.0
+                                                                        0.0
+                                                                        1.0
+package Sem_1;
+/*
+Реализовать функцию возведения числа а в степень b. a, b из Z. Сводя количество выполняемых действий к минимуму.
+Пример 1: а = 3, b = 2, ответ: 9
+Пример 2: а = 2, b = -2, ответ: 0.25
+Пример 3: а = 3, b = 0, ответ: 1
+*/
+public class St {
+    public static void main(String[] args) {
+        System.out.println(power(3,2));
+        System.out.println(power(2,-2));
+        System.out.println(power(3,0));
+        System.out.println(power(0,2));
+        System.out.println(power(1,2));
+    }
+    private static double power(int a, int b) {
+        if (b == 0 || a == 1) {
+            return 1.0;
+        }
+        if (a == 0) {
+            return 0;
+        }
+        double res = 1;
+        if (b > 0) {
+            for (int i = 0; i < b; i++) {
+                res *= a;
+            }
+        } else {
+            for (int i = 0; i > -b; i++) {
+                res *= 1.0 / a;
+            }
+        }
+        return  res;
+    }
+}
+//======================================================================Java по курс на пожаловать Добро
+package Sem_1;
+//Во фразе "Добро пожаловать на курс по Java" переставить слова в обратном порядке.
+public class WordChange {
+    public static void main(String[] args) {
+        String phrase = "Добро пожаловать на курс по Java";
+        String[] arr = phrase.split(" ");
+        StringBuilder result = new StringBuilder();
+        for (int i = arr.length - 1; i >= 0; i--) {
+            result.append(arr[i]).append(" ");
+        }
+        System.out.println(result.toString().trim());
+    }
+}
+//====================================================================== "name":"Ivanov"
+                                                                         "country":"Russia"
+                                                                         "city":"Moscow"
+                                                                         "age":"null"
+                                                                         select * from students where name='Ivanov' and country='Russia' and city='Moscow'
+package Sem_2.hw;
+/*
+Сформируйте SQL-запрос
+Инструкция по использованию платформы
+Дана строка sql-запроса:
+select * from students where "
+Сформируйте часть WHERE этого запроса, используя StringBuilder. Пример данных для фильтрации приведены ниже в виде json-строки. Если значение null, то параметр не должен попадать в запрос.
+Пример:
+{"name": "Ivanov", "country": "Russia", "city": "Moscow", "age": "null"}
+Напишите свой код в методе answer класса Answer. Метод answer принимает на вход два параметра:
+String QUERY - начало SQL-запроса
+String PARAMS - JSON с параметрами
+ */
+class Answer {
+    public static StringBuilder answer(String QUERY, String PARAMS) {
+        String paramsNew = PARAMS.replace('{', ' ').replace('}', ' ');
+        String[] params = paramsNew.split(",");
+        StringBuilder stringBuilder = new StringBuilder(QUERY);
+        for (int i = 0; i < params.length; i++) {
+            System.out.println(params[i]);
+            String[] elements = params[i].replace('"', ' ').split(":");
+            if (!"null".equals(elements[1].trim())) {
+                stringBuilder.append(elements[0].trim()).append("=").append("'").append(elements[1].trim()).append("'");
+                if (i < params.length - 2) stringBuilder.append(" and ");
+            }
+        }
+        return stringBuilder;
+    }
+}
+class Printer{
+    public static void main(String[] args) {
+        String QUERY = "";
+        String PARAMS = "";
+        if (args.length == 0) {
+            // При отправке кода на Выполнение, вы можете варьировать эти параметры
+            QUERY = "select * from students where ";
+            PARAMS = "{\"name\":\"Ivanov\", \"country\":\"Russia\", \"city\":\"Moscow\", \"age\":\"null\"} ";
+        }
+        else{
+            QUERY = args[0];
+            PARAMS = args[1];
+        }
+        Answer ans = new Answer();
+        System.out.println(ans.answer(QUERY, PARAMS));
+    }
+}
+//======================================================================2023-12-06 16:01 [4, 8, 3, 1, 9]
+                                                                        2023-12-06 16:01 [4, 3, 1, 8, 9]
+                                                                        2023-12-06 16:01 [3, 1, 4, 8, 9]
+                                                                        2023-12-06 16:01 [1, 3, 4, 8, 9]
+                                                                        2023-12-06 16:01 [1, 3, 4, 8, 9]
+package Sem_2.hw_2;
+/*
+Реализуйте алгоритм сортировки пузырьком числового массива, результат после каждой итерации запишите в лог-файл.
+Напишите свой код в методе sort класса BubbleSort. Метод sort принимает на вход один параметр:
+int[] arr - числовой массив
+После каждой итерации, ваш код должен делать запись в лог-файл 'log.txt' в формате год-месяц-день час:минуты {массив на данной итерации}.
+ */
+import java.io.File;
+import java.io.FileWriter;
+import java.io.FileReader;
+import java.io.BufferedReader;
+import java.io.IOException;
+import java.util.Arrays;
+import java.text.SimpleDateFormat;
+import java.util.Date;
+class BubbleSort { private static File log; private static FileWriter fileWriter;
+    public static void sort(int[] mas) {
+        try {
+            log = new File("log.txt");
+            log.createNewFile();
+            fileWriter = new FileWriter(log);
+            bubbleSort(mas);
+        } catch (IOException e) {
+            e.printStackTrace();
+        } finally {
+            try {
+                fileWriter.close();
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
+        }
+    }
+    private static int[] bubbleSort(int[] mas) {
+        boolean isSorted = false;
+        int buffer;
+        while (!isSorted) {
+            isSorted = true;
+            for (int i = 0; i < mas.length - 1; i++) {
+                if (mas[i] > mas[i + 1]) {
+                    isSorted = false;
+                    buffer = mas[i];
+                    mas[i] = mas[i + 1];
+                    mas[i + 1] = buffer;
+                }
+            }
+            logStep(Arrays.toString(mas));
+        }
+        return mas;
+    }
+    public static void logStep(String note){
+        try {
+            SimpleDateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd HH:mm");
+            String timestamp = dateFormat.format(new Date());
+            fileWriter.write(timestamp + " " + note + "\n");
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+    }
+}
+class Printer{ public static void main(String[] args) { int[] arr = {};
+    if (args.length == 0) {
+        arr = new int[]{9, 4, 8, 3, 1};
+    }
+    else{
+        arr = Arrays.stream(args[0].split(", "))
+                .mapToInt(Integer::parseInt)
+                .toArray();
+    }
+    BubbleSort ans = new BubbleSort();
+    ans.sort(arr);
+    try (BufferedReader br = new BufferedReader(new FileReader("log.txt"))) {
+        String line;
+        while ((line = br.readLine()) != null) {
+            System.out.println(line);
+        }
+    } catch (IOException e) {
+        e.printStackTrace();
+    }
+}
+}
+//======================================================================
+package Sem_2;
+/*
+Напишите метод, который составит строку, состоящую из 100 повторений слова TEST и метод,
+который запишет эту строку в простой текстовый файл, обработайте исключения.
+ */
+import java.io.File;
+import java.io.FileWriter;
+import java.io.IOException;
+import java.util.Scanner;
+import java.util.logging.FileHandler;
+import java.util.logging.Handler;
+import java.util.logging.Logger;
+import java.util.logging.SimpleFormatter;
+/*
+Напишите метод, который составит строку, состоящую из 100 повторений слова TEST
+и метод, который запишет эту строку в простой текстовый файл, обработайте исключения.
+ */
+public class Main4 {
+    static Logger logger = Logger.getAnonymousLogger();
+    public static void main(String[] args) {
+        String filePath = "src/sem_2/test.txt";
+        String logPath = "src/sem_2/log.txt";
+        String s = "test";
+        int n = 10;
+        createLogger(logPath);
+        String res = repeat(s, n);
+        writeInFile(res, filePath);
+        readFile(filePath);
+        closeLogger();
+    }
+    static void createLogger(String logPath){
+        try {
+            FileHandler handler = new FileHandler(logPath, true);
+            logger.addHandler(handler);
+            SimpleFormatter formatter = new SimpleFormatter();
+            handler.setFormatter(formatter);
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+    }
+    static void closeLogger(){
+        Handler[] handlers = logger.getHandlers();
+        for (Handler handler: handlers){
+            handler.close();
+        }
+    }
+    static void writeInFile(String res, String filePath) {
+        try (FileWriter writer = new FileWriter(filePath, true)) {
+            writer.write(res);
+            writer.write("\n");
+            logger.info("Запись прошла успешно");
+        } catch (Exception e){
+            e.printStackTrace();
+            logger.warning("Запись в файл не удалась. " + e.getMessage());
+        }
+    }
+    static void readFile(String filePath){
+        File file = new File(filePath);
+        try (Scanner scanner = new Scanner(file)){
+            while (scanner.hasNext()){
+                System.out.println(scanner.nextLine());
+            }
+        } catch (Exception e){
+            e.printStackTrace();
+        }
+    }
+    static String repeat(String s, int n){
+//        s += " ";
+//        return s.repeat(n);
+        StringBuilder stringBuilder = new StringBuilder();
+        for (int i = 0; i < n; i++) {
+            stringBuilder.append(s);
+            stringBuilder.append(" ");
+        }
+        return stringBuilder.toString();
+    }
+}
+//======================================================================
+package Sem_2;
+/*
+Напишите метод, который принимает на вход строку (String) и определяет является ли строка палиндромом (возвращает boolean значение).
+Полиндром - Слово или фраза, которые одинаково читаются слева направо и справа налево.
+ */
+public class Palindrome {
+    public static void main(String[] args) {
+        System.out.println(isPalindrome("А роза упала на лапу Азора"));
+    }
+    public static boolean isPalindrome(String s) {
+        s = s.replace(" ", "");
+        StringBuilder sb = new StringBuilder(s);
+        String reversed = sb.reverse().toString();
+        return s.equalsIgnoreCase(reversed);
+    }
+}
+//======================================================================a4b2c2d1
+package Sem_2;
+// ***Напишите метод, который сжимает строку.
+// *Пример: вход aaaabbbcdd.
+// *Результат: a4b3cd2
+public class program {
+    public static void main(String[] args) {
+        System.out.println(task02("aaaabbccd"));
+    }
+    public static String task02(String s)
+    {
+        StringBuilder result = new StringBuilder();
+        char ch;
+        int count = 0;
+        ch = s.charAt(0);
+        for(char temp : s.toCharArray())
+        {
+            if (temp != ch){
+                result.append(ch);
+                result.append(count);
+                ch = temp;
+                count = 1;
+            }
+            else{
+                count++;
+            }
+        }
+        result.append(ch);
+        result.append(count);
+        return result.toString();
+    }
+}
+/*
+public class program {
+    System.out.println(zipStr(s));
+    public static String zipStr(String str) {
+        StringBuilder stringBuilder = new StringBuilder();
+        int count = 1;
+        for (int i = 0; i < str.length() - 1; i++) {
+            if (str.charAt(i) == str.charAt(i + 1)) {
+                count++;
+            } else {
+                stringBuilder.append(str.charAt(i));
+                if (count != 1) {
+                    stringBuilder.append(count);
+                }
+                count = 1;
+            }
+        }
+        stringBuilder.append(str.charAt(str.length() - 1));
+        if (count != 1) {
+            stringBuilder.append(count);
+        }
+        return stringBuilder.toString();
+    }
+}
+*/
+//======================================================================   +-+-+-+-+-
+package Sem_2;
+/*
+Дано четное число N (>0) и символы c1 и c2.
+Написать метод, который вернет строку длины N, которая состоит из чередующихся символов c1 и c2, начиная с c1.
+Ответ: c1c2c1…c2 (всего N символов)
+ */
+public class task_1 {
+    public static void main(String[] args) {
+        int n = 10;
+        char c1 = '+';
+        char c2 = '-';
+        System.out.println(concat(c1, c2, n));
+    }
+    static String concat(char c1, char c2, int n){
+        StringBuilder sb = new StringBuilder();
+        for (int i = 0; i < n/ 2; i++) {
+            sb.append(c1).append(c2);
+        }
+        return sb.toString();
+    }
+}
+//======================================================================дек. 06, 2023 4:20:43 PM Lesson_02.Ex005_Logger main
+                                                                        WARNING: Тестовое логирование 1
+                                                                        дек. 06, 2023 4:20:44 PM Lesson_02.Ex005_Logger main
+                                                                        INFO: Тестовое логирование 2
+package Lesson_02;
+import java.io.IOException;
+import java.util.logging.*;
+public class Ex005_Logger {
+    public static void main(String[] args) throws IOException {
+        Logger logger = Logger.getLogger(Ex005_Logger.class.getName());
+        //ConsoleHandler ch = new ConsoleHandler();
+        FileHandler fh = new FileHandler("log.txt");
+        //logger.addHandler(ch);
+        logger.addHandler(fh);
+        SimpleFormatter sFormat = new SimpleFormatter();
+        //XMLFormatter xml = new XMLFormatter();
+        fh.setFormatter(sFormat);
+        //fh.setFormatter(xml);
+        //logger.setLevel(Level.INFO);
+        logger.log(Level.WARNING, "Тестовое логирование 1");
+        logger.info("Тестовое логирование 2");
+    }
+}
+//======================================================================key1: значение 1
+                                                                        key2: значение 2
+                                                                        key3: не найдено
+package Lesson_02;
+import java.io.*;
+import java.nio.ByteBuffer;
+import java.nio.ByteOrder;
+import java.nio.charset.Charset;
+import java.nio.charset.StandardCharsets;
+import java.util.HashMap;
+import java.util.Map;
+import java.util.Map.Entry;
+public class Ex004_bFile {
+    static ByteOrder bOrder = ByteOrder.LITTLE_ENDIAN;
+    static Map<String, String> data = new HashMap<>();
+    static Charset charset = StandardCharsets.UTF_8;
+    static void loadFile(String path) throws IOException {
+        try (InputStream stream =
+        new BufferedInputStream(new FileInputStream(path))) {
+            int n = readInt(stream);
+            int b1;
+            int b2;
+            byte binWord[];
+            byte binText[];
+            for (int i = 0; i < n; i++) {
+                binWord = new byte[readInt(stream)];
+                binText = new byte[readInt(stream)];
+                b1 = stream.read(binWord);
+                b2 = stream.read(binText);
+                if (b1 != binWord.length || b2 != binText.length)
+                    throw new IOException("Error read file");
+                data.put(new String(binWord, charset),
+                         new String(binText, charset));
+            }
+        }
+    }
+    static void saveFile(String path) throws IOException {
+        if (data.size() == 0)
+            throw new IOException("Nothing to write");
+        try (OutputStream stream = new BufferedOutputStream(new FileOutputStream(path, false))) {
+            writeInt(stream, data.size());
+            byte binWord[];
+            byte binText[];
+            for (Entry<String, String> entry : data.entrySet()) {
+                binWord = entry.getKey().getBytes(charset);
+                writeInt(stream, binWord.length);
+                binText = entry.getValue().getBytes(charset);
+                writeInt(stream, binText.length);
+                stream.write(binWord);
+                stream.write(binText);
+            }
+        }
+    }
+    static void delete(String word) {
+        data.remove(word);
+    }
+    static void add(String word, String text) throws Exception {
+        if (data.get(word) != null)
+            throw new Exception("Word already exist");
+        data.put(word, text);
+    }
+    static String find(String word) {
+        String out = data.get(word);
+        if (out == null)
+            return "не найдено";
+        else
+            return out;
+    }
+    static int readInt(InputStream in) throws IOException {
+        byte out[] = new byte[4];
+        int i = in.read(out);
+        if (i != 4)
+            throw new IOException("Error read file");
+        return ByteBuffer.wrap(out).order(bOrder).getInt();
+    }
+    static void writeInt(OutputStream out, int num) throws IOException {
+        ByteBuffer dbuf = ByteBuffer.allocate(4);
+        dbuf.order(bOrder).putInt(num);
+        out.write(dbuf.array());
+    }
+    public static void main(String[] args) {
+        String file = "test.bin";
+        //create file
+        try {
+            add("key1", "значение 1");
+            add("key2", "значение 2");
+            add("key4", "значение 3");
+            saveFile(file);
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        //read file
+        try {
+            loadFile(file);
+            String key1 = "key1";
+            String key2 = "key2";
+            String key3 = "key3";
+            System.out.printf("%s: %s\n", key1, find(key1));
+            System.out.printf("%s: %s\n", key2, find(key2));
+            System.out.printf("%s: %s\n", key3, find(key3));
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+    }
+}
+//======================================================================file.existed
+                                                                        empty
+package Lesson_02;
+import java.io.*;
+public class Ex003_tryDemo {
+    public static void main(String[] args) {
+        String line = "empty";
+        try {
+            String pathProject = System.getProperty("user.dir");
+            String pathFile = pathProject.concat("/file.txt");
+            File file = new File(pathFile);
+            if (file.createNewFile()) {
+                System.out.println("file.created");
+            }
+            else {
+                System.out.println("file.existed");
+                FileWriter fileWriter = new FileWriter(file, true);
+                fileWriter.write("new line");
+                //#region lineSeparator
+                // A string containing "\r\n" for non-Unix
+                // platforms, or a string containing
+                // "\n" for Unix platforms.
+                fileWriter.append(System.lineSeparator());
+                //#endregion
+                fileWriter.write("new line");
+                fileWriter.append("new line");
+                fileWriter.flush();
+                fileWriter.close();
+                // BufferedReader bufReader = new BufferedReader(new FileReader(file));
+                // line = bufReader.readLine();
+                // bufReader.close();
+            }
+        } catch (Exception e) {
+            //e.printStackTrace();
+        } finally {
+            System.out.println(line);
+        }
+    }
+}
+//======================================================================F:\х\Java\Java\file.txt
+                                                                        F:\х\Java\Java/file.txt
+                                                                        F:\х\Java\Java\file.txt
+                                                                        F:\Users\sk\vscode\java_projects\file.txt
+package Lesson_02;
+import java.io.File;
+public class Ex002_fileSystemDemo {
+    public static void main(String[] args) {
+        String pathProject = System.getProperty("user.dir");
+        String pathFile = pathProject.concat("/file.txt");
+        File f3 = new File(pathFile);
+        System.out.println(f3.getAbsolutePath());
+        System.out.println(pathFile);
+        File f1 = new File("file.txt");
+        File f2 = new File("/Users/sk/vscode/java_projects/file.txt");
+        System.out.println(f1.getAbsolutePath());
+        System.out.println(f2.getAbsolutePath());
+    }
+}
+//======================================================================0 9
+                                                                        0 9 11 111 1111
+package Lesson_03;
+public class Ex001 {
+    static int[] AddItemInArray(int[] array, int item) {
+        int length = array.length;
+        int[] temp = new int[length + 1];
+        System.arraycopy(array, 0, temp, 0, length);
+        temp[length] = item;
+        return temp;
+    }
+    public static void main(String[] args) {
+        int[] a = new int[] { 0, 9 };
+        for (int i : a) { System.out.printf("%d ", i); }
+        a = AddItemInArray(a, 11);
+        a = AddItemInArray(a, 111);
+        a = AddItemInArray(a, 1111);
+        System.out.println();
+        for (int j : a) { System.out.printf("%d ", j); }
+        System.out.println();
+    }
+}
+//====================================================================== 2009
+package Lesson_03;
+import java.util.ArrayList;
+public class Ex002 {
+   public static void main(String[] args) {
+       ArrayList<Integer> list = new ArrayList<Integer>();
+       //ArrayList list = new ArrayList();
+       list.add(2809);
+       for (Object o : list) {
+           System.out.println(o);
+       }
+   }
+}
+//======================================================================[]
+                                                                        []
+package Lesson_03;
+import java.util.ArrayList;
+public class Ex003 {
+    public static void main(String[] args) {
+        ArrayList<Integer> list1 = new ArrayList<Integer>();
+        ArrayList<Integer> list2 = new ArrayList<>();
+        ArrayList<Integer> list3 = new ArrayList<>(10);
+        ArrayList<Integer> list4 = new ArrayList<>(list3);
+        System.out.println(list3);
+        list3.add(123);
+        System.out.println(list4);
+    }
+}
+//======================================================================  [29, 9, 1990]
+package Lesson_03;
+import java.util.Arrays;
+import java.util.List;
+public class Ex004 {
+    public static void main(String[] args) {
+        int day = 29;
+        int month = 9;
+        int year = 1990;
+        Integer[] date = { day, month, year };
+        List<Integer> d = Arrays.asList(date);
+        System.out.println(d); // [29, 9, 1990]
+    }
+}
+//======================================================================  [28, 9, 1990]
+                                                                          [28, 9, 1990]
+package Lesson_03;
+import java.util.Arrays;
+import java.util.List;
+public class Ex005 {
+    public static void main(String[] args) {
+        StringBuilder day = new StringBuilder("28");
+        StringBuilder month = new StringBuilder("9");
+        StringBuilder year = new StringBuilder("1990");
+        List<StringBuilder> d = Arrays.asList(day, month, year);
+        System.out.println(d); // [29, 9, 1990]
+        day = new StringBuilder("09");
+        System.out.println(d); // [29, 09, 1990]
+    }
+}
+//====================================================================== [S, e, r, g, e, y]
+package Lesson_03;
+import java.util.List;
+public class Ex006 {
+    public static void main(String[] args) {
+        Character value = null;
+        List<Character> list1 = List.of('S', 'e', 'r', 'g', 'e', 'y');
+        System.out.println(list1);
+        list1.remove(1); // java.lang.UnsupportedOperationException
+        List<Character> list2 = List.copyOf(list1);
+    }
+}
+//======================================================================  1
+                                                                          12
+                                                                          123
+                                                                          1234
+                                                                          12345
+package Lesson_03;
+import java.util.*;
+public class Ex007 {
+    public static void main(String[] args) {
+        List<Integer> list = List.of(1, 12, 123, 1234, 12345);
+        for (int item : list) {
+            System.out.println(item);
+        }
+        Iterator<Integer> col = list.iterator();
+        System.out.println();
+        while (col.hasNext()) {
+            col.remove();
+            System.out.println(col.next());
+            //col.next();
+        }
+    }
+}
+//======================================================================10
+package Sem_2.hw_4;
+    /* * @apiNote Напишите класс Calculator, который будет выполнять математические операции (+, -, *, /)
+    над двумя числами и возвращать результат. В классе должен быть метод calculate,
+    который принимает оператор и значения аргументов и возвращает результат вычислений.
+     При неверно переданном операторе, программа должна вывести сообщение об ошибке
+     "Некорректный оператор: 'оператор'". * @param op математическиий оператор
+     * @param a первый параметр * @param b второй параметр * @return результат вычисления
+К этому калькулятору нужно добавить логирование.
+Логи запишите в файл log.txt в формате:
+"гггг-мм-дд чч:мм User entered the first operand = {первое число}"
+"гггг-мм-дд чч:мм User entered the operation = {оператор}"
+"гггг-мм-дд чч:мм User entered the second operand = {второе число}"
+"гггг-мм-дд чч:мм Result is {результат}"*/
+/*
+ * @apiNote Делает запись текущего состояния массива в лог файл
+ * @param mas массив
+ */
+/*
+class Calculator { public int calculate(char op, int a, int b)
+    { try (FileWriter fileWriter = new FileWriter(new File("log.txt"), true))
+    { logStep(fileWriter, "User entered the first operand = " + a);
+        logStep(fileWriter, "User entered the operation = " + op);
+        logStep(fileWriter, "User entered the second operand = " + b);
+    switch (op) {
+        case '+':
+            int sum = add(a, b);
+            logStep(fileWriter, "Result is " + sum);
+            return sum;
+        case '-':
+            int diff = minus(a, b);
+            logStep(fileWriter, "Result is " + diff);
+            return diff;
+        case '*':
+            int prod = mult(a, b);
+            logStep(fileWriter, "Result is " + prod);
+            return prod;
+        case '/':
+            int quotient = divide(a, b);
+            logStep(fileWriter, "Result is " + quotient);
+            return quotient;
+        default:
+            throw new IllegalArgumentException("Некорректный оператор: " + op);
+    }
+} catch (IOException e) {
+    e.printStackTrace();
+    return -1;
+}
+}
+    private int divide(int a, int b) {
+        if (b != 0) return a / b;
+        throw new ArithmeticException("Деление на 0 недопустимо");
+    }
+    private int mult(int a, int b) {
+        return a * b;
+    }
+    private int minus(int a, int b) {
+        return a - b;
+    }
+    private int add(int a, int b) {
+        return a + b;
+    }
+    private void logStep(FileWriter fileWriter, String note) throws IOException {
+        LocalDateTime currentTime = LocalDateTime.now();
+        DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm");
+        String formattedTime = currentTime.format(formatter);
+        fileWriter.write(formattedTime + " " + note + "\n");
+    }
+}
+class Printer {
+    private static final String LOG_FILE_PATH = "log.txt";
+    public static void main(String[] args) {
+        int a = 0;
+        char op = ' ';
+        int b = 0;
+        if (args.length == 0) {
+            a = 3;
+            op = '+';
+            b = 7;
+        } else {
+            a = Integer.parseInt(args[0]);
+            op = args[1].charAt(0);
+            b = Integer.parseInt(args[2]);
+        }
+        clearLogFile();
+        Calculator calculator = new Calculator();
+        int result = calculator.calculate(op, a, b);
+        System.out.println(result);
+        try (BufferedReader br = new BufferedReader(new FileReader(LOG_FILE_PATH))) {
+            String line;
+            while ((line = br.readLine()) != null) {
+                System.out.println(line);
+            }
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+    }
+    private static void clearLogFile() {
+        File logFile = new File(LOG_FILE_PATH);
+        if (logFile.exists()) {
+            try {
+                FileWriter fileWriter = new FileWriter(logFile, false);
+                fileWriter.write("");
+                fileWriter.close();
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
+        }
+    }
+}
+*/
+//=======================================================================================================
+import java.io.File;
+import java.io.FileWriter;
+import java.io.FileReader;
+import java.io.IOException;
+import java.sql.Timestamp;
+import java.io.BufferedReader;
+import java.time.LocalDateTime;
+import java.time.format.DateTimeFormatter;
+class Calculator {
+    private static void writeToLog(String message) {
+        Timestamp date = new Timestamp(System.currentTimeMillis());
+        LocalDateTime localDateTime = date.toLocalDateTime();
+        DateTimeFormatter dateTimeFormatter = DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm");
+        try {
+            FileWriter fileWriter = new FileWriter("log.txt", true);
+            fileWriter.append(dateTimeFormatter.format(localDateTime) + " " + message + "\n");
+            fileWriter.flush();
+        }
+        catch (Exception ex) {
+            System.out.println(ex.getMessage());
+        }
+    }
+    public int calculate(char op, int a, int b) {
+        // Введите свое решение ниже
+        int result = 0;
+        if (op == '+')
+            result = a + b;
+        else if (op == '-')
+            result =  a - b;
+        else if (op == '*')
+            result =  a * b;
+        else if (op == '/')
+            result =  a / b;
+        writeToLog("User entered the first operand = " + a);
+        writeToLog("User entered the operation = " + op);
+        writeToLog("User entered the second operand = " + b);
+        writeToLog("Result is " + result);
+        return result;
+    }
+}
+class Printer { private static final String LOG_FILE_PATH = "log.txt";
+    public static void main(String[] args) {
+        int a = 0;
+        char op = ' ';
+        int b = 0;
+        if (args.length == 0) {
+            // При отправке кода на Выполнение, вы можете варьировать эти параметры
+            a = 3;
+            op = '+';
+            b = 7;
+        } else {
+            a = Integer.parseInt(args[0]);
+            op = args[1].charAt(0);
+            b = Integer.parseInt(args[2]);
+        }
+        clearLogFile();
+        Calculator calculator = new Calculator();
+        int result = calculator.calculate(op, a, b);
+        System.out.println(result);
+        try (BufferedReader br = new BufferedReader(new FileReader(LOG_FILE_PATH))) {
+            String line;
+            while ((line = br.readLine()) != null) {
+                System.out.println(line);
+            }
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+    }
+    private static void clearLogFile() {
+        File logFile = new File(LOG_FILE_PATH);
+        if (logFile.exists()) {
+            try {
+                FileWriter fileWriter = new FileWriter(logFile, false);
+                fileWriter.write("");
+                fileWriter.close();
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
+        }
+    }
+}
+//======================================================================Студент Иванов получил 5 по предмету Математика
+									Студент Петрова получил 4 по предмету Информатика
+									Студент Краснов получил 5 по предмету Физика
+package Sem_2.hw_3_4;
+/*
+Дана json строка (можно сохранить в файл и читать из файла)
+[{"фамилия":"Иванов","оценка":"5","предмет":"Математика"},
+{"фамилия":"Петрова","оценка":"4","предмет":" Информатика"},
+{"фамилия":"Краснов","оценка":"5","предмет":"Физика"}]
+Написать метод(ы), который распарсит json и,
+используя StringBuilder, создаст строки вида: Студент [фамилия]
+получил [оценка] по предмету [предмет]. Пример вывода:
+Студент Иванов получил 5 по предмету Математика.
+Студент Петрова получил 4 по предмету Информатика.
+Студент Краснов получил 5 по предмету Физика. 4*.
+К калькулятору из предыдущего дз добавить логирование.
+ */
+class Answer { public static void answer(String JSON, String ELEMENT1, String ELEMENT2, String ELEMENT3) {
+    String jsonString = "[{\"фамилия\":\"Иванов\",\"оценка\":\"5\",\"предмет\":\"Математика\"},"
+            + "{\"фамилия\":\"Петрова\",\"оценка\":\"4\",\"предмет\":\"Информатика\"},"
+            + "{\"фамилия\":\"Краснов\",\"оценка\":\"5\",\"предмет\":\"Физика\"}]";
+    StringBuilder sb = new StringBuilder();
+    String[] splitString = jsonString.split("\\{");
+    for (int i = 1; i < splitString.length; i++) {
+        String[] studentInfo = splitString[i].replace("}]", "").split("\",\"");
+        sb.append("Студент " + studentInfo[0].split(":")[1].replace("\"", "") + " получил " + studentInfo[1].split(":")[1].replace("\"", "") + " по предмету " + studentInfo[2].split(":")[1].replace("\"", "").replace("},", "") + "\n");
+    }
+    System.out.println(sb.toString());
+}
+}
+class Printer{ public static void main(String[] args) {
+    String JSON = ""; String ELEMENT1 = ""; String ELEMENT2 = ""; String ELEMENT3 = "";
+        if (args.length == 0) {
+            JSON = "[{\"фамилия\":\"Иванов\",\"оценка\":\"5\",\"предмет\":\"Математика\"}," +
+                "{\"фамилия\":\"Петрова\",\"оценка\":\"4\",\"предмет\":\"Информатика\"}," +
+                "{\"фамилия\":\"Краснов\",\"оценка\":\"5\",\"предмет\":\"Физика\"}]";
+                ELEMENT1 = "Студент ";
+                ELEMENT2 = " получил ";
+                ELEMENT3 = " по предмету ";
+                }
+                else{
+                JSON = args[0];
+                ELEMENT1 = args[1];
+                ELEMENT2 = args[2];
+                ELEMENT3 = args[3];
+                }
+                Answer ans = new Answer();
+                ans.answer(JSON, ELEMENT1, ELEMENT2, ELEMENT3);
+        }
+    }
+//======================================================================
+package Sem_3;
+/*
+Заполнить список десятью случайными числами.
+Отсортировать список методом sort() и вывести его на экран.
+ */
+import java.util.ArrayList;
+import java.util.Comparator;
+import java.util.List;
+import java.util.Random;
+public class Ex_1 {
+    public static void main(String[] args) {
+        int num = 10;
+        int min = 0;
+        int max = 10;
+        List<Integer> userList = createList(num, min, max);
+        System.out.println(userList);
+        userList.sort(Comparator.reverseOrder());
+        System.out.println(userList);
+    }
+    static List<Integer> createList(int num, int min, int max){
+        List<Integer> resList = new ArrayList<>();
+        Random random = new Random();
+        for (int i = 0; i < num; i++) {
+            int tmp = random.nextInt(min, max+1);
+            resList.add(tmp);
+        }
+        return resList;
+    }
+}
+//======================================================================
+package Sem_3.hw_1;
+/*
+Сортировка слиянием
+Инструкция по использованию платформы
+Внутри класса MergeSort напишите метод mergeSort, который принимает массив целых чисел,
+реализует алгоритм сортировки слиянием. Метод должен возвращать отсортированный массив.
+Пример
+a = {5, 1, 6, 2, 3, 4} -> [1, 2, 3, 4, 5, 6]
+ */
+import java.util.Arrays;
+class MergeSort {
+    public static int[] mergeSort(int[] a) {
+        if (a.length <= 1) {
+            return a;
+        }
+        int mid = a.length/2;
+        int[] left = new int[mid];
+        int[] right = new int[a.length - mid];
+        System.arraycopy(a, 0, left, 0, left.length);
+        System.arraycopy(a, mid, right, 0, right.length);
+        mergeSort(left);
+        mergeSort(right);
+        merge(left, right, a);
+        return a;
+    }
+    private static void merge(int[] left, int[] right, int[] result) {
+        int i = 0, j = 0, k = 0;
+        while (i < left.length && j < right.length) {
+            if (left[i] <= right[j]) {
+                result[k++] = left[i++];
+            }
+            else {
+                result[k++] = right[j++];
+            }
+        }
+        while (i < left.length) {
+            result[k++] = left[i++];
+        }
+        while (j < right.length) {
+            result[k++] = right[j++];
+        }
+    }
+}
+// Не удаляйте этот класс - он нужен для вывода результатов на экран и проверки
+class Printer{
+    public static void main(String[] args) {
+        int[] a;
+        if (args.length == 0) {
+            // При отправке кода на Выполнение, вы можете варьировать эти параметры
+            a = new int[]{5, 1, 6, 2, 3, 4};
+        } else {
+            a = Arrays.stream(args[0].split(", ")).mapToInt(Integer::parseInt).toArray();
+        }
+        MergeSort answer = new MergeSort();
+        String itresume_res = Arrays.toString(answer.mergeSort(a));
+        System.out.println(itresume_res);
+    }
+}
+//======================================================================[1, 3, 5, 7, 9]
+package Sem_3.hw_2;
+/*
+Удаление четных элементов
+Дан произвольный массив целых чисел. Создайте список ArrayList, заполненный данными из этого массива.
+Необходимо удалить из списка четные числа и вернуть результирующий.
+Напишите свой код в методе removeEvenNumbers класса Answer.
+Метод removeEvenNumbers принимает на вход один параметр: Integer[] arr - список целых чисел,
+возвращает список ArrayList<Integer>
+Примеры.
+Исходный массив:
+1, 2, 3, 4, 5, 6, 7, 8, 9
+Результат:
+[1, 3, 5, 7, 9]
+Исходный массив:
+2, 4, 6, 8
+Результат:
+[]
+ */
+
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.List;
+
+class Answer {
+    public static void removeEvenNumbers(Integer[] arr) {
+        List<Integer> result = new ArrayList<>();
+//        for (Integer num : arr) {
+        for (int i = 0; i < arr.length; i++) {
+            if (arr[i] % 2 != 0) {
+                result.add(arr[i]);
+            }
+        }
+        System.out.println(result);
+    }
+}
+class Printer{
+    public static void main(String[] args) {
+        Integer[] arr = {};
+        if (args.length == 0) {
+            // При отправке кода на Выполнение, вы можете варьировать эти параметры
+            arr = new Integer[]{1, 2, 3, 4, 5, 6, 7, 8, 9};
+        }
+        else{
+            arr = Arrays.stream(args[0].split(", "))
+                    .map(Integer::parseInt)
+                    .toArray(Integer[]::new);
+        }
+        Answer ans = new Answer();
+        ans.removeEvenNumbers(arr);
+    }
+}
+//===================================================================================MergeSort [1, 2, 3, 4, 5, 6]
+package Sem_3.hw_1;
+
+/*
+Сортировка слиянием
+Инструкция по использованию платформы
+Внутри класса MergeSort напишите метод mergeSort, который принимает массив целых чисел,
+реализует алгоритм сортировки слиянием. Метод должен возвращать отсортированный массив.
+Пример
+a = {5, 1, 6, 2, 3, 4} -> [1, 2, 3, 4, 5, 6]
+ */
+import java.util.Arrays;
+
+class MergeSort {
+    public static int[] mergeSort(int[] a) {
+        if (a.length <= 1) {
+            return a;
+        }
+        int mid = a.length/2;
+        int[] left = new int[mid];
+        int[] right = new int[a.length - mid];
+
+        System.arraycopy(a, 0, left, 0, left.length);
+        System.arraycopy(a, mid, right, 0, right.length);
+        mergeSort(left);
+        mergeSort(right);
+        merge(left, right, a);
+        return a;
+    }
+    private static void merge(int[] left, int[] right, int[] result) {
+        int i = 0, j = 0, k = 0;
+        while (i < left.length && j < right.length) {
+            if (left[i] <= right[j]) {
+                result[k++] = left[i++];
+            }
+            else {
+                result[k++] = right[j++];
+            }
+        }
+        while (i < left.length) {
+            result[k++] = left[i++];
+        }
+        while (j < right.length) {
+            result[k++] = right[j++];
+        }
+    }
+}
+class Printer{
+    public static void main(String[] args) {
+        int[] a;
+        if (args.length == 0) {
+            // При отправке кода на Выполнение, вы можете варьировать эти параметры
+            a = new int[]{5, 1, 6, 2, 3, 4};
+        } else {
+            a = Arrays.stream(args[0].split(", ")).mapToInt(Integer::parseInt).toArray();
+        }
+        MergeSort answer = new MergeSort();
+        String itresume_res = Arrays.toString(answer.mergeSort(a));
+        System.out.println(itresume_res);
+    }
+}
+//======================================================================[6]
+									5
+									привет
+package lesson3.seminar;
+
+import java.util.ArrayList;
+import java.util.List;
+
+public class Test {
+    public static void main(String[] args) {
+        List<Integer> list = new ArrayList<>();
+        int a = 5;
+        String s = "привет";
+
+        test(list, a, s);
+
+        System.out.println(list);
+        System.out.println(a);
+        System.out.println(s);
+    }
+
+    static void test(List<Integer> list, int a, String s){
+        a++;
+        list.add(a);
+        s = "пока";
+    }
+}
+//================== [[Сказка, Золотой ключик, Репка], [Роман, Мастер и Маргарита, Война и Мир], [Фентези, Гарри Поттер, Ночной дозор]]
+
+package lesson3.seminar;
+
+/*
+Каталог товаров книжного магазина сохранен в виде двумерного списка List<ArrayList<String>> так,
+что на 0й позиции каждого внутреннего списка содержится название жанра, а на остальных позициях - названия книг.
+Напишите метод для заполнения данной структуры.
+
+[
+    ["Сказка", "Золотой ключик", "Репка"],
+    ["Роман", "Мастер и Маргарита", "Война и Мир"],
+    ["Фентези", "Гарри Поттер", "Ночной дозор"]
+]
+
+ */
+
+import java.util.ArrayList;
+import java.util.List;
+
+public class Main3 {
+    public static void main(String[] args) {
+        List<List<String>> shopBook = new ArrayList<>();
+        addBook(shopBook, "Сказка", "Золотой ключик");
+        addBook(shopBook, "Роман", "Мастер и Маргарита");
+        addBook(shopBook, "Сказка", "Репка");
+        addBook(shopBook, "Фентези", "Гарри Поттер");
+        addBook(shopBook, "Роман", "Война и Мир");
+        addBook(shopBook, "Фентези", "Ночной дозор");
+
+        System.out.println(shopBook);
+    }
+    private static void addBook(List<List<String>> shopBook, String genre, String nameBook) {
+        for (List<String> bookshelf : shopBook) {
+            if (bookshelf.get(0).equalsIgnoreCase(genre)) {
+                bookshelf.add(nameBook);
+                return;
+            }
+        }
+        List<String> newBookshelf = new ArrayList<>();
+        newBookshelf.add(genre);
+        newBookshelf.add(nameBook);
+        shopBook.add(newBookshelf);
+    }
+}
+//======================================================================Mercury: 1
+									Venus: 2
+									Earth: 2
+									Mars: 1
+									Jupiter: 1
+									Saturn: 3
+									Uranus: 0
+									Neptune: 0
+									Pluto: 0
+									[Saturn, Mercury, Saturn, Jupiter, Venus, Mars, Earth, Venus, Saturn, Earth]
+
+import java.util.ArrayList;
+import java.util.Collections;
+import java.util.List;
+import java.util.Random;
+
+/*
+Заполнить список названиями планет Солнечной системы в произвольном порядке с повторениями.
+Вывести название каждой планеты и количество его повторений в списке
+ */
+public class Main2 {
+    public static void main(String[] args) {
+        List<String> list = new ArrayList<>();
+        String[] planets= {"Mercury", "Venus", "Earth", "Mars", "Jupiter", "Saturn", "Uranus", "Neptune", "Pluto"};
+        int n = 10;
+        Random rand = new Random();
+        for(int i = 0; i < n; i++)
+        {
+            list.add(planets[rand.nextInt(0,planets.length)]);
+        }
+
+        for (String i: planets){
+            int c = Collections.frequency(list, i);
+            System.out.println(i+": "+c);
+        }
+        System.out.println(list);
+    }
+}
+
+//======================================================================[2, 6, 6, 7, 1, 5, 6, 8, 6, 3]
+									[8, 7, 6, 6, 6, 6, 5, 3, 2, 1]
+package lesson3.seminar;
+
+/*
+Заполнить список десятью случайными числами.
+Отсортировать список методом sort() и вывести его на экран.
+ */
+
+import java.util.ArrayList;
+import java.util.Comparator;
+import java.util.List;
+import java.util.Random;
+
+public class Main1 {
+    public static void main(String[] args) {
+        int n = 10;
+        Random random = new Random();
+        List<Integer> lst = new ArrayList<>(n);
+        for (int i = 0; i < n; i++) {
+            lst.add(random.nextInt(0, 10));
+        }
+        System.out.println(lst);
+        lst.sort(Comparator.reverseOrder());
+        System.out.println(lst);
+    }
+}
+//======================================================================hello
+/*
+Даны следующие строки, cравнить их с помощью == и метода equals() класса Object
+String s1 = "hello";
+String s2 = "hello";
+String s3 = s1;
+String s4 = "h" + "e" + "l" + "l" + "o";
+String s5 = new String("hello");
+String s6 = new String(new char[]{'h', 'e', 'l', 'l', 'o'});
+ */
+public class CompareLine {
+    public static void main(String[] args) {
+        String s1 = "hello";
+        String s2 = "hello";
+        String s3 = s1;
+        String s4 = "h" + "e" + "l" + "l" + "o";
+        String s5 = new String("hello");
+        char[] arr = new char[]{'h', 'e', 'l', 'l', 'o'};
+        String s6 = new String(arr);
+        arr[0] = '5';
+
+        System.out.println(s6);
+    }
+}
+//======================================================================
+package Sem_3.hw_3;
+
+/*
+Инструкция по использованию платформы
+
+Реализуйте метод, который принимает на вход целочисленный массив arr:
+- Создаёт список ArrayList, заполненный числами из исходого массива arr.
+- Сортирует список по возрастанию и выводит на экран.
+- Находит минимальное значение в списке и выводит на экран - Minimum is {число} -
+Находит максимальное значение в списке и выводит на экран - Maximum is {число}
+- Находит среднее арифметическое значений списка и выводит на экран - Average is =  {число}
+Напишите свой код в методе analyzeNumbers класса Answer. Метод analyzeNumbers принимает на вход один параметр:
+Integer[] arr - массив целых чисел.
+Пример.
+Исходный массив:
+4, 2, 7, 5, 1, 3, 8, 6, 9
+Результаты:
+[1, 2, 3, 4, 5, 6, 7, 8, 9]
+Minimum is 1
+Maximum is 9
+ */
+
+import java.util.*;
+
+class Answer {
+    public static void analyzeNumbers(Integer[] arr) {
+        List<Integer> result = new ArrayList<>();
+        for(Integer num : arr) {
+            result.add(num);
+        }
+//        System.out.println(result);
+        result.sort(Comparator.naturalOrder());
+        System.out.println(result);
+
+        int min = Collections.min(result);
+        System.out.println("Minimum is " + min);
+        int max = Collections.max(result);
+        System.out.println("Maximum is " + max);
+        int sum = 0;
+        for (Integer num : arr) {
+            sum += num;
+        }
+        double average = (double) sum / result.size();
+        System.out.println("Average is " + average);
+    }
+}
+
+// Не удаляйте этот класс - он нужен для вывода результатов на экран и проверки
+class Printer{
+    public static void main(String[] args) {
+        Integer[] arr = {};
+
+        if (args.length == 0) {
+            // При отправке кода на Выполнение, вы можете варьировать эти параметры
+            arr = new Integer[]{4, 2, 7, 5, 1, 3, 8, 6, 9};
+        }
+        else{
+            arr = Arrays.stream(args[0].split(", "))
+                    .map(Integer::parseInt)
+                    .toArray(Integer[]::new);
+        }
+
+        Answer ans = new Answer();
+        ans.analyzeNumbers(arr);
+    }
+}
+//======================================================================
+
+Реализовать консольное приложение, которое:
+Принимает от пользователя строку вида 
+text~num
+Нужно рассплитить строку по ~, сохранить text в связный список на позицию num.
+Если введено print~num, выводит строку из позиции num в связном списке и удаляет её из списка.
+
+
+import java.util.LinkedList;
+import java.util.List;
+import java.util.Scanner;
+
+public class Main1 {
+    public static void main(String[] args) {
+        List<String> list = new LinkedList<>();
+        Scanner scanner = new Scanner(System.in);
+        boolean work = true;
+        while (work){
+            String line = scanner.nextLine();
+            String[] parts = line.split("~");
+            String text = parts[0];
+            int num = Integer.parseInt(parts[1]);
+            switch (text){
+                case "print":
+                    if (num >= 0 && num < list.size()) {
+                        System.out.println(list.remove(num));
+                    }
+                    break;
+                case "finish":
+                    work = false;
+                    break;
+                default:
+                    if (num >= 0 && num <= list.size()){
+                        list.add(num, text);
+                    }
+            }
+        }
+    }
+}
+//-----------------------------------------------------------------------------
+
+Дмитрий Анатольевич
+public static void main(String[] args) {
+        boolean flag = true;
+        String str;
+        Scanner scanner = new Scanner(System.in);
+        List<String> list = new LinkedList<>();
+        while (flag) {
+            System.out.println(">>> ");
+            str = scanner.nextLine();
+            String [] strArr = str.split("~");
+            int num = Integer.parseInt(strArr[1]);
+            if (strArr[0].equals("print")){
+                System.out.println(list.remove(num));
+            } else if (strArr[0].equals("end")) {
+                flag = false;
+            } else {
+                list.add(num, strArr[0]);
+            }
+        }
+        System.out.println(list);
+    }
+
+Константин Актыбаев
+Администратор
+public static void main(String[] args) {
+        List<String> list = new LinkedList<>();
+        Scanner scanner = new Scanner(System.in);
+        boolean work = true;
+        while (work){
+            String line = scanner.nextLine();
+            String[] parts = line.split("~");
+            String text = parts[0];
+            int num = Integer.parseInt(parts[1]);
+            switch (text){
+                case "print":
+                    if (num >= 0 && num < list.size()) {
+                        System.out.println(list.remove(num));
+                    }
+                    break;
+                case "finish":
+                    work = false;
+                    break;
+                default:
+                    if (num >= 0 && num <= list.size()){
+                        list.add(num, text);
+                    }
+            }
+        }
+    }
+
+//======================================================================
+
+
+/*
+ Реализовать консольное приложение, которое:
+Принимает от пользователя и “запоминает” строки.
+Если введено print, выводит строки в обратном порядке
+Если введено revert, удаляет предыдущую введенную строку из памяти.
+ */
+
+import java.util.*;
+
+public class Main2 {
+    public static void main(String[] args) {
+        Scanner scanner = new Scanner(System.in);
+        List<String> list = new LinkedList<>();
+        boolean work = true;
+        while (work){
+            String line = scanner.nextLine();
+            switch (line){
+                case "print":
+                    for (String s: list){
+                        System.out.println(s);
+                    }
+//                    ListIterator<String> iterator = list.listIterator(list.size());
+//                    while (iterator.hasPrevious()){
+//                        System.out.println(iterator.previous());
+//                    }
+//                    for (int i = list.size()-1; i >= 0; i--) {
+//                        System.out.println(list.get(i));
+//                    }
+                    break;
+                case "revert":
+                    list.remove(0);
+                    break;
+                case "finish":
+                    work = false;
+                    break;
+                default:
+                    list.add(0, line);
+            }
+        }
+    }
+}
+
+//======================================================================
+Реализовать стэк с помощью массива. 
+Нужно реализовать методы:
+size(), empty(), push(), peek(), pop().
+
+/*
+Реализовать стэк с помощью массива.
+Нужно реализовать методы:
+size(), empty(), push(), peek(), pop().
+ */
+
+public class Main4 {
+    public static void main(String[] args) {
+        MyStack stack = new MyStack();
+        stack.push(1);
+        stack.push(2);
+        stack.push(3);
+        stack.push(4);
+        stack.push(5);
+
+        System.out.println("stack size: " + stack.size());
+        System.out.println(stack.pop());
+        System.out.println(stack.pop());
+    }
+}
+
+//======================================================================
+package Sem_4;
+
+//size(), empty(), push(), peek(), pop().
+public class MyStack {
+    private int[] arr = new int[10];
+    private int size = 0;
+
+    int size(){
+        return size;
+    }
+
+    boolean empty(){
+        return size == 0;
+    }
+
+    void push(int elem){
+        if (size >= arr.length){
+            int[] arr2 = new int[arr.length * 2];
+            System.arraycopy(arr, 0, arr2, 0, arr.length);
+            arr = arr2;
+        }
+        arr[size++] = elem;
+    }
+
+    int peek(){
+        return arr[size - 1];
+    }
+
+    int pop(){
+        return arr[--size];
+    }
+}
+
+//======================================================================
+package Sem_4;
+
+import java.util.*;
+
+/*
+1) Написать метод, который принимает массив элементов, помещает их в стэк
+и выводит на консоль содержимое стэка.
+2) Написать метод, который принимает массив элементов, помещает их в очередь
+и выводит на консоль содержимое очереди.
+ */
+public class Main3 {
+    public static void main(String[] args) {
+        Integer[] arr = {1,2,3,4,5};
+        printAsQueue(arr);
+    }
+
+    static void printAsQueue(Integer[] arr){
+        Queue<Integer> queue = new LinkedList<>();
+        queue.addAll(Arrays.asList(arr));
+
+        while (!queue.isEmpty()){
+            System.out.println(queue.poll());
+        }
+    }
+
+    static void printAsStack(Integer[] arr){
+        Stack<Integer> stack = new Stack<>();
+        stack.addAll(Arrays.asList(arr));
+
+//        System.out.println(stack);
+
+//        for (int a: stack){
+//            System.out.println(a);
+//        }
+
+        while (!stack.empty()){
+            System.out.println(stack.pop());
+        }
+    }
+}
+//======================================================================
+package Sem_5;
+
+
+Создать структуру для хранения Номеров паспортов и Фамилий сотрудников организации.
+123456 Иванов
+321456 Васильев
+234561 Петрова
+234432 Иванов
+654321 Петрова
+345678 Иванов
+Вывести данные по сотрудникам с фамилией Иванов.
+
+
+import java.util.HashMap;
+import java.util.Map;
+
+Дмитрий Анатольевич
+public static void main(String[] args) {
+        UserData ud = new UserData();
+        ud.addData("123456","Иванов");
+        ud.addData("321456","Васильев");
+        ud.addData("234561","Петрова");
+        ud.addData("234432","Иванов");
+        ud.addData("654321","Петрова");
+        ud.addData("345678","Иванов");
+
+        System.out.println((ud.findUserByName("Иванов")));
+    }
+
+
+
+public class UserData {
+    Map<String, String> userData = new HashMap<>();
+
+    void addData(String numPass, String name){
+        userData.put(numPass, name);
+    }
+    String findUserByName(String userName){
+        StringBuilder sb = new StringBuilder();
+        for (String key: userData.keySet()) {
+            if (userName.equals(userData.get(key))){
+                sb.append(key).append(": ").append(userData.get(key));
+                sb.append("\n");
+            }
+        }
+        return sb.toString().trim();
+    }
+}
+
+
+
+//======================================================================
+
+Даны 2 строки, написать метод, который вернет true, если эти строки являются изоморфными и false, если нет. Строки изоморфны, если одну букву в первом слове можно заменить на некоторую букву во втором слове, при этом
+повторяющиеся буквы одного слова меняются на одну и ту же букву с сохранением порядка следования. (Например, add - egg изоморфны)
+буква может не меняться, а остаться такой же. (Например, note - code)
+Пример 1:
+Input: s = "foo", t = "bar"
+Output: false
+Пример 2:
+Input: s = "paper", t = "title"
+Output: true
+
+
+public class Main {
+    public static void main(String[] args) {
+        System.out.println(isIsomorphic("add", "egg"));
+        System.out.println(isIsomorphic("note", "code"));
+        System.out.println(isIsomorphic("paper", "title"));
+        System.out.println(isIsomorphic("foo", "bar"));
+        System.out.println(isIsomorphic("bar", "foo"));
+    }
+
+    private static boolean isIsomorphic(String str1, String str2) {
+        HashMap<Character, Character> map = new HashMap<>();
+        if (str1.length() != str2.length()) {
+            return false;
+        }
+        for (int i = 0; i < str1.length(); i++) {
+            if (!map.containsKey(str1.charAt(i))) {
+                if (map.containsValue(str2.charAt(i))) {
+                    return false;
+                }
+                map.put(str1.charAt(i), str2.charAt(i));
+            } else {
+                if (map.get(str1.charAt(i)) != str2.charAt(i)) {
+                    return false;
+                }
+            }
+        }
+
+        return true;
+
+    }
+}
+
+//-------------------------------------------------------------
+package Sem_5;
+
+import java.util.HashMap;
+import java.util.Map;
+
+public class Main {
+    public static void main(String[] args) {
+        System.out.println(isIsomorphic("add", "egg"));
+        System.out.println(isIsomorphic("note", "code"));
+        System.out.println(isIsomorphic("paper", "title"));
+        System.out.println(isIsomorphic("foo", "bar"));
+        System.out.println(isIsomorphic("bar", "foo"));
+    }
+
+    static boolean isIsomorphic(String s1, String s2){
+        if (s1.length() != s2.length()){
+            return false;
+        }
+        Map<Character, Character> map = new HashMap<>();
+        for (int i = 0; i < s1.length(); i++) {
+            if (map.containsKey(s1.charAt(i))){
+                if (map.get(s1.charAt(i)) != s2.charAt(i)){
+                    return false;
+                }
+            } else {
+                if (map.containsValue(s2.charAt(i))){
+                    return false;
+                }
+                map.put(s1.charAt(i), s2.charAt(i));
+            }
+        }
+        return true;
+    }
+}
+
+//======================================================================
+Написать программу, определяющую правильность расстановки скобок в выражении.
+Пример 1: a+(d*3) - истина
+Пример 2: [a+(1*3) - ложь
+Пример 3: [a+(1]*3) - ложь
+Пример 4: [6+(3*3)] - истина
+Пример 5: {a}[+]{(d*3)} - истина
+Пример 6: <{a}+{(d*3)}> - истина
+Пример 7: {a+]}{(d*3)} - ложь
+
+public static boolean isValid(String s)
+    {
+
+        Stack<Character> st = new Stack<>();
+        HashMap<Character,Character> map = new HashMap<>();
+        map.put('{', '}');
+        map.put('(', ')');
+        map.put('[', ']');
+        map.put('<', '>');
+        for(Character ch : s.toCharArray())
+        {
+            
+            if(map.containsKey(ch))
+            {
+                st.push(ch);
+            }
+            if(map.containsValue(ch))
+            {
+                if (st.empty() || map.get(st.pop())!=ch){
+                    return false;
+                }
+            }
+            
+        }
+        return st.empty();
+    }
+//-------------------------------------------------------------------------
+package Sem_5;
+
+import java.util.HashMap;
+import java.util.Map;
+import java.util.Stack;
+
+class TrueOrFalseBrackets {
+    public static void main(String[] args) {
+        System.out.println(checkBrackets("a+(d*3)"));
+        System.out.println(checkBrackets("[6+(3*3)]"));
+        System.out.println(checkBrackets("{a}[+]{(d*3)}"));
+        System.out.println(checkBrackets("<{a}+{(d*3)}>"));
+        System.out.println(checkBrackets("a+(d*3))"));
+        System.out.println(checkBrackets("[a+(1*3)"));
+        System.out.println(checkBrackets("[a+(1]*3)"));
+        System.out.println(checkBrackets("{a+]}{(d*3)}"));
+    }
+
+    static boolean checkBrackets(String s){
+        Stack<Character> stack = new Stack<>();
+        Map<Character, Character> map = new HashMap<>();
+        map.put('(', ')');
+        map.put('[', ']');
+        map.put('<', '>');
+        map.put('{', '}');
+        for (char c: s.toCharArray()){
+            if (map.containsKey(c)){
+                stack.push(c);
+            }
+            if (map.containsValue(c)){
+                if (stack.empty() || map.get(stack.pop()) != c){
+                    return false;
+                }
+            }
+        }
+        return stack.empty();
+    }
+}
+
+//======================================================================
+
+Взять набор строк, например,
+
+Мороз и солнце день чудесный
+Еще ты дремлешь друг прелестный
+Пора красавица проснись.
+
+Написать метод, который отсортирует эти слова по длине с помощью TreeMap.
+Слова с одинаковой длиной не должны “потеряться”.
+
+
+
+public static void main(String[] args) {
+        String s = "Мороз и солнце день чудесный\n" +
+                "Еще ты дремлешь друг прелестный\n" +
+                "Пора красавица проснись.";
+        System.out.println(sortByLen(s));
+    }
+    static Map<Integer, List<String>> sortByLen(String s){
+        s = s.replace(".","").replace("\n", " ");
+        String [] sArr = s.split(" ");
+        TreeMap<Integer, List<String>> sTM = new TreeMap<>(Comparator.reverseOrder()); // Comparator.reverseOrder() - разворачивает сортировку
+        for (String el: sArr) {
+            int len = el.length();
+            if (sTM.containsKey(len)){
+                sTM.get(len).add(el);
+            } else {
+                List<String> list = new ArrayList<>();
+                list.add(el);
+                sTM.put(el.length(), list);
+            }
+        }
+        return sTM;
+    }
+//--------------------------------------------------------------
+
+package Sem_5;
+
+
+/*
+Взять набор строк, например,
+
+Мороз и солнце день чудесный
+Еще ты дремлешь друг прелестный
+Пора красавица проснись.
+
+Написать метод, который отсортирует эти слова по длине с помощью TreeMap.
+Слова с одинаковой длиной не должны “потеряться”.
+ */
+
+import java.util.*;
+
+class treeMap {
+    public static void main(String[] args) {
+        Map<Integer, List<String>> map = new TreeMap<>(Comparator.reverseOrder());
+        String s = "Мороз и солнце день чудесный\n" +
+                "Еще ты дремлешь друг прелестный\n" +
+                "Пора красавица проснись.";
+        s = s.replace("\n", " ");
+        s = s.replace(".", "");
+        String[] words = s.split(" ");
+        for (String word: words){
+            int len = word.length();
+//            if (map.containsKey(len)){
+//                List<String> list = map.get(len);
+//                list.add(word);
+//            } else {
+//                List<String> list = new LinkedList<>();
+//                list.add(word);
+//                map.put(len, list);
+//            }
+            List<String> list = map.getOrDefault(len, new LinkedList<>());
+            list.add(word);
+            if (!map.containsKey(len)){
+                map.put(len, list);
+            }
+        }
+        System.out.println(map);
+    }
+}
+
+
+//======================================================================
+
+
+import java.util.Arrays;
+import java.util.HashMap;
+import java.util.HashSet;
+import java.util.Random;
+
+/*
+1. Напишите метод, который заполнит массив из 1000 элементов случайными цифрами от 0 до 24.
+2. Создайте метод, в который передайте заполненный выше массив и с помощью Set вычислите процент уникальных значений
+в данном массиве и верните его в виде числа с плавающей запятой.
+Для вычисления процента используйте формулу:
+процент уникальных чисел = количество уникальных чисел * 100 / общее количество чисел в массиве.
+ */
+public class ex2 {
+    public static void main(String[] args) {
+        int min = 0;
+        int max = 24;
+        int len = 1000;
+        Integer [] arr = getArr(min, max, len);
+        System.out.println(Arrays.toString(arr));
+        System.out.println(uniqPer(arr));
+    }
+    static Integer[] getArr(int min, int max, int len){
+        Integer[] res = new Integer[len];
+        Random random = new Random();
+        for (int i = 0; i < len; i++) {
+            res[i] = random.nextInt(min, max+1);
+        }
+        return res;
+    }
+    static double uniqPer(Integer[] arr){
+        HashSet<Integer> hashSet = new HashSet<>(Arrays.asList(arr));
+        return hashSet.size()*100.00/arr.length;
+    }
+
+}
+
+
+//======================================================================
+
+
+
+//======================================================================
+
+package Sem_6.hw_6;
+
+import java.util.*;
+
+public class Notebook {
+    private String model;
+    private String ram;
+    private String diagonal;
+    private String harddisc;
+    private String opsystem;
+    private String colour;
+
+    public Notebook(String model, String ram, String diagonal, String harddisc, String opsystem, String colour) {
+        this.model = model;
+        this.ram = ram;
+        this.diagonal = diagonal;
+        this.harddisc = harddisc;
+        this.opsystem = opsystem;
+        this.colour = colour;
+
+    }
+    public String getModel() {
+        return model;
+    }
+    public void setModel(String model) {
+        this.model = model;
+    }
+    public String getRam() {
+        return ram;
+    }
+    public void setRam(String ram) {
+        this.ram = ram;
+    }
+    public String getDiagonal() {
+        return diagonal;
+    }
+    public void setSsd(String diagonal) {
+        this.diagonal = diagonal;
+    }
+    public String getHarddisc() {
+        return harddisc;
+    }
+    public void setHarddisc(String harddisc) {
+        this.harddisc = harddisc;
+    }
+    public String getOpsystem() {
+        return opsystem;
+    }
+    public void setOpsystem(String opsystem) {
+        this.opsystem = opsystem;
+    }
+    public  String getColour() {
+        return  colour;
+    }
+    public void setColour(String colour) {
+        this.colour = colour;
+    }
+
+    public static List<Notebook> filterNotebook_ones(List<Notebook> Notebook_ones, Map<Integer, String> filters) {
+        List<Notebook> filteredNotebook_ones = new ArrayList<>();
+        for (Notebook Notebook : Notebook_ones) {
+            boolean passfilter = true;
+            for (Map.Entry<Integer, String> entry : filters.entrySet()) {
+                int filterKey = entry.getKey();
+                Object filterValue = entry.getValue();
+                switch (filterKey) {
+                    case 1:
+                        if (!Notebook.getModel().equals(filterValue)) {
+                            passfilter = false;
+                        }
+                        break;
+                    case 2:
+                        if (Notebook.getRam().equals(filterValue)) {
+                            passfilter = false;
+                        }
+                        break;
+                    case 3:
+                        if (Notebook.getDiagonal().equals(filterValue)) {
+                            passfilter = false;
+                        }
+                        break;
+                    case 4:
+                        if (Notebook.getHarddisc().equals(filterValue)) {
+                            passfilter = false;
+                        }
+                        break;
+                    case 5:
+                        if (!Notebook.getOpsystem().equals(filterValue)) {
+                            passfilter = false;
+                        }
+                        break;
+                    case 6:
+                        if (!Notebook.getColour().equals(filterValue)) {
+                            passfilter = false;
+                        }
+                        break;
+                    default:
+                        System.out.println("Введен некорректный критерий фильтрации");
+                        return filteredNotebook_ones;
+                }
+                if (!passfilter) {
+                    break;
+                }
+            }
+            if (passfilter) {
+                filteredNotebook_ones.add(Notebook);
+            }
+        }
+        return filteredNotebook_ones;
+    }
+
+    public static void main(String[] args) {
+        Scanner scanner = new Scanner(System.in);
+
+        List<Notebook> Notebook_ones = new ArrayList<>();
+        Notebook_ones.add(new Notebook("Lenovo", "8", "18", "4", "Windows", "Металлик серый"));
+        Notebook_ones.add(new Notebook("Asus", "16", "21", "18", "Windows", "Черный"));
+        Notebook_ones.add(new Notebook("Acer", "8", "28", "32", "Linux", "Синий"));
+        Notebook_ones.add(new Notebook("Hp", "8", "18", "4", "Windows", "Белый"));
+        Notebook_ones.add(new Notebook("Mac", "32", "21", "24", "Mac", "Черный"));
+
+        Map<Integer, String> filters = new HashMap<>();
+        System.out.println("Модель - 1,\nОперативная память, Гб - 2,\nДиагональ, дюймов - 3,\nЖесткий диск - 4,\nОперационная система - 5,\nЦвет - 6");
+        System.out.println("Введите номер критерия фильтрации (1-7): ");
+        int filterKey = scanner.nextInt();
+        scanner.nextLine();
+
+
+        System.out.println("Введите минимальные значение для фильтрации: ");
+        String filterValue = scanner.nextLine();
+
+        filters.put(filterKey, filterValue);
+
+        List<Notebook> filteredNotebook_ones = filterNotebook_ones(Notebook_ones, filters);
+
+        System.out.println("Результаты фильтрации: ");
+        for(Notebook Notebook : filteredNotebook_ones) {
+            System.out.println("Модель: " + Notebook.getModel());
+            System.out.println("Оперативная память, Гб: " + Notebook.getRam());
+            System.out.println("Диагональ, дюймов: " + Notebook.getDiagonal());
+            System.out.println("Жесткий диск: " + Notebook.getHarddisc());
+            System.out.println("Операционная система: " + Notebook.getOpsystem());
+            System.out.println("Цвет: " + Notebook.getColour());
+            System.out.println();
+
+        }
+
+    }
+}
+
+
+
+//======================================================================
+
+package Sem_6.hw_6;
+
+import java.util.*;
+
+public class Notebook {
+    private String model;
+    private int ram;
+    private int diagonal;
+    private int harddisc;
+    private String opsystem;
+    private String colour;
+
+    public Notebook(String model, int ram, int diagonal, int harddisc, String opsystem, String colour) {
+        this.model = model;
+        this.ram = ram;
+        this.diagonal = diagonal;
+        this.harddisc = harddisc;
+        this.opsystem = opsystem;
+        this.colour = colour;
+
+    }
+    public String getModel() {
+        return model;
+    }
+    public void setModel(String model) {
+        this.model = model;
+    }
+    public int getRam() {
+        return ram;
+    }
+    public void setRam(int ram) {
+        this.ram = ram;
+    }
+    public int getDiagonal() {
+        return diagonal;
+    }
+    public void setSsd(int diagonal) {
+        this.diagonal = diagonal;
+    }
+    public int getHarddisc() {
+        return harddisc;
+    }
+    public void setHarddisc(int harddisc) {
+        this.harddisc = harddisc;
+    }
+    public String getOpsystem() {
+        return opsystem;
+    }
+    public void setOpsystem(String opsystem) {
+        this.opsystem = opsystem;
+    }
+    public  String getColour() {
+        return  colour;
+    }
+    public void setColour(String colour) {
+        this.colour = colour;
+    }
+    @Override
+    public String toString() {
+        return "Ноутбук{" +
+                "Модель = ''" + model + '\'' +
+                ", Оперативная память = " + ram +
+                ", Диагональ = " + diagonal +
+                ", Жесткий диск = " + harddisc +
+                ", Операционная система = " + opsystem +
+                ", Цвет = " + colour + '\'' +
+                '}';
+    }
+
+    public static void filterNotebooks(Map<String, Object> filters, List<Notebook> Notebook_ones) {
+        for (Notebook notebook : Notebook_ones) {
+            boolean passfilter = true;
+            for (Map.Entry<String, Object> entry : filters.entrySet()) {
+                String filterKey = entry.getKey();
+                Object filterValue = entry.getValue();
+                switch (filterKey) {
+                    case "1":
+                        if (!notebook.getModel().equals(filterValue)) {
+                            passfilter = false;
+                        }
+                        break;
+                    case "2":
+                        if (notebook.getRam() < (int) filterValue) {
+                            passfilter = false;
+                        }
+                        break;
+                    case "3":
+                        if (notebook.getDiagonal() < (int) filterValue) {
+                            passfilter = false;
+                        }
+                        break;
+                    case "4":
+                        if (notebook.getHarddisc() < (int) filterValue) {
+                            passfilter = false;
+                        }
+                        break;
+                    case "5":
+                        if (!notebook.getOpsystem().equals(filterValue)) {
+                            passfilter = false;
+                        }
+                        break;
+                    case "6":
+                        if (!notebook.getColour().equals(filterValue)) {
+                            passfilter = false;
+                        }
+                        break;
+                    default:
+                        System.out.println("Введен некорректный критерий фильтрации");
+
+                }
+                if (!passfilter) {
+                    break;
+                }
+            }
+            if (passfilter) {
+                System.out.println(notebook);
+            }
+        }
+    }
+
+    public static void main(String[] args) {
+        Scanner scanner = new Scanner(System.in);
+
+        List<Notebook> Notebook_ones = new ArrayList<>();
+        Notebook_ones.add(new Notebook("Lenovo", 8, 18, 4, "Windows", "Металлик серый"));
+        Notebook_ones.add(new Notebook("Asus", 16, 21, 18, "Windows", "Черный"));
+        Notebook_ones.add(new Notebook("Acer", 8, 28, 32, "Linux", "Синий"));
+        Notebook_ones.add(new Notebook("Hp", 8, 18, 4, "Windows", "Белый"));
+        Notebook_ones.add(new Notebook("Mac", 32, 21, 24, "Mac", "Черный"));
+
+
+        System.out.println("Модель - 1,\nОперативная память, Гб - 2,\nДиагональ, дюймов - 3,\nЖесткий диск - 4,\nОперационная система - 5,\nЦвет - 6");
+        System.out.println("Введите номер критерия фильтрации (1-7): ");
+        String filterKey = String.valueOf(scanner.nextInt());
+
+
+        if (filterKey.equals("6")) {
+            System.out.println("Возможные цвета: ");
+
+            scanner.nextLine();
+            System.out.println("Введите минимальные значение для фильтрации: ");
+
+            String filterValue = scanner.nextLine();
+
+            Map<String, Object> filters = new HashMap<>();
+
+            filters.put(filterKey, filterValue);
+
+            filterNotebooks(filters, Notebook_ones);
+
+
+        }
+    }
+
+}
+
+
+
+
+//======================================================================
+
+package Sem_6.hw_6;
+
+import java.util.*;
+
+public class Notebook {
+    private String model;
+    private int ram;
+    private int diagonal;
+    private int harddisc;
+    private String opsystem;
+    private String colour;
+
+    public Notebook(String model, int ram, int diagonal, int harddisc, String opsystem, String colour) {
+        this.model = model;
+        this.ram = ram;
+        this.diagonal = diagonal;
+        this.harddisc = harddisc;
+        this.opsystem = opsystem;
+        this.colour = colour;
+
+    }
+    public String getModel() {
+        return model;
+    }
+    public void setModel(String model) {
+        this.model = model;
+    }
+    public int getRam() {
+        return ram;
+    }
+    public void setRam(int ram) {
+        this.ram = ram;
+    }
+    public int getDiagonal() {
+        return diagonal;
+    }
+    public void setSsd(int diagonal) {
+        this.diagonal = diagonal;
+    }
+    public int getHarddisc() {
+        return harddisc;
+    }
+    public void setHarddisc(int harddisc) {
+        this.harddisc = harddisc;
+    }
+    public String getOpsystem() {
+        return opsystem;
+    }
+    public void setOpsystem(String opsystem) {
+        this.opsystem = opsystem;
+    }
+    public  String getColour() {
+        return  colour;
+    }
+    public void setColour(String colour) {
+        this.colour = colour;
+    }
+    @Override
+    public String toString() {
+        return "Ноутбук{" +
+                "Модель = ''" + model + '\'' +
+                ", Оперативная память = " + ram +
+                ", Диагональ = " + diagonal +
+                ", Жесткий диск = " + harddisc +
+                ", Операционная система = " + opsystem +
+                ", Цвет = " + colour + '\'' +
+                '}';
+    }
+
+    public static void filterNotebooks(Map<String, Object> filters, List<Notebook> Notebook_ones) {
+        for (Notebook notebook : Notebook_ones) {
+            boolean passfilter = true;
+            for (Map.Entry<String, Object> entry : filters.entrySet()) {
+                String filterKey = entry.getKey();
+                Object filterValue = entry.getValue();
+                switch (filterKey) {
+                    case "1":
+                        if (!notebook.getModel().equals(filterValue)) {
+                            passfilter = false;
+                        }
+                        break;
+                    case "2":
+                        if (notebook.getRam() < (int) filterValue) {
+                            passfilter = false;
+                        }
+                        break;
+                    case "3":
+                        if (notebook.getDiagonal() < (int) filterValue) {
+                            passfilter = false;
+                        }
+                        break;
+                    case "4":
+                        if (notebook.getHarddisc() < (int) filterValue) {
+                            passfilter = false;
+                        }
+                        break;
+                    case "5":
+                        if (!notebook.getOpsystem().equals(filterValue)) {
+                            passfilter = false;
+                        }
+                        break;
+                    case "6":
+                        if (!notebook.getColour().equals(filterValue)) {
+                            passfilter = false;
+                        }
+                        break;
+                    default:
+                        System.out.println("Введен некорректный критерий фильтрации");
+
+                }
+                if (!passfilter) {
+                    break;
+                }
+            }
+            if (passfilter) {
+                System.out.println(notebook);
+            }
+        }
+    }
+
+    public static void main(String[] args) {
+        Scanner scanner = new Scanner(System.in);
+
+        List<Notebook> Notebook_ones = new ArrayList<>();
+        Notebook_ones.add(new Notebook("Lenovo", 8, 18, 4, "Windows", "Металлик серый"));
+        Notebook_ones.add(new Notebook("Asus", 16, 21, 18, "Windows", "Черный"));
+        Notebook_ones.add(new Notebook("Acer", 8, 28, 32, "Linux", "Синий"));
+        Notebook_ones.add(new Notebook("Hp", 8, 18, 4, "Windows", "Белый"));
+        Notebook_ones.add(new Notebook("Mac", 32, 21, 24, "Mac", "Черный"));
+
+
+        System.out.println("Модель - 1,\nОперативная память, Гб - 2,\nДиагональ, дюймов - 3,\nЖесткий диск - 4,\nОперационная система - 5,\nЦвет - 6");
+        System.out.println("Введите номер критерия фильтрации (1-7): ");
+        String filterKey = String.valueOf(scanner.nextInt());
+
+
+        if (filterKey.equals("6")) {
+            System.out.println("Возможные цвета: ");
+        }
+
+            scanner.nextLine();
+            System.out.println("Введите минимальные значение для фильтрации: ");
+
+            String filterValue = scanner.nextLine();
+
+            Map<String, Object> filters = new HashMap<>();
+
+            filters.put(filterKey, filterValue);
+
+            filterNotebooks(filters, Notebook_ones);
+
+
+        }
+
+
+}
+
+
+
+
+//======================================================================
+package Sem_6.hw_6;
+
+import java.util.*;
+
+public class Notebook {
+    private String model;
+    private int ram;
+    private int diagonal;
+    private int hardDisk;
+    private String opsystem;
+    private String colour;
+
+    public Notebook(String model, int ram, int diagonal, int harddisc, String opsystem, String colour) {
+        this.model = model;
+        this.ram = ram;
+        this.diagonal = diagonal;
+        this.hardDisk = harddisc;
+        this.opsystem = opsystem;
+        this.colour = colour;
+    }
+    public String getModel() {
+        return model;
+    }
+    public void setModel(String model) {
+        this.model = model;
+    }
+    public int getRam() {
+        return ram;
+    }
+    public void setRam(int ram) {
+        this.ram = ram;
+    }
+    public int getDiagonal() {
+        return diagonal;
+    }
+    public void setSsd(int diagonal) {
+        this.diagonal = diagonal;
+    }
+    public int getHarddisc() {
+        return hardDisk;
+    }
+    public void setHarddisc(int harddisc) {
+        this.hardDisk = harddisc;
+    }
+    public String getOpsystem() {
+        return opsystem;
+    }
+    public void setOpsystem(String opsystem) {
+        this.opsystem = opsystem;
+    }
+    public  String getColour() {
+        return  colour;
+    }
+    public void setColour(String colour) {
+        this.colour = colour;
+    }
+    @Override
+    public String toString() {
+        return "Ноутбук {" +
+                "Модель = '" + model + '\'' +
+                ", Оперативная память = " + ram + "Гб" +
+                ", Диагональ = " + diagonal + "'" +
+                ", Жесткий диск = " + hardDisk + "Гб" +
+                ", Операционная система = " + opsystem +
+                ", Цвет = " + colour + '\'' +
+                '}';
+    }
+
+    public static void filterNotebooks(Map<String, String> filters, List<Notebook> Notebook_ones) {
+        for (Notebook notebook : Notebook_ones) {
+            boolean passfilter = true;
+            for (Map.Entry<String, String> entry : filters.entrySet()) {
+                String filterKey = entry.getKey();
+                String filterValue = entry.getValue();
+                switch (filterKey) {
+                    case "1":
+                        if (!notebook.getModel().equalsIgnoreCase(filterValue)) {
+                            passfilter = false;
+                        }
+                        break;
+                    case "2":
+                        if (notebook.getRam() < Integer.parseInt(filterValue)) {
+                            passfilter = false;
+                        }
+                        break;
+                    case "3":
+                        if (notebook.getDiagonal() < Integer.parseInt(filterValue)) {
+                            passfilter = false;
+                        }
+                        break;
+                    case "4":
+                        if (notebook.getHarddisc() < Integer.parseInt(filterValue)){
+                            passfilter = false;
+                        }
+                        break;
+                    case "5":
+                        if (!notebook.getOpsystem().equalsIgnoreCase(filterValue)) {
+                            passfilter = false;
+                        }
+                        break;
+                    case "6":
+                        if (!notebook.getColour().equalsIgnoreCase(filterValue)) {
+                            passfilter = false;
+                        }
+                        break;
+                    default:
+                        System.out.println("Введен некорректный критерий фильтрации");
+                        return;
+
+
+                }
+                if (!passfilter) {
+                    break;
+                }
+            }
+            if (passfilter) {
+                System.out.println(notebook);
+            }
+        }
+    }
+
+    public static void main(String[] args) {
+        Scanner scanner = new Scanner(System.in);
+
+        List<Notebook> Notebook_ones = new ArrayList<>();
+        Notebook_ones.add(new Notebook("Lenovo", 8, 18, 4, "Windows", "Металлик"));
+        Notebook_ones.add(new Notebook("Lenovo", 8, 18, 4, "Windows", "Белый"));
+        Notebook_ones.add(new Notebook("Lenovo", 12, 21, 12, "Windows", "Белый"));
+        Notebook_ones.add(new Notebook("Asus", 16, 21, 18, "Windows", "Черный"));
+        Notebook_ones.add(new Notebook("Acer", 12, 23, 18, "Windows", "Зеленый"));
+        Notebook_ones.add(new Notebook("Acer", 8, 28, 32, "Linux", "Синий"));
+        Notebook_ones.add(new Notebook("Hp", 8, 18, 4, "Windows", "Белый"));
+        Notebook_ones.add(new Notebook("Hp", 12, 18, 32, "Windows", "Синий"));
+        Notebook_ones.add(new Notebook("Mac", 32, 21, 24, "Mac", "Черный"));
+        Notebook_ones.add(new Notebook("Mac", 8, 22, 28, "Mac", "Металлик"));
+
+
+        System.out.println("Модель - 1,\nОперативная память, Гб - 2,\nДиагональ, дюймов - 3,\nЖесткий диск - 4,\nОперационная система - 5,\nЦвет - 6");
+        System.out.println("Введите номер критерия фильтрации (1-6): ");
+        String filterKey = String.valueOf(scanner.nextInt());
+        switch (filterKey) {
+            case "1":
+                System.out.println("Выбор моделей:");
+                Set<String> uniqueValuesModel = new HashSet<>();
+                for (Notebook Notebook : Notebook_ones) {
+                    uniqueValuesModel.add(Notebook.getModel());
+                }
+                for (String valueModel : uniqueValuesModel) {
+                    System.out.printf(valueModel + " ");
+                }
+                System.out.println();
+                System.out.println("Введите значение для фильтрации по модели: ");
+                break;
+
+            case "2":
+                System.out.println("Диапазон ram:");
+                Set<Integer> uniqueValuesRam = new TreeSet<>();
+                for (Notebook Notebook : Notebook_ones) {
+                    uniqueValuesRam.add(Notebook.getRam());
+                }
+                for (Integer valueRam : uniqueValuesRam) {
+                    System.out.printf(valueRam + " ");
+                }
+                System.out.println();
+                System.out.println("Введите минимальное значение для фильтрации по оперативной памяти: ");
+                break;
+
+            case "3":
+                System.out.println("Доступные диагонали:");
+                Set<Integer> uniqueValuesDiagonal = new TreeSet<>();
+                for (Notebook Notebook : Notebook_ones) {
+                    uniqueValuesDiagonal.add(Notebook.getDiagonal());
+                }
+                for (Integer valueDiagonal : uniqueValuesDiagonal) {
+                    System.out.printf(valueDiagonal + " ");
+                }
+                System.out.println();
+                System.out.println("Введите минимальное значение для фильтрации по длине диагонали: ");
+                break;
+
+            case "4":
+                System.out.println("Возможные объемы жестких дисков:");
+                Set<Integer> uniqueValuesHdd = new TreeSet<>();
+                for (Notebook Notebook : Notebook_ones) {
+                    uniqueValuesHdd.add(Notebook.getDiagonal());
+                }
+
+                for (Integer valueHdd : uniqueValuesHdd) {
+                    System.out.printf(valueHdd + " ");
+                }
+                System.out.println();
+                System.out.println("Введите минимальное значение из доступных объемов жестких дисков: ");
+                break;
+
+            case "5":
+                System.out.println("Доступные операционные системы:");
+                Set<String> uniqueValuesOpp = new TreeSet<>();
+                for (Notebook Notebook : Notebook_ones) {
+                    uniqueValuesOpp.add(Notebook.getOpsystem());
+                }
+                for (String valueOpp : uniqueValuesOpp) {
+                    System.out.printf(valueOpp + " ");
+                }
+                System.out.println();
+                System.out.println("Введите значение для фильтрации по оперативной системе: ");
+                break;
+
+            case "6":
+
+                System.out.println("Доступные цвета:");
+                Set<String> uniqueValuesColours = new TreeSet<>();
+                for (Notebook Notebook : Notebook_ones) {
+                    uniqueValuesColours.add(Notebook.getColour());
+                }
+
+                for (String valueColour : uniqueValuesColours) {
+                    System.out.printf(valueColour + " ");
+                }
+                System.out.println();
+                System.out.println("Введите значение для фильтрации по цвету: ");
+                break;
+
+            default:
+                System.out.println("Введён неверный параметр");
+                return;
+        }
+
+//        scanner.nextLine();
+
+        scanner.nextLine();
+
+        String filterValue = scanner.nextLine();
+
+        Map<String, String> filters = new HashMap<>();
+
+        filters.put(filterKey, filterValue);
+
+        filterNotebooks(filters, Notebook_ones);
+    }
+}
+
+---------------------------------------------------------------
+package Sem_6.hw_6;
+
+import java.util.*;
+
+public class Notebook {
+    private String model;
+    private int ram;
+    private int diagonal;
+    private int hardDisk;
+    private String opsystem;
+    private String colour;
+
+    public Notebook(String model, int ram, int diagonal, int harddisc, String opsystem, String colour) {
+        this.model = model;
+        this.ram = ram;
+        this.diagonal = diagonal;
+        this.hardDisk = harddisc;
+        this.opsystem = opsystem;
+        this.colour = colour;
+    }
+
+    public String getModel() {
+        return model;
+    }
+
+    public void setModel(String model) {
+        this.model = model;
+    }
+
+    public int getRam() {
+        return ram;
+    }
+
+    public void setRam(int ram) {
+        this.ram = ram;
+    }
+
+    public int getDiagonal() {
+        return diagonal;
+    }
+
+    public void setSsd(int diagonal) {
+        this.diagonal = diagonal;
+    }
+
+    public int getHarddisc() {
+        return hardDisk;
+    }
+
+    public void setHarddisc(int harddisc) {
+        this.hardDisk = harddisc;
+    }
+
+    public String getOpsystem() {
+        return opsystem;
+    }
+    public void setOpsystem(String opsystem) {
+        this.opsystem = opsystem;
+    }
+
+    public  String getColour() {
+
+        return  colour;
+
+    }
+    public void setColour(String colour) {
+
+        this.colour = colour;
+
+    }
+    @Override
+
+    public String toString() {
+
+        return "Ноутбук {" +
+                "Модель = '" + model + '\'' +
+                ", Оперативная память = " + ram + "Гб" +
+                ", Диагональ = " + diagonal + "'" +
+                ", Жесткий диск = " + hardDisk + "Гб" +
+                ", Операционная система = " + opsystem +
+                ", Цвет = " + colour + '\'' +
+                '}';
+
+    }
+    public static void filterNotebooks(Map<String, String> filters, Map<String, Integer> values, Notebook[] Notebook_ones) {
+        for (Notebook notebook : Notebook_ones) {
+            boolean passfilter = true;
+            for (Map.Entry<String, String> entry : filters.entrySet()) {
+                String filterKey = entry.getKey();
+                String filterValue = entry.getValue();
+                switch (filterKey) {
+
+                    case "1":
+                        if (!notebook.getModel().equals(filterValue)) {
+                            passfilter = false;
+                        }
+                        break;
+
+                    case "2":
+                        if (notebook.getRam() < Integer.parseInt(filterValue)) {
+                            passfilter = false;
+                        }
+                        break;
+
+                    case "3":
+                        if (notebook.getDiagonal() < Integer.parseInt(filterValue)) {
+                            passfilter = false;
+                        }
+                        break;
+
+                    case "4":
+                        if (notebook.getHarddisc() < Integer.parseInt(filterValue)) {
+                            passfilter = false;
+                        }
+                        break;
+
+                    case "5":
+                        if (!notebook.getOpsystem().equals(filterValue)) {
+                            passfilter = false;
+                        }
+                        break;
+
+                    case "6":
+                        if (!notebook.getColour().equals(filterValue)) {
+                            passfilter = false;
+                        }
+                        break;
+
+                    default:
+                        System.out.println("Введен некорректный критерий фильтрации");
+                        return;
+                }
+
+                if (passfilter) {
+                    System.out.println(notebook);
+                    // System.out.println("Модель: " + notebook.getModel());
+
+                    // System.out.println("Оперативная память: " + notebook.getRam());
+
+                    // System.out.println("Диагональ: " + notebook.getDiagonal());
+
+                    // System.out.println("Жесткий диск: " + notebook.getHarddisc());
+
+                    // System.out.println("Операционная система: " + notebook.getOpsystem());
+
+                    // System.out.println("Цвет: " + notebook.getColour());
+                }
+            }
+        }
+
+    }
+
+
+    public static void main(String[] args) {
+        Notebook[] Notebook_ones = {
+                new Notebook("Lenovo", 8, 18, 4, "Windows", "Металлик"),
+                new Notebook("Asus", 16, 21, 18, "Windows", "Черный"),
+                new Notebook("Acer", 8, 28, 32, "Linux", "Синий"),
+                new Notebook("Acer", 8, 18, 4, "Windows", "Металлик"),
+                new Notebook("Hp", 8, 18, 4, "Windows", "Белый"),
+                new Notebook("Hp", 16, 21, 18, "Windows", "Черный"),
+                new Notebook("Mac", 32, 21, 24, "Mac", "Синий"),
+                new Notebook("Mac", 32, 21, 24, "Mac", "Черный"),
+        };
+
+        System.out.println("Модель - 1,\nОперативная память, Гб - 2,\nДиагональ, дюймов - 3,\nЖесткий диск - 4,\nОперационная система - 5,\nЦвет - 6");
+        System.out.println("Введите номер критерия фильтрации (1-6): ");
+
+        Scanner scanner = new Scanner(System.in);
+
+        String [] filters = scanner.nextLine().split(",");
+        Map<String, String> filtersKeys = new HashMap<>();
+        Map<String, Integer> valuesKeys = new HashMap<>();
+
+        for (String filterKey : filters) {
+            System.out.println("Введите значение: ");
+            for (String filter : filters) {
+                switch (filter) {
+                    case "1":
+                        System.out.println("Выбор моделей:");
+                        Set<String> uniqueValuesModel = new HashSet<>();
+                        for (Notebook Notebook : Notebook_ones) {
+                            uniqueValuesModel.add(Notebook.getModel());
+                        }
+                        for (String valueModel : uniqueValuesModel) {
+                            System.out.printf(valueModel + " ");
+                        }
+                        System.out.println();
+                        System.out.println("Введите значение для фильтрации по модели: ");
+                        break;
+
+                    case "2":
+                        System.out.println("Диапазон ram:");
+                        Set<Integer> uniqueValuesRam = new TreeSet<>();
+                        for (Notebook Notebook : Notebook_ones) {
+                            uniqueValuesRam.add(Notebook.getRam());
+                        }
+                        for (Integer valueRam : uniqueValuesRam) {
+                            System.out.printf(valueRam + " ");
+                        }
+                        System.out.println();
+                        System.out.println("Введите минимальное значение для фильтрации по оперативной памяти: ");
+                        break;
+
+                    case "3":
+                        System.out.println("Доступные диагонали:");
+                        Set<Integer> uniqueValuesDiagonal = new TreeSet<>();
+                        for (Notebook Notebook : Notebook_ones) {
+                            uniqueValuesDiagonal.add(Notebook.getDiagonal());
+                        }
+                        for (Integer valueDiagonal : uniqueValuesDiagonal) {
+                            System.out.printf(valueDiagonal + " ");
+                        }
+                        System.out.println();
+                        System.out.println("Введите минимальное значение для фильтрации по длине диагонали: ");
+                        break;
+
+                    case "4":
+                        System.out.println("Возможные объемы жестких дисков:");
+                        Set<Integer> uniqueValuesHdd = new TreeSet<>();
+                        for (Notebook Notebook : Notebook_ones) {
+                            uniqueValuesHdd.add(Notebook.getDiagonal());
+                        }
+
+                        for (Integer valueHdd : uniqueValuesHdd) {
+                            System.out.printf(valueHdd + " ");
+                        }
+                        System.out.println();
+                        System.out.println("Введите минимальное значение из доступных объемов жестких дисков: ");
+                        break;
+
+                    case "5":
+                        System.out.println("Доступные операционные системы:");
+                        Set<String> uniqueValuesOpp = new TreeSet<>();
+                        for (Notebook Notebook : Notebook_ones) {
+                            uniqueValuesOpp.add(Notebook.getOpsystem());
+                        }
+                        for (String valueOpp : uniqueValuesOpp) {
+                            System.out.printf(valueOpp + " ");
+                        }
+                        System.out.println();
+                        System.out.println("Введите значение для фильтрации по оперативной системе: ");
+                        break;
+
+                    case "6":
+
+                        System.out.println("Доступные цвета:");
+                        Set<String> uniqueValuesColours = new TreeSet<>();
+                        for (Notebook Notebook : Notebook_ones) {
+                            uniqueValuesColours.add(Notebook.getColour());
+                        }
+
+                        for (String valueColour : uniqueValuesColours) {
+                            System.out.printf(valueColour + " ");
+                        }
+                        System.out.println();
+                        System.out.println("Введите значение для фильтрации по цвету: ");
+                        break;
+
+                    default:
+                        System.out.println("Введён неверный параметр");
+                        return;
+                }
+
+            }
+            String filterValue = scanner.nextLine();
+            filtersKeys.put(filterKey, filterValue);
+
+        }
+        filterNotebooks(filtersKeys, valuesKeys, Notebook_ones);
+        scanner.close();
+    }
+}
+
+
+---------------------------------------------------------------------------------------------
+
+package Sem_6.hw_6;
+
+import java.util.*;
+
+public class Notebook {
+    private String model;
+    private int ram;
+    private double diagonal;
+    private int hardDisk;
+    private String opsystem;
+    private String colour;
+
+    public Notebook(String model, int ram, double diagonal, int harddisc, String opsystem, String colour) {
+        this.model = model;
+        this.ram = ram;
+        this.diagonal = diagonal;
+        this.hardDisk = harddisc;
+        this.opsystem = opsystem;
+        this.colour = colour;
+    }
+
+    public String getModel() {
+        return model;
+    }
+
+    public void setModel(String model) {
+        this.model = model;
+    }
+
+    public int getRam() {
+        return ram;
+    }
+
+    public void setRam(int ram) {
+        this.ram = ram;
+    }
+
+    public double getDiagonal() {
+        return diagonal;
+    }
+
+    public void setSsd(double diagonal) {
+        this.diagonal = diagonal;
+    }
+
+    public int getHarddisc() {
+        return hardDisk;
+    }
+
+    public void setHarddisc(int harddisc) {
+        this.hardDisk = harddisc;
+    }
+
+    public String getOpsystem() {
+        return opsystem;
+    }
+
+    public void setOpsystem(String opsystem) {
+        this.opsystem = opsystem;
+    }
+
+    public String getColour() {
+        return colour;
+    }
+
+    public void setColour(String colour) {
+        this.colour = colour;
+    }
+
+    @Override
+    public String toString() {
+        return "Ноутбук {" +
+                "Модель = '" + model + '\'' +
+                ", Оперативная память = " + ram + "Гб" +
+                ", Диагональ = " + diagonal + "'" +
+                ", Жесткий диск = " + hardDisk + "Гб" +
+                ", Операционная система = " + opsystem +
+                ", Цвет = " + colour + '\'' +
+                '}';
+    }
+
+    public static void main(String[] args) {
+
+        Set<Notebook> Notebook_ones = new HashSet<>();
+        Notebook_ones.add(new Notebook("Lenovo", 8, 18, 4, "Windows", "Металлик"));
+        Notebook_ones.add(new Notebook("Lenovo", 8, 18, 4, "Windows", "Белый"));
+        Notebook_ones.add(new Notebook("Lenovo", 12, 21, 12, "Windows", "Белый"));
+        Notebook_ones.add(new Notebook("Asus", 16, 21, 18, "Windows", "Черный"));
+        Notebook_ones.add(new Notebook("Acer", 12, 23, 18, "Windows", "Зеленый"));
+        Notebook_ones.add(new Notebook("Acer", 8, 28, 32, "Linux", "Синий"));
+        Notebook_ones.add(new Notebook("Hp", 8, 18, 4, "Windows", "Белый"));
+        Notebook_ones.add(new Notebook("Hp", 12, 18, 32, "Windows", "Синий"));
+        Notebook_ones.add(new Notebook("Mac", 32, 21, 24, "Mac", "Черный"));
+        Notebook_ones.add(new Notebook("Mac", 8, 22, 28, "Mac", "Металлик"));
+
+        filterNotebooks(Notebook_ones);
+    }
+
+    public static void filterNotebooks(Set<Notebook> Notebook_ones) {
+        Scanner scanner = new Scanner(System.in);
+        Map<Integer, Object> filters = new HashMap<>();
+        System.out.println("Модель - 1,\nОперативная память, Гб - 2,\nДиагональ, дюймов - 3,\nЖесткий диск - 4,\nОперационная система - 5,\nЦвет - 6");
+        int choice = scanner.nextInt();
+        scanner.nextLine();
+
+        switch (choice) {
+            case 1:
+                System.out.println("Выбор моделей:");
+                Set<String> uniqueValuesModel = new HashSet<>();
+                for (Notebook Notebook : Notebook_ones) {
+                    uniqueValuesModel.add(Notebook.getModel());
+                }
+                for (String valueModel : uniqueValuesModel) {
+                    System.out.printf(valueModel + " ");
+                }
+                System.out.println();
+                System.out.println("Введите значение для фильтрации по модели: ");
+                String model = scanner.nextLine();
+                filters.put(choice, model);
+                break;
+            case 2:
+                System.out.println("Диапазон ram:");
+                Set<Integer> uniqueValuesRam = new TreeSet<>();
+                for (Notebook Notebook : Notebook_ones) {
+                    uniqueValuesRam.add(Notebook.getRam());
+                }
+                for (Integer valueRam : uniqueValuesRam) {
+                    System.out.printf(valueRam + " ");
+                }
+                System.out.println();
+                System.out.println("Введите минимальное значение для фильтрации по RAM:");
+                int minRam = scanner.nextInt();
+                filters.put(choice, minRam);
+                break;
+            case 3:
+                System.out.println("Доступные диагонали:");
+                Set<Double> uniqueValuesDiagonal = new TreeSet<>();
+                for (Notebook Notebook : Notebook_ones) {
+                    uniqueValuesDiagonal.add(Notebook.getDiagonal());
+                }
+                for (Double valueDiagonal : uniqueValuesDiagonal) {
+                    System.out.printf(valueDiagonal + " ");
+                }
+                System.out.println();
+                System.out.println("Введите минимальное значение для фильтрации по длине диагонали: ");
+                double minDiagonal = scanner.nextInt();
+                filters.put(choice, minDiagonal);
+                break;
+            case 4:
+                System.out.println("Возможные объемы жестких дисков:");
+                Set<Integer> uniqueValuesHdd = new TreeSet<>();
+                for (Notebook Notebook : Notebook_ones) {
+                    uniqueValuesHdd.add(Notebook.getHarddisc());
+                }
+
+                for (Integer valueHdd : uniqueValuesHdd) {
+                    System.out.printf(valueHdd + " ");
+                }
+                System.out.println();
+                System.out.println("Введите минимальное значение из доступных объемов жестких дисков: ");
+                int minHarddisc = scanner.nextInt();
+                filters.put(choice, minHarddisc);
+                break;
+            case 5:
+                System.out.println("Доступные операционные системы:");
+                Set<String> uniqueValuesOpp = new TreeSet<>();
+                for (Notebook Notebook : Notebook_ones) {
+                    uniqueValuesOpp.add(Notebook.getOpsystem());
+                }
+                for (String valueOpp : uniqueValuesOpp) {
+                    System.out.printf(valueOpp + " ");
+                }
+                System.out.println();
+                System.out.println("Введите значение для фильтрации по оперативной системе: ");
+                String opsystem = scanner.nextLine();
+                filters.put(choice, opsystem);
+                break;
+            case 6:
+                System.out.println("Доступные цвета:");
+                Set<String> uniqueValuesColours = new TreeSet<>();
+                for (Notebook Notebook : Notebook_ones) {
+                    uniqueValuesColours.add(Notebook.getColour());
+                }
+
+                for (String valueColour : uniqueValuesColours) {
+                    System.out.printf(valueColour + " ");
+                }
+                System.out.println();
+                System.out.println("Введите значение для фильтрации по цвету: ");
+                String colour = scanner.nextLine();
+                filters.put(choice, colour);
+                break;
+            default:
+                System.out.println("Некорректный выбор");
+                return;
+        }
+
+        List<Notebook> filteredNotebooks = new ArrayList<>();
+
+        for (Notebook notebook : Notebook_ones) {
+            boolean passfilter = true;
+            for (Map.Entry<Integer, Object> entry : filters.entrySet()) {
+                int filterKey = entry.getKey();
+                Object filterValue = entry.getValue();
+                switch (filterKey) {
+                    case 1:
+                        if (!notebook.getModel().equalsIgnoreCase((String) filterValue)) {
+                            passfilter = false;
+                        }
+                        break;
+                    case 2:
+                        if (notebook.getRam() < (int) filterValue) {
+                            passfilter = false;
+                        }
+                        break;
+                    case 3:
+                        if (notebook.getDiagonal() < (double) filterValue) {
+                            passfilter = false;
+                        }
+                        break;
+                    case 4:
+                        if (notebook.getHarddisc() < (int) filterValue) {
+                            passfilter = false;
+                        }
+                        break;
+                    case 5:
+                        if (!notebook.getOpsystem().equalsIgnoreCase((String) filterValue)) {
+                            passfilter = false;
+                        }
+                        break;
+                    case 6:
+                        if (!notebook.getColour().equalsIgnoreCase((String) filterValue)) {
+                            passfilter = false;
+                        }
+                        break;
+                    default:
+                        System.out.println("Введен некорректный критерий фильтрации");
+                        return;
+
+
+                }
+                if (!passfilter) {
+                    break;
+                }
+            }
+            if (passfilter) {
+                filteredNotebooks.add(notebook);
+            }
+        }
+        if (filteredNotebooks.isEmpty()) {
+            System.out.println("Ноутбуков, отвечающих заданным критериям, не найдено");
+        } else {
+            System.out.println("Ноутбуки, отвечающие критериям:");
+            for (Notebook notebook : filteredNotebooks) {
+                System.out.println(notebook);
+            }
+        }
+    }
+}
+
+_____________________________________________________________________________________________________________________________Exeption
+
+
+import java.util.Scanner;
+
+/*
+Реализуйте метод, принимающий в качестве аргумента целочисленный массив и некоторое значение.
+Метод ищет в массиве заданное значение и возвращает его индекс. При этом, например:
+если длина массива меньше некоторого заданного минимума, метод возвращает -1, в качестве кода ошибки.
+если искомый элемент не найден, метод вернет -2 в качестве кода ошибки.
+если вместо массива пришел null, метод вернет -3
+придумайте свои варианты исключительных ситуаций и верните соответствующие коды ошибок.
+Напишите метод, в котором реализуйте взаимодействие с пользователем.
+То есть, этот метод запросит искомое число у пользователя, вызовет первый,
+обработает возвращенное значение и покажет читаемый результат пользователю. Например, если вернулся -2,
+пользователю выведется сообщение: “Искомый элемент не найден”.
+ */
+public class ex2 {
+    public static void main(String[] args) {
+        foo1();
+    }
+    public static int foo(int[] arr, int num){
+        if (arr == null) return -3;
+        if (arr.length < 5) return -1;
+        for (int i = 0; i < arr.length; i++) {
+            if (arr[i] == num) return i;
+        }
+        return -2;
+    }
+    public static void foo1(){
+        int[] arr = {1,2,3,4,5};
+        Scanner scanner = new Scanner(System.in);
+        System.out.println("Введите число:");
+        System.out.println(">>> ");
+        int num = scanner.nextInt();
+        int res = foo(arr, num);
+        //int res = foo(null, num);
+        foo2(res);
+    }
+    public static void foo2(int num){
+        if (num == -2){
+            System.out.println("Искомый элемент не найден");
+        }
+        else if (num == -1){
+            System.out.println("Длина массива меньше 5");
+        }
+        else if (num == -3){
+            System.out.println("Передан null");
+        }
+        else{
+            System.out.printf("Индекс элемента %d", num);
+        }
+    }
+}
+
+
+____________________________________________________________________________________________________________________________________
+
+
+/*
+Реализуйте метод, принимающий в качестве аргумента целочисленный двумерный массив.
+Необходимо посчитать и вернуть сумму элементов этого массива.
+При этом накладываем на метод 2 ограничения: метод может работать только с квадратными массивами
+(кол-во строк = кол-ву столбцов), и в каждой ячейке может лежать только значение 0 или 1.
+Если нарушается одно из условий, метод должен бросить RuntimeException с сообщением об ошибке.
+ */
+public class ex3 {
+    public static void main(String[] args) {
+        int[][] arr = {{1,1,1},{1,1,1}};
+        try {
+            int res = sumArr(arr);
+            System.out.println(res);
+        } catch (RuntimeException e){
+            e.printStackTrace();
+        }
+        System.out.println("End");
+    }
+    public static int sumArr(int[][] arr){
+        int res = 0;
+        for (int i = 0; i < arr.length; i++) {
+            if (arr.length != arr[i].length){
+                throw new RuntimeException("Количество строк: "+ arr.length+ " количество столбцов в строке "+ i + ": "+ arr[i].length);
+            }
+            for (int j = 0; j < arr[i].length; j++) {
+                if (arr[i][j] !=0 && arr[i][j] !=1){
+                    throw new RuntimeException("Элемент (" + i + ", "+j +") отличен от 0 или 1");
+                }
+                res += arr[i][j];
+            }
+        }
+        return res;
+    }
+}
+
+
+_________________________________________________________________________________________________________________________________________
+
+
+
+import java.io.File;
+import java.io.FileNotFoundException;
+import java.io.FileWriter;
+import java.io.IOException;
+import java.util.HashMap;
+import java.util.LinkedHashMap;
+import java.util.Map;
+import java.util.Scanner;
+
+public class Main4 {
+/*
+Запишите в файл следующие строки:
+Анна=4
+Елена=5
+Марина=6
+Владимир=?
+Константин=?
+Иван=4
+Реализуйте метод, который считывает данные из файла и сохраняет в двумерный массив
+(либо HashMap, если студенты с ним знакомы). В отдельном методе нужно будет пройти по структуре данных,
+если сохранено значение ?, заменить его на соответствующее число. Если на каком-то месте встречается символ,
+отличный от числа или ?, бросить подходящее исключение.
+Записать в тот же файл данные с замененными символами ?.
+*/
+
+static Map<String, String> map = new LinkedHashMap<>();
+
+public static void main(String[] args) {
+String filePathForRead = "src/lesson2/test.txt";
+String filePathForWrite = "src/lesson2/test1.txt";
+try {
+readFile(filePathForRead);
+writeToFile(filePathForWrite);
+} catch (FileNotFoundException e){
+System.out.println("Не удалось считать файл");
+} catch (IOException e){
+System.out.println("Не удалось записать в файл");
+}
+}
+
+static void writeToFile(String filePath) throws IOException {
+try (FileWriter writer = new FileWriter(filePath)) {
+for (Map.Entry<String, String> entry : map.entrySet()) {
+writer.write(entry.toString());
+writer.write("\n");
+}
+}
+}
+
+static void readFile(String filePath) throws FileNotFoundException {
+File file = new File(filePath);
+try (Scanner scanner = new Scanner(file)) {
+while (scanner.hasNext()) {
+String line = scanner.nextLine();
+parseLine(line);
+}
+}
+}
+
+private static void parseLine(String line) {
+String[] arr = line.split("=");
+if (arr[1].equals("?")) {
+arr[1] = String.valueOf(arr[0].length());
+}
+map.put(arr[0], arr[1]);
+}
+}
+
+
+_________________________________________________________________________________________________
+
+package Exception;
+
+/*Напишите программу, которая проверяет, является ли введенная текстовая строка числом с плавающей точкой (float).
+Программа пытается преобразовать введенную строку в число float, и если это успешно, она выводит полученное число.
+Если преобразование не удалось, программа выдаёт сообщение об ошибке
+Your input is not a float number. Please, try again.
+и возвращает специальное значение Float.NaN, чтобы обозначить ошибку.
+
+На входе:
+
+
+'3.14'
+'Ivan'
+На выходе:
+
+
+3.14*/
+
+class IsFloat {
+    public static float isFloat(String input) {
+        try {
+            float number = Float.parseFloat(input);
+            return number;
+        } catch (NumberFormatException e) {
+            System.out.println("Your input is not a float number. Please, try again.");
+            return Float.NaN;
+        }
+    }
+}
+// Не удаляйте этот класс - он нужен для вывода результатов на экран и проверки
+class Printer {
+    public static void main(String[] args) {
+        String input;
+
+// При отправке кода на Выполнение, вы можете варьировать эти параметры
+        if (args.length == 0) {
+            input = "Ivan"; // По умолчанию используем "3.14", если аргумент не передан
+        }
+        else {
+            input = args[0];
+        }
+
+        float result = IsFloat.isFloat(input);
+        System.out.println(result);
+    }
+}
+
+
+________________________________________________________________________________________
+
+package Exception;
+
+
+/*Деление элементов массива на число
+
+Инструкция по использованию платформы
+
+
+
+Напишите программу, которая вычисляет значение выражения intArray[8] / d, гдеintArray- массив целых чисел, а d - делитель.
+Программа проверяет, имеется ли в массиве intArray элемент с индексом 8, и если нет, выводит сообщение о невозможности выполнения операции.
+Также программа проверяет, равен ли делитель d нулю, и если да, выводит соответствующее сообщение.
+
+На входе:
+
+
+'1 2 3 4 5 6 7 8 9'
+'1'
+На выходе:
+
+
+intArray[8] / d = 9 / 1 = 9.0
+9.0
+После запуска программы, если не переданы аргументы командной строки, то intArray будет {0, 1, 2, 3, 4, 5, 6, 7, 8, 9} и d будет равно 0. В этом случае результат выражения intArray[8] / d будет бесконечность (так как деление на 0).
+
+Таким образом, программа выведет сообщение:
+
+It's not possible to evaluate the expression - intArray[8] / d as d = 0.
+NaN
+В случае, если аргументы командной строки переданы, программа преобразует их в массив intArray и d соответственно. Затем вызывается метод expr, и результат выводится на экран, например:
+
+intArray[8] / d = 8 / 3 = 2.6666666666666665
+2.6666666666666665
+Программа должна выдавать следующие ошибки:
+
+Если длина массива меньше 9:
+It's not possible to evaluate the expression - intArray[8] / d as there is no 8th element in the given array.
+
+В этом случае, если массив имеет меньше 9 элементов, программа сообщает, что не удается вычислить выражение, так как в массиве нет 8-го элемента.
+
+Если d равно 0:
+It's not possible to evaluate the expression - intArray[8] / d as d = 0.
+
+Если d равно 0, программа сообщает, что не удается вычислить выражение, так как деление на 0 невозможно.
+
+Если условия не выполняются и программа успешно вычисляет результат, то выводится сообщение:
+intArray[8] / d = {значение} / {значение} = {результат}
+
+Где {значение} заменяется на соответствующие значения.
+
+Примеры входных данных и соответствующих сообщений об ошибках:
+
+Входные аргументы: 1 2 3 It's not possible to evaluate the expression - intArray[8] / d as there is no 8th element in the given array.
+
+Входные аргументы: 1 2 3 4 5 6 7 8 9 0
+It's not possible to evaluate the expression - intArray[8] / d as d = 0.
+
+Входные аргументы: 1 2 3 4 5 6 7 8 9 10
+intArray[8] / d = 9 / 10 = 0.9*/
+
+import java.util.Arrays;
+
+class Expr {
+    public static double expr(int[] intArray, int d) {
+        if (intArray.length < 9) {
+            System.out.println("It's not possible to evaluate the expression - intArray[8] / d as there is no 8th element in the given array.");
+            return Double.NaN;
+        }
+
+        if (d == 0) {
+            System.out.println("It's not possible to evaluate the expression - intArray[8] / d as d = 0.");
+            return Double.NaN;
+        }
+
+        double result = (double) intArray[8] / d;
+            System.out.printf("intArray[8] / d = %d / %d =  %.1f%n", intArray[8], d, result);
+
+//        System.out.println(result);
+        return result;
+    }
+}
+
+// Не удаляйте этот класс - он нужен для вывода результатов на экран и проверки
+
+class Printer {
+    public static void main(String[] args) {
+        int[] intArray;
+        int d;
+
+        if (args.length == 0) {
+            intArray = new int[]{10, 20, 30, 40, 50, 60, 70, 80, 90};           -----------------------------------------------intArray[8] / d = 90 / 1 =  90,0
+90.0
+            d = 1; // По умолчанию используем 0, если аргумент не передан
+        } else {
+            intArray = Arrays.stream(args[0].split(" ")).mapToInt(Integer::parseInt).toArray();
+            d = Integer.parseInt(args[1]); // Можно использовать значение по умолчанию или передать его как аргумент.
+        }
+
+        double result = Expr.expr(intArray, d);
+        System.out.println(result);
+    }
+}
+
+_________________________________________________________________________________________________________________________
+
+
+package Exception;
+
+/*
+* Напишите программу для выполнения арифметической операции деления двух целых чисел a и b.
+При этом программа должна проверить, что делитель b не равен нулю, и выполнить деление только в этом случае.
+Если b равен нулю, программа должна вывести сообщение о невозможности выполнения операции и вернуть результат равный нулю.
+После выполнения операции деления, программа также должна вывести сумму чисел a и b с помощью метода printSum.
+Если аргументы не переданы через командную строку, используйте значения по умолчанию.
+
+На входе:
+
+
+'12'
+'5'
+На выходе:
+
+
+17
+2.4*/
+
+public class Expr1 {
+    public static double expr(int a, int b) {
+        printSum(a, b);
+
+        if (b != 0) {
+            double result = (double) a / b;
+            return result;
+        } else {
+//            System.out.println("Невозможно выполнить операцию");
+            return 0;
+        }
+    }
+
+
+    public static void printSum(int a, int b) {
+        int sum = a + b;
+        System.out.println(sum);
+    }
+}
+
+// Не удаляйте этот класс - он нужен для вывода результатов на экран и проверки
+
+class Printer {
+    public static void main(String[] args) {
+        int a;
+        int b;
+
+        if (args.length == 0) {
+            a = 5;
+            b = 0; // Default values if no arguments are provided
+        } else {
+            a = Integer.parseInt(args[0]);
+            b = Integer.parseInt(args[1]);
+        }
+
+        double result = Expr1.expr(a, b);
+        System.out.println(result);
+
+    }
+}
+
+__________________________________________________________________________________
+
+package Exception;
+/*
+* Напишите программу, которая принимает символ a в качестве аргумента и выполняет следующую проверку:
+если символ a равен пробелу '', программа должна выбрасывать исключение с сообщением
+"Пустая строка введена.".
+В противном случае программа должна возвращать сообщение
+"Ваш ввод - [символ]", где [символ] заменяется на введенный символ a.
+
+На входе:
+
+
+'0'
+На выходе:
+
+
+Result: Your input was - 0
+* */
+public class Expr2 {
+    public static String expr(char a) throws Exception {
+        if (a == ' ') {
+            throw new Exception("Пустая строка введена.");
+        } else {
+            return "Ваш ввод - " + a;
+        }
+    }
+}
+
+
+class Printer {
+    public static void main(String[] args) {
+        char a;
+
+        if (args.length == 0) {
+            a = 'J'; // Значение по умолчанию, если аргументы не были предоставлены
+        } else {
+            a = args[0].charAt(0); // Преобразуйте первый аргумент командной строки в символ
+        }
+
+        try {
+            String result = Expr2.expr(a);
+            System.out.println("Result: " + result);
+        } catch (Exception e) {
+            System.err.println("Error: " + e.getMessage());
+        }
+    }
+}
+
+_____________________________________________________________________________________________
+
+package Exception;
+/*
+* Напишите программу, которая принимает символ a в качестве аргумента и выполняет следующую проверку:
+если символ a равен пробелу '', программа должна выбрасывать исключение с сообщением
+"Пустая строка введена.".
+В противном случае программа должна возвращать сообщение
+"Ваш ввод - [символ]", где [символ] заменяется на введенный символ a.
+
+На входе:
+
+
+'0'
+На выходе:
+
+
+Result: Your input was - 0
+* */
+public class Expr2 {
+    public static String expr(char a) throws Exception {
+        if (a == ' ') {
+            throw new Exception("Пустая строка введена.");
+        } else {
+            return "Ваш ввод - " + a;
+        }
+    }
+}
+
+
+class Printer {
+    public static void main(String[] args) {
+        char a;
+
+        if (args.length == 0) {
+            a = 'J'; // Значение по умолчанию, если аргументы не были предоставлены
+        } else {
+            a = args[0].charAt(0); // Преобразуйте первый аргумент командной строки в символ
+        }
+
+        try {
+            String result = Expr2.expr(a);
+            System.out.println("Result: " + result);
+        } catch (Exception e) {
+            System.err.println("Error: " + e.getMessage());
+        }
+    }
+}
+
+____________________________________________________________________________________________
+
+package Exception;
+
+import java.io.File;
+
+/*В качестве аргумента методу передаётся путь к файлу в виде
+строки. По этому пути мы делаем проверку существования файла. Если файл
+не существует, возвращаем значение -1, которое фактически сообщает об
+ошибке – нельзя запросить размер несуществующего файла. А если файл
+существует — вернётся его длина в байтах.*/
+public class Application {
+
+    public static void main(String[] args) {
+        System.out.println(getFileSize(new File("F:/х/Java/src/Exception/kc_house_data.csv")));
+    }
+    public static long getFileSize(File file){
+//    File file = new File(path);
+    if (!file.exists()) {
+        return -1L;
+    }
+    return file.length();
+    }
+}
+
+
+_______________________________________________________________________divide by zero
+package Exception;
+
+public class Divide {
+    public static void main(String[] args) {
+        System.out.println(divide(10,0));
+    }
+    public static int divide(int a1, int a2) {
+        if (a2 == 0){
+
+throw new RuntimeException("Divide by zero not permited");      }
+        return a1/a2;
+    }
+}
+
+
+______________________________________________________________
+
+package Itog_hw;
+
+import java.io.File;
+import java.io.FileNotFoundException;
+import java.io.FileWriter;
+import java.io.IOException;
+import java.util.Scanner;
+import java.util.logging.Logger;
+
+public class test1 {
+    static Logger logger = Logger.getAnonymousLogger();
+
+    public static void main(String[] args) {
+        Scanner scanner = new Scanner(System.in);
+        System.out.println("Введите данные, разделенные пробелом:\n- Фамилия Имя Отчество\n- дата рождения(dd.mm.yyyy)\n- номер "
+                + "телефона(цифры подряд без пробелов и знаков)\n- пол(символ латиницей f или m)");
+        String userData = scanner.nextLine();
+        scanner.close();
+
+        int index = indexOfElement(userData);
+        if (index == -1) {
+            System.out.println("Вы ввели недостаточное количество данных");
+        } else if (index == -2) {
+            System.out.println("Вы ввели больше данных, чем требуется");
+        } else {
+            decoder(index, userData);
+        }
+    }
+
+    public static int indexOfElement(String userData) {
+        try {
+            String[] data = userData.split(" ");
+            if (data.length < 6) {
+                return -1;
+            }
+            if (data.length > 6) {
+                return -2;
+            }
+            String lastName = data[0];
+            String firstName = data[1];
+            String middleName = data[2];
+            String birthDate = data[3];
+            long phoneNumber = Long.parseLong(data[4]);
+            char gender = data[5].charAt(0);
+            if (!isValidBirthDate(birthDate)) {
+                throw new IllegalArgumentException("Неверный формат даты рождения");
+            }
+            if (!isValidGender(gender)) {
+                throw new IllegalArgumentException("Неверный формат пола");
+            }
+            String fileName = lastName + ".txt";
+            String fileContent = String.format("%s %s %s %s %d %c", lastName, firstName, middleName, birthDate, phoneNumber, gender);
+            File file = new File(fileName);
+            if (file.exists()) {
+                if (fileContentContains(file, userData)) {
+                    System.out.println("Введенная строка уже присутствует в файле");
+                } else {
+                    appendToFile(file, fileContent);
+                    System.out.println("Данные успешно записаны в файл");
+                }
+            } else {
+                writeToFile(file, fileContent);
+                System.out.println("Данные успешно записаны в файл");
+            }
+        } catch (Exception e) {
+            e.printStackTrace();
+            logger.warning("Запись в файл не удалась. " + e.getMessage());
+        }
+        return 0;
+    }
+
+    public static void decoder(int code, String userData) {
+        switch (code) {
+            case -1:
+                System.out.println("Вы ввели недостаточное количество данных");
+                break;
+            case -2:
+                System.out.println("Вы ввели больше данных, чем требуется");
+                break;
+            default:
+                System.out.println("Некорректный код: " + code);
+        }
+    }
+
+    private static boolean isValidBirthDate(String birthDate) {
+        String regex = "\\d{2}\\.\\d{2}\\.\\d{4}";
+        return birthDate.matches(regex);
+    }
+
+    private static boolean isValidGender(char gender) {
+        return gender == 'f' || gender == 'm';
+    }
+
+    static void writeToFile(File file, String fileContent) throws IOException {
+        FileWriter fileWriter = new FileWriter(file);
+        fileWriter.write(fileContent + "\n");
+        fileWriter.close();
+    }
+
+    static void appendToFile(File file, String fileContent) throws IOException {
+        FileWriter fileWriter = new FileWriter(file, true);
+        fileWriter.write(fileContent + "\n");
+        fileWriter.close();
+    }
+
+    static boolean fileContentContains(File file, String userData) throws FileNotFoundException {
+        try (Scanner scanner = new Scanner(file)) {
+            while (scanner.hasNext()) {
+                String line = scanner.nextLine();
+                if (line.equals(userData)) {
+                    return true;
+                }
+            }
+        }
+        return false;
+    }
+}
+
+
+____________________________________________________________________________
+
+package Itog_hw;
+/*
+Напишите приложение, которое будет запрашивать у пользователя следующие данные, разделенные пробелом:
+
+Фамилия Имя Отчество дата _ рождения номер _ телефона пол
+
+Форматы данных:
+
+фамилия, имя, отчество - строки
+дата _ рождения - строка формата dd.mm.yyyy
+номер _ телефона - целое беззнаковое число без форматирования
+пол - символ латиницей f или m.
+
+Приложение должно проверить введенные данные по количеству. Если количество не совпадает, вернуть код ошибки, обработать его и показать пользователю сообщение, что он ввел меньше или больше данных, чем требуется.
+
+Приложение должно распарсить полученную строку и выделить из них требуемые значения. Если форматы данных не совпадают, нужно бросить исключение, соответствующее типу проблемы. Можно использовать встроенные типы java и создавать свои. Исключение должно быть корректно обработано, пользователю выведено сообщение с информацией, что именно неверно.
+
+Если всё введено и обработано верно, должен создаться файл с названием, равным фамилии, в него в одну строку должны записаться полученные данные, вида
+<Фамилия> <Имя> <Отчество> <дата _ рождения> <номер _ телефона> <пол>
+
+Однофамильцы должны записаться в один и тот же файл, в отдельные строки.
+Не забудьте закрыть соединение с файлом.
+При возникновении проблемы с чтением-записью в файл, исключение должно быть корректно обработано, пользователь должен увидеть стектрейс ошибки.*/
+
+import java.io.FileWriter;
+import java.util.Scanner;
+import java.util.logging.Logger;
+
+public class SurnameFile {
+    static Logger logger = Logger.getAnonymousLogger();
+    public static void main(String[] args) {
+        Scanner scanner = new Scanner(System.in);
+        System.out.println("Введите данные, разделенные пробелом:\n- Фамилия Имя Отчество\n- дата рождения(dd.mm.yyyy)\n- номер " +
+                "телефона(цифры подряд без пробелов и знаков)\n- пол(символ латиницей f или m)");
+        String userData = scanner.nextLine();
+        decoder(indexOfElement(userData));
+        scanner.close();
+    }
+
+    public static int indexOfElement(String userData) {
+
+        try {
+            String[] data = userData.split(" ");
+
+            if (data.length < 6) {
+                return -1;
+            }
+            if (data.length > 6) {
+                return -2;
+            }
+
+            String lastName = data[0];
+            String firstName = data[1];
+            String middleName = data[2];
+            String birthDate = data[3];
+            long phoneNumber = Long.parseLong(data[4]);
+            char gender = data[5].charAt(0);
+
+            if (!isValidBirthDate(birthDate)) {
+                throw new IllegalArgumentException("Неверный формат даты рождения");
+            }
+
+
+            if (!isValidGender(gender)) {
+                throw new IllegalArgumentException("Неверный формат пола");
+            }
+
+            String fileName = lastName + ".txt";
+            String fileContent = String.format("%s %s %s %s %d %c", lastName, firstName, middleName, birthDate, phoneNumber, gender);
+
+
+            FileWriter fileWriter = new FileWriter(fileName, true);
+
+            fileWriter.write(fileContent + "\n");
+            fileWriter.close();
+
+            System.out.println("Данные успешно записаны в файл");
+        } catch (Exception e) {
+            e.printStackTrace();
+            logger.warning("Запись в файл не удалась. " + e.getMessage());
+        }
+        return 0;
+    }
+
+
+    public static void decoder(int code) {
+        switch (code) {
+            case -1:
+                System.out.println("Вы ввели недостаточное количество данных");
+                break;
+            case -2:
+                System.out.println("Вы ввели больше данных, чем требуется");
+        }
+    }
+
+    private static boolean isValidBirthDate(String birthDate) {
+        String regex = "\\d{2}\\.\\d{2}\\.\\d{4}";
+        return birthDate.matches(regex);
+    }
+
+    private static boolean isValidGender(char gender) {
+        return gender == 'f' || gender == 'm';
+    }
+
+}

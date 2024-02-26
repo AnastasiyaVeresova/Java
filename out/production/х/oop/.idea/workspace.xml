@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ChangeListManager">
+    <list default="true" id="c1db1246-3ba4-411a-be96-7edf60f7e362" name="Changes" comment="">
+      <change beforePath="$PROJECT_DIR$/hw_1_2/Hero.java" beforeDir="false" afterPath="$PROJECT_DIR$/hw_1_2/Hero.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/hw_1_2/Main.java" beforeDir="false" afterPath="$PROJECT_DIR$/hw_1_2/Main.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/hw_1_2/View.java" beforeDir="false" afterPath="$PROJECT_DIR$/hw_1_2/View.java" afterDir="false" />
+    </list>
+    <option name="SHOW_DIALOG" value="false" />
+    <option name="HIGHLIGHT_CONFLICTS" value="true" />
+    <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
+    <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="Git.Settings">
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
+  </component>
+  <component name="ProjectColorInfo">{
+  &quot;associatedIndex&quot;: 4
+}</component>
+  <component name="ProjectId" id="2bGLke0UpjfW3MuLgaZS71Ok6YQ" />
+  <component name="ProjectViewState">
+    <option name="hideEmptyMiddlePackages" value="true" />
+    <option name="showLibraryContents" value="true" />
+  </component>
+  <component name="PropertiesComponent">{
+  &quot;keyToString&quot;: {
+    &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
+    &quot;git-widget-placeholder&quot;: &quot;master&quot;,
+    &quot;last_opened_file_path&quot;: &quot;F:/х/Java&quot;
+  }
+}</component>
+  <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
+  <component name="TaskManager">
+    <task active="true" id="Default" summary="Default task">
+      <changelist id="c1db1246-3ba4-411a-be96-7edf60f7e362" name="Changes" comment="" />
+      <created>1705836612255</created>
+      <option name="number" value="Default" />
+      <option name="presentableId" value="Default" />
+      <updated>1705836612255</updated>
+    </task>
+    <servers />
+  </component>
+</project>

@@ -1,0 +1,7 @@
+дек. 04, 2023 9:49:57 PM Sem_2.Main4 writeInFile
+INFO: Запись прошла успешно
+test test test test test test test test test test 
+test test test test test test test test test test 
+test test test test test test test test test test 
+test test test test test test test test test test 
+test test test test test test test test test test 
