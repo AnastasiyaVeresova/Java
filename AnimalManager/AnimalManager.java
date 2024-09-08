@@ -433,11 +433,67 @@ public class AnimalManager {
  
     public void listCommands() {
 
-    }
+        if (!fileExists()) {
+
+            System.out.println("База пуста. Выберите 1 для добавления питомца");
+
+            return;
+
+        }
+
+        System.out.print("Введите имя животного: ");
+
+        String name = scanner.nextLine();
+
+        boolean found = false;
 
  
 
-    public void trainAnimal() {
+        try (BufferedReader br = new BufferedReader(new FileReader(fileName))) {
+
+            String line;
+
+            while ((line = br.readLine()) != null) {
+
+                String[] parts = line.split(" ");
+
+                if (parts.length >= 4) {
+
+                    StringBuilder result = new StringBuilder();
+
+                    for (int i = 4; i < parts.length; i++) {
+
+                        result.append(parts[i]).append(" ");
+
+                    }
+
+                    if (name.equalsIgnoreCase(parts[2])) {
+
+                        found = true;
+
+                        System.out.println("Команды для " + name + ": " + result.toString().trim());
+
+                    }
+
+                }
+
+            }
+
+        } catch (IOException e) {
+
+            e.printStackTrace();
+
+        }
+
+        if (!found) {
+
+            System.out.println("Животное с именем " + name + " не найдено.");
+
+        }
+
+    }
+
+     public void trainAnimal() {
 
     }
 
@@ -456,7 +512,13 @@ public class AnimalManager {
 
     }
 
- 
+   private static boolean fileExists() {
+
+        File file = new File(fileName);
+
+        return file.exists() && !file.isDirectory();
+
+    }
 
     public void showMenu() {
 
