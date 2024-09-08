@@ -615,6 +615,80 @@ public class AnimalManager {
  
     public void listAnimalsByBirthDate() {
 
+        if (!fileExists()) {
+
+            System.out.println("База пуста. Выберите 1 для добавления питомца");
+
+            return;
+
+        }
+
+        List<Animal> animals = new ArrayList<>();
+
+        /*
+         * 
+         * animals.sort(Comparator.comparing(Animal::getBirthDate));
+         * 
+         * System.out.println("Список животных по дате рождения:");
+         * 
+         * for (Animal animal : animals) {
+         * 
+         * System.out.println(animal.getType() + " " + animal.getName() +
+         * 
+         * ", Дата рождения: " + animal.getBirthDate());
+         * 
+         * }
+         * 
+         */
+
+        try (BufferedReader br = new BufferedReader(new FileReader(fileName))) {
+
+            String line;
+
+            while ((line = br.readLine()) != null) {
+
+                String[] parts = line.split(" ");
+
+                int id = Integer.parseInt(parts[0]);
+
+                String type = parts[1];
+
+                String name = parts[2];
+
+                String birthDate = parts[3];
+
+                if (parts.length >= 4) {
+
+                    StringBuilder result = new StringBuilder();
+
+                    for (int i = 4; i < parts.length; i++) {
+
+                        result.append(parts[i]).append(" ");
+
+                    }
+
+                    List<String> commands = List.of(result.toString().trim());
+
+                    animals.add(new Animal(id, type, name, birthDate, commands));
+
+                }
+
+            }
+
+        } catch (IOException e) {
+
+            e.printStackTrace();
+
+        }
+
+        animals.sort(Comparator.comparing(Animal::getBirthDate));
+
+        for (Animal animal : animals) {
+
+            System.out.println(animal);
+
+        }
+
     }
     
     public void animalTypeList() {
