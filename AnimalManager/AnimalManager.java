@@ -493,10 +493,125 @@ public class AnimalManager {
 
     }
 
-     public void trainAnimal() {
+ public void trainAnimal() {
+
+        if (!fileExists()) {
+
+            System.out.println("База пуста. Выберите 1 для добавления питомца");
+
+            return;
+
+        }
+
+        List<String> lines = new ArrayList<>();
+
+        try (BufferedReader br = new BufferedReader(new FileReader(fileName))) {
+
+            String line;
+
+            while ((line = br.readLine()) != null) {
+
+                lines.add(line);
+
+            }
+
+        } catch (IOException e) {
+
+            e.printStackTrace();
+
+        }
+
+ 
+
+        System.out.println("Выберите индекс животного для обучения команде:");
+
+ 
+
+        for (int i = 0; i < lines.size(); i++) {
+
+            System.out.println(lines.get(i));
+
+        }
+
+ 
+
+        System.out.print("Введите индекс: ");
+
+        int index = scanner.nextInt() - 1;
+
+        if (index < 0 || index >= lines.size()) {
+
+            System.out.println("Некорректный индекс.");
+
+            return;
+
+        }
+
+ 
+
+        System.out.print("Введите новую команду: ");
+
+        scanner.nextLine();
+
+        String newCommand = scanner.nextLine();
+
+ 
+
+        String selectedLine = lines.get(index);
+
+        String updatedLine = updateLineWithNewCommand(selectedLine, newCommand);
+
+        lines.set(index, updatedLine);
+
+ 
+
+        try (BufferedWriter bw = new BufferedWriter(new FileWriter(fileName))) {
+
+            for (String lineToWrite : lines) {
+
+                bw.write(lineToWrite);
+
+                bw.newLine();
+
+            }
+
+        } catch (IOException e) {
+
+            e.printStackTrace();
+
+        }
+
+ 
+
+        System.out.println("Теперь " + selectedLine + " знает команду: " + newCommand);
 
     }
 
+ 
+
+    private static String updateLineWithNewCommand(String line, String newCommand) {
+
+        int startIndex = line.indexOf('[');
+
+        int endIndex = line.indexOf(']');
+
+ 
+
+        if (startIndex != -1 && endIndex != -1 && endIndex > startIndex) {
+
+            String existingCommands = line.substring(startIndex + 1, endIndex);
+
+            String updatedCommands = existingCommands + ", " + newCommand;
+
+            return line.substring(0, startIndex + 1) + updatedCommands + "]";
+
+        }
+
+ 
+
+        return line;
+
+    }
  
     public void listAnimalsByBirthDate() {
 
