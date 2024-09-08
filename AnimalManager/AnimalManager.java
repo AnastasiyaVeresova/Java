@@ -172,7 +172,261 @@ public class AnimalManager {
  
 
     public void addAnimal() {
-      
+        String type;
+
+        String name;
+
+        String birthDate;
+
+ 
+
+        while (true) {
+
+ 
+
+            try {
+
+                int lastId = readLastId();
+
+                int newId = lastId + 1;
+
+ 
+
+                System.out.print("Введите тип животного (или 'exit' для выхода): ");
+
+                type = scanner.nextLine();
+
+                if (type.equalsIgnoreCase("exit")) {
+
+                    return;
+
+                }
+
+ 
+
+                while (type.isEmpty()) {
+
+                    if (type.isEmpty()) {
+
+                        System.out.println(
+
+                                "Поле не может быть пустым. Пожалуйста, введите тип снова (или 'exit' для выхода): ");
+
+                        type = scanner.nextLine();
+
+                    }
+
+                    if (type.equalsIgnoreCase("exit")) {
+
+                        return;
+
+                    }
+
+                }
+
+                AnimalType animalType = animalTypes.get(type);
+
+                if (animalType == null) {
+
+                    animalType = new AnimalType(type);
+
+                    animalTypes.put(type, animalType);
+
+                }
+
+ 
+
+                System.out.print("Введите имя животного (или 'exit' для выхода): ");
+
+                name = scanner.nextLine();
+
+                if (name.equalsIgnoreCase("exit")) {
+
+                    return;
+
+                }
+
+                while (name.isEmpty()) {
+
+                    if (name.isEmpty()) {
+
+                        System.out.println(
+
+                                "Поле не может быть пустым. Пожалуйста, введите имя снова (или 'exit' для выхода): ");
+
+                        name = scanner.nextLine();
+
+                    }
+
+                    if (name.equalsIgnoreCase("exit")) {
+
+                        return;
+
+                    }
+
+                }
+
+                System.out.print("Введите дату рождения в формате ГГГГ-ММ-ДД (или 'exit' для выхода): ");
+
+                birthDate = scanner.nextLine();
+
+                if (birthDate.equalsIgnoreCase("exit")) {
+
+                    return;
+
+                }
+
+                while (!isValidBirthDate(birthDate)) {
+
+                    System.out.println(
+
+                            "Введите дату в формате ГГГГ-ММ-ДД и убедитесь, что она корректна (или 'exit' для выхода): ");
+
+                    birthDate = scanner.nextLine();
+
+                    if (birthDate.equalsIgnoreCase("exit")) {
+
+                        return;
+
+                    }
+
+ 
+
+                }
+
+                while (birthDate.isEmpty()) {
+
+                    if (birthDate.isEmpty()) {
+
+                        System.out.println(
+
+                                "Поле не может быть пустым. Пожалуйста, введите дату рождения снова (или 'exit' для выхода): ");
+
+                        birthDate = scanner.nextLine();
+
+                    }
+
+                    if (birthDate.equalsIgnoreCase("exit")) {
+
+                        return;
+
+                    }
+
+                }
+
+ 
+
+                System.out.print("Введите команды, которые умеет животное (через пробел): ");
+
+                String commandsInput = scanner.nextLine();
+
+                List<String> commands = Arrays.asList(commandsInput.split(" "));
+
+                Animal animal = new Animal(newId, type, name, birthDate, commands);
+
+                animalType.addAnimal(animal);
+
+ 
+
+                writeAnimal(newId, type, name, birthDate, commands);
+
+                System.out.println("Животное добавлено: " + animal);
+
+            } catch (IOException e) {
+
+                e.printStackTrace();
+
+            }
+
+        }
+
+    }
+
+ 
+
+    private static int readLastId() throws IOException {
+
+        if (!Files.exists(Paths.get(fileName))) {
+
+            return 0;
+
+        }
+
+ 
+
+        try (BufferedReader reader = new BufferedReader(new FileReader(fileName))) {
+
+            String lastLine = null;
+
+            String currentLine;
+
+ 
+
+            while ((currentLine = reader.readLine()) != null) {
+
+                lastLine = currentLine;
+
+            }
+
+ 
+
+            if (lastLine != null) {
+
+                String[] parts = lastLine.split(" ");
+
+                return Integer.parseInt(parts[0]);
+
+            }
+
+        }
+
+ 
+
+        return 0;
+
+    }
+
+ 
+
+    private static void writeAnimal(int id, String type, String name, String birthDate, List<String> commands)
+
+            throws IOException {
+
+        try (BufferedWriter writer = new BufferedWriter(new FileWriter(fileName, true))) {
+
+            writer.write(id + " " + type + " " + name + " " + birthDate + " " + commands);
+
+            writer.newLine();
+
+        }
+
+    }
+
+ 
+
+    private static boolean isValidBirthDate(String birthDate) {
+
+        String regex = "\\d{4}\\-\\d{2}\\-\\d{2}";
+
+        if (!birthDate.matches(regex)) {
+
+            return false;
+
+        }
+
+ 
+
+        try {
+
+            LocalDate date = LocalDate.parse(birthDate, DateTimeFormatter.ofPattern("yyyy-MM-dd"));
+
+            return true;
+
+        } catch (DateTimeParseException e) {
+
+            return false;
+
+        }
 
     }
 
@@ -193,7 +447,7 @@ public class AnimalManager {
     }
     
     public void animalTypeList() {
-        
+
     }
 
  
