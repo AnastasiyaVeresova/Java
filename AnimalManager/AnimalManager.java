@@ -8,6 +8,7 @@ import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Comparator;
 import java.util.HashMap;
+import java.util.HashSet;
 import java.util.List;
 import java.util.Map;
 import java.util.Scanner;
@@ -208,6 +209,11 @@ public class AnimalManager {
                     }
 
                 }
+                 if (Character.isUpperCase(type.charAt(0))) {
+
+                    type = type.toLowerCase();
+
+                }
 
                 AnimalType animalType = animalTypes.get(type);
 
@@ -250,6 +256,13 @@ public class AnimalManager {
                     }
 
                 }
+                if (Character.isLowerCase(name.charAt(0))) {
+
+                    String firstLetter = name.substring(0, 1).toUpperCase();
+
+                    name = firstLetter + name.substring(1);
+                }
+                
 
                 System.out.print("Введите дату рождения в формате ГГГГ-ММ-ДД (или 'exit' для выхода): ");
 
@@ -676,7 +689,99 @@ public class AnimalManager {
 
     }
     
-    public void animalTypeList() {
+     public void animalTypeList() {
+
+        if (!fileExists()) {
+
+            System.out.println("База пуста. Выберите 1 для добавления питомца");
+
+            return;
+
+        }
+
+        HashSet<String> animalTypes = new HashSet<>();
+
+        List<String> animalRecords = new ArrayList<>();
+
+ 
+
+        try (BufferedReader br = new BufferedReader(new FileReader(fileName))) {
+
+            String line;
+
+            while ((line = br.readLine()) != null) {
+
+                String[] parts = line.split(" ");
+
+                if (parts.length > 0) {
+
+                    String type = parts[1];
+
+                    animalTypes.add(type);
+
+                    animalRecords.add(line);
+
+                }
+
+            }
+
+        } catch (IOException e) {
+
+            e.printStackTrace();
+
+        }
+
+        System.out.println();
+
+        int count = 0;
+
+        System.out.println("Доступные типы животных:");
+
+        for (String type : animalTypes) {
+
+            System.out.println(type);
+
+ 
+
+        }
+
+ 
+
+        System.out.print("Введите тип животного для просмотра списка: ");
+
+        String selectedType = scanner.nextLine();
+
+        System.out.println();
+
+        for (String record : animalRecords) {
+
+            if (record.split(" ")[1].equals(selectedType)) {
+
+                count++;
+
+            }
+
+        }
+
+ 
+
+        System.out.println("Список животных типа " + selectedType + ": " + count);
+
+        for (String record : animalRecords) {
+
+            if (record.split(" ")[1].equals(selectedType)) {
+
+                System.out.println(record);
+
+ 
+
+            }
+
+        }
+
+        System.out.println();
+
+ 
 
     }
 
