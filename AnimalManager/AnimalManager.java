@@ -1,3 +1,4 @@
+
 import java.io.*;
 import java.nio.file.Files;
 import java.nio.file.Paths;
@@ -16,15 +17,15 @@ import java.util.logging.Logger;
 
 class Animal {
 
-    private int id;
+    private final int id;
 
-    private String name;
+    private final String name;
 
-    private String type;
+    private final String type;
 
-    private String birthDate;
+    private final String birthDate;
 
-    private List<String> commands;
+    private final List<String> commands;
 
     public Animal(int id, String type, String name, String birthDate, List<String> commands) {
 
@@ -80,19 +81,13 @@ class Animal {
 
     public String toString() {
 
-        return "Питомец {" +
-
-                "id: " + id + '\'' +
-
-                ", тип: " + type + '\'' +
-
-                ", имя: '" + name + '\'' +
-
-                ", дата рождения: '" + birthDate + '\'' +
-
-                ", команды: " + commands +
-
-                '}';
+        return "Питомец {"
+                + "id: " + id + '\''
+                + ", тип: " + type + '\''
+                + ", имя: '" + name + '\''
+                + ", дата рождения: '" + birthDate + '\''
+                + ", команды: " + commands
+                + '}';
 
     }
 
@@ -100,9 +95,9 @@ class Animal {
 
 class AnimalType {
 
-    private String typeName;
+    private final String typeName;
 
-    private List<Animal> animals;
+    private final List<Animal> animals;
 
     public AnimalType(String typeName) {
 
@@ -131,19 +126,17 @@ class AnimalType {
     }
 
 }
+
 public class AnimalManager {
 
-    static Logger logger = Logger.getAnonymousLogger();
+    static final Logger logger = Logger.getAnonymousLogger();
 
     Scanner scanner = new Scanner(System.in, "cp866");
 
     private static final String fileName = "animals.txt";
 
     // private List<Animal> animals = new ArrayList<>();
-
-   private static Map<String, AnimalType> animalTypes = new HashMap<>();
-
- 
+    private final static Map<String, AnimalType> animalTypes = new HashMap<>();
 
     public static void main(String[] args) {
 
@@ -151,11 +144,7 @@ public class AnimalManager {
 
         registry.showMenu();
 
- 
-
     }
-
- 
 
     public void addAnimal() {
         String type;
@@ -164,19 +153,13 @@ public class AnimalManager {
 
         String birthDate;
 
- 
-
         while (true) {
-
- 
 
             try {
 
                 int lastId = readLastId();
 
                 int newId = lastId + 1;
-
- 
 
                 System.out.print("Введите тип животного (или 'exit' для выхода): ");
 
@@ -188,14 +171,11 @@ public class AnimalManager {
 
                 }
 
- 
-
                 while (type.isEmpty()) {
 
                     if (type.isEmpty()) {
 
                         System.out.println(
-
                                 "Поле не может быть пустым. Пожалуйста, введите тип снова (или 'exit' для выхода): ");
 
                         type = scanner.nextLine();
@@ -209,7 +189,7 @@ public class AnimalManager {
                     }
 
                 }
-                 if (Character.isUpperCase(type.charAt(0))) {
+                if (Character.isUpperCase(type.charAt(0))) {
 
                     type = type.toLowerCase();
 
@@ -224,8 +204,6 @@ public class AnimalManager {
                     animalTypes.put(type, animalType);
 
                 }
-
- 
 
                 System.out.print("Введите имя животного (или 'exit' для выхода): ");
 
@@ -242,7 +220,6 @@ public class AnimalManager {
                     if (name.isEmpty()) {
 
                         System.out.println(
-
                                 "Поле не может быть пустым. Пожалуйста, введите имя снова (или 'exit' для выхода): ");
 
                         name = scanner.nextLine();
@@ -262,7 +239,6 @@ public class AnimalManager {
 
                     name = firstLetter + name.substring(1);
                 }
-                
 
                 System.out.print("Введите дату рождения в формате ГГГГ-ММ-ДД (или 'exit' для выхода): ");
 
@@ -277,7 +253,6 @@ public class AnimalManager {
                 while (!isValidBirthDate(birthDate)) {
 
                     System.out.println(
-
                             "Введите дату в формате ГГГГ-ММ-ДД и убедитесь, что она корректна (или 'exit' для выхода): ");
 
                     birthDate = scanner.nextLine();
@@ -288,8 +263,6 @@ public class AnimalManager {
 
                     }
 
- 
-
                 }
 
                 while (birthDate.isEmpty()) {
@@ -297,7 +270,6 @@ public class AnimalManager {
                     if (birthDate.isEmpty()) {
 
                         System.out.println(
-
                                 "Поле не может быть пустым. Пожалуйста, введите дату рождения снова (или 'exit' для выхода): ");
 
                         birthDate = scanner.nextLine();
@@ -312,8 +284,6 @@ public class AnimalManager {
 
                 }
 
- 
-
                 System.out.print("Введите команды, которые умеет животное (через пробел): ");
 
                 String commandsInput = scanner.nextLine();
@@ -323,8 +293,6 @@ public class AnimalManager {
                 Animal animal = new Animal(newId, type, name, birthDate, commands);
 
                 animalType.addAnimal(animal);
-
- 
 
                 writeAnimal(newId, type, name, birthDate, commands);
 
@@ -340,8 +308,6 @@ public class AnimalManager {
 
     }
 
- 
-
     private static int readLastId() throws IOException {
 
         if (!Files.exists(Paths.get(fileName))) {
@@ -350,23 +316,17 @@ public class AnimalManager {
 
         }
 
- 
-
         try (BufferedReader reader = new BufferedReader(new FileReader(fileName))) {
 
             String lastLine = null;
 
             String currentLine;
 
- 
-
             while ((currentLine = reader.readLine()) != null) {
 
                 lastLine = currentLine;
 
             }
-
- 
 
             if (lastLine != null) {
 
@@ -378,16 +338,11 @@ public class AnimalManager {
 
         }
 
- 
-
         return 0;
 
     }
 
- 
-
     private static void writeAnimal(int id, String type, String name, String birthDate, List<String> commands)
-
             throws IOException {
 
         try (BufferedWriter writer = new BufferedWriter(new FileWriter(fileName, true))) {
@@ -400,8 +355,6 @@ public class AnimalManager {
 
     }
 
- 
-
     private static boolean isValidBirthDate(String birthDate) {
 
         String regex = "\\d{4}\\-\\d{2}\\-\\d{2}";
@@ -411,8 +364,6 @@ public class AnimalManager {
             return false;
 
         }
-
- 
 
         try {
 
@@ -428,7 +379,6 @@ public class AnimalManager {
 
     }
 
- 
     public void listCommands() {
 
         if (!fileExists()) {
@@ -444,8 +394,6 @@ public class AnimalManager {
         String name = scanner.nextLine();
 
         boolean found = false;
-
- 
 
         try (BufferedReader br = new BufferedReader(new FileReader(fileName))) {
 
@@ -491,7 +439,7 @@ public class AnimalManager {
 
     }
 
- public void trainAnimal() {
+    public void trainAnimal() {
 
         if (!fileExists()) {
 
@@ -519,19 +467,13 @@ public class AnimalManager {
 
         }
 
- 
-
         System.out.println("Выберите индекс животного для обучения команде:");
-
- 
 
         for (int i = 0; i < lines.size(); i++) {
 
             System.out.println(lines.get(i));
 
         }
-
- 
 
         System.out.print("Введите индекс: ");
 
@@ -545,23 +487,17 @@ public class AnimalManager {
 
         }
 
- 
-
         System.out.print("Введите новую команду: ");
 
         scanner.nextLine();
 
         String newCommand = scanner.nextLine();
 
- 
-
         String selectedLine = lines.get(index);
 
         String updatedLine = updateLineWithNewCommand(selectedLine, newCommand);
 
         lines.set(index, updatedLine);
-
- 
 
         try (BufferedWriter bw = new BufferedWriter(new FileWriter(fileName))) {
 
@@ -579,21 +515,15 @@ public class AnimalManager {
 
         }
 
- 
-
         System.out.println("Теперь " + selectedLine + " знает команду: " + newCommand);
 
     }
-
- 
 
     private static String updateLineWithNewCommand(String line, String newCommand) {
 
         int startIndex = line.indexOf('[');
 
         int endIndex = line.indexOf(']');
-
- 
 
         if (startIndex != -1 && endIndex != -1 && endIndex > startIndex) {
 
@@ -605,12 +535,10 @@ public class AnimalManager {
 
         }
 
- 
-
         return line;
 
     }
- 
+
     public void listAnimalsByBirthDate() {
 
         if (!fileExists()) {
@@ -623,21 +551,6 @@ public class AnimalManager {
 
         List<Animal> animals = new ArrayList<>();
 
-        /*
-         * 
-         * animals.sort(Comparator.comparing(Animal::getBirthDate));
-         * 
-         * System.out.println("Список животных по дате рождения:");
-         * 
-         * for (Animal animal : animals) {
-         * 
-         * System.out.println(animal.getType() + " " + animal.getName() +
-         * 
-         * ", Дата рождения: " + animal.getBirthDate());
-         * 
-         * }
-         * 
-         */
 
         try (BufferedReader br = new BufferedReader(new FileReader(fileName))) {
 
@@ -688,8 +601,8 @@ public class AnimalManager {
         }
 
     }
-    
-     public void animalTypeList() {
+
+    public void animalTypeList() {
 
         if (!fileExists()) {
 
@@ -702,8 +615,6 @@ public class AnimalManager {
         HashSet<String> animalTypes = new HashSet<>();
 
         List<String> animalRecords = new ArrayList<>();
-
- 
 
         try (BufferedReader br = new BufferedReader(new FileReader(fileName))) {
 
@@ -741,11 +652,7 @@ public class AnimalManager {
 
             System.out.println(type);
 
- 
-
         }
-
- 
 
         System.out.print("Введите тип животного для просмотра списка: ");
 
@@ -763,8 +670,6 @@ public class AnimalManager {
 
         }
 
- 
-
         System.out.println("Список животных типа " + selectedType + ": " + count);
 
         for (String record : animalRecords) {
@@ -773,21 +678,15 @@ public class AnimalManager {
 
                 System.out.println(record);
 
- 
-
             }
 
         }
 
         System.out.println();
 
- 
-
     }
 
- 
-
-  public void animalsDelete() {
+    public void animalsDelete() {
 
         if (!fileExists()) {
 
@@ -796,8 +695,6 @@ public class AnimalManager {
             return;
 
         }
-
- 
 
         List<String> linesAll = new ArrayList<>();
 
@@ -817,12 +714,9 @@ public class AnimalManager {
 
                         result.append(parts[i]).append(" ");
 
- 
-
                     }
 
                     // System.out.println(result.toString().trim());
-
                     linesAll.add(line);
 
                 }
@@ -835,19 +729,13 @@ public class AnimalManager {
 
         }
 
- 
-
         System.out.println("Выберите индекс животного для удаления из списка:");
-
- 
 
         for (int i = 0; i < linesAll.size(); i++) {
 
             System.out.println(linesAll.get(i));
 
         }
-
- 
 
         System.out.print("Введите индекс: ");
 
@@ -861,13 +749,9 @@ public class AnimalManager {
 
         }
 
- 
-
         try {
 
             List<String> lines = Files.readAllLines(Paths.get(fileName));
-
- 
 
             if (lineToRemove > 0 && lineToRemove <= lines.size()) {
 
@@ -885,8 +769,6 @@ public class AnimalManager {
 
             }
 
- 
-
             try (BufferedWriter writer = Files.newBufferedWriter(Paths.get(fileName))) {
 
                 for (int i = 0; i < lines.size(); i++) {
@@ -901,11 +783,7 @@ public class AnimalManager {
 
             }
 
- 
-
             System.out.println("Строка удалена и файл обновлён.");
-
- 
 
         } catch (IOException e) {
 
@@ -915,7 +793,7 @@ public class AnimalManager {
 
     }
 
-   private static boolean fileExists() {
+    private static boolean fileExists() {
 
         File file = new File(fileName);
 
@@ -948,8 +826,6 @@ public class AnimalManager {
             int choice = scanner.nextInt();
 
             scanner.nextLine();
-
- 
 
             switch (choice) {
 
@@ -1006,4 +882,3 @@ public class AnimalManager {
     }
 
 }
- 
