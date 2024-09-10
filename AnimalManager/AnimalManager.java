@@ -787,7 +787,131 @@ public class AnimalManager {
 
  
 
-    public void animalsDelete() {
+  public void animalsDelete() {
+
+        if (!fileExists()) {
+
+            System.out.println("База пуста. Выберите 1 для добавления питомца");
+
+            return;
+
+        }
+
+ 
+
+        List<String> linesAll = new ArrayList<>();
+
+        try (BufferedReader br = new BufferedReader(new FileReader(fileName))) {
+
+            String line;
+
+            while ((line = br.readLine()) != null) {
+
+                String[] parts = line.split(" ");
+
+                if (parts.length >= 4) {
+
+                    StringBuilder result = new StringBuilder();
+
+                    for (int i = 1; i < parts.length; i++) {
+
+                        result.append(parts[i]).append(" ");
+
+ 
+
+                    }
+
+                    // System.out.println(result.toString().trim());
+
+                    linesAll.add(line);
+
+                }
+
+            }
+
+        } catch (IOException e) {
+
+            e.printStackTrace();
+
+        }
+
+ 
+
+        System.out.println("Выберите индекс животного для удаления из списка:");
+
+ 
+
+        for (int i = 0; i < linesAll.size(); i++) {
+
+            System.out.println(linesAll.get(i));
+
+        }
+
+ 
+
+        System.out.print("Введите индекс: ");
+
+        int lineToRemove = scanner.nextInt();
+
+        if (lineToRemove <= 0 || lineToRemove >= linesAll.size() + 1) {
+
+            System.out.println("Некорректный индекс.");
+
+            return;
+
+        }
+
+ 
+
+        try {
+
+            List<String> lines = Files.readAllLines(Paths.get(fileName));
+
+ 
+
+            if (lineToRemove > 0 && lineToRemove <= lines.size()) {
+
+                lines.remove(lineToRemove - 1);
+
+            } else if (lineToRemove == 0) {
+
+                lines.remove(lineToRemove);
+
+            } else {
+
+                System.out.println("Неверный номер строки для удаления.");
+
+                return;
+
+            }
+
+ 
+
+            try (BufferedWriter writer = Files.newBufferedWriter(Paths.get(fileName))) {
+
+                for (int i = 0; i < lines.size(); i++) {
+
+                    String lineWithoutIndex = lines.get(i).substring(lines.get(i).indexOf(' ') + 1);
+
+                    writer.write((i + 1) + " " + lineWithoutIndex);
+
+                    writer.newLine();
+
+                }
+
+            }
+
+ 
+
+            System.out.println("Строка удалена и файл обновлён.");
+
+ 
+
+        } catch (IOException e) {
+
+            e.printStackTrace();
+
+        }
 
     }
 
